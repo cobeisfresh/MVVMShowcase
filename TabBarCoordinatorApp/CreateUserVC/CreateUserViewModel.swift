@@ -7,10 +7,20 @@
 
 import Foundation
 
-class CreateUserViewModel {
+final class CreateUserViewModel {
+    // MARK: - Properties
+    var onGoToLogin: EmptyCallback?
+    
     func saveUser(_ user: User) {
         UserDefaults.standard.set(user.name, forKey: "userName")
         UserDefaults.standard.set(user.email, forKey: "userEmail")
         UserDefaults.standard.set(user.password, forKey: "userPass")
+    }
+}
+
+// MARK: - Navigation
+extension CreateUserViewModel {
+    func goToLogin() {
+        onGoToLogin?()
     }
 }

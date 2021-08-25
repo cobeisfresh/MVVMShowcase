@@ -54,7 +54,7 @@ class LoginView: UIView {
         enterDetailsView.layer.cornerRadius = 25
         addSubview(enterDetailsView)
         
-        nameTextField.backgroundColor = .white.withAlphaComponent(0.2)
+        nameTextField.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         nameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
         nameTextField.layer.cornerRadius = 10
         nameTextField.tintColor = .black
@@ -62,7 +62,7 @@ class LoginView: UIView {
         nameTextField.textColor = .white
         enterDetailsView.addSubview(nameTextField)
         
-        passTextField.backgroundColor = .white.withAlphaComponent(0.2)
+        passTextField.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         passTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
         passTextField.layer.cornerRadius = 10
         passTextField.tintColor = .black

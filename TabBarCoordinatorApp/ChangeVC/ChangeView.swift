@@ -49,7 +49,7 @@ class ChangeView: UIView {
         titleLabel.textAlignment = .center
         addSubview(titleLabel)
         
-        enterDetailsView.backgroundColor = .white.withAlphaComponent(0.3)
+        enterDetailsView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         enterDetailsView.layer.cornerRadius = 25
         addSubview(enterDetailsView)
         
@@ -58,7 +58,7 @@ class ChangeView: UIView {
         nameDescLabel.textColor = .white
         enterDetailsView.addSubview(nameDescLabel)
         
-        nameTextField.backgroundColor = .white.withAlphaComponent(0.2)
+        nameTextField.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         nameTextField.textColor = .white
         nameTextField.layer.cornerRadius = 10
         nameTextField.tintColor = .black
@@ -71,7 +71,7 @@ class ChangeView: UIView {
         emailDescLabel.textColor = .white
         enterDetailsView.addSubview(emailDescLabel)
         
-        emailTextField.backgroundColor = .white.withAlphaComponent(0.2)
+        emailTextField.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         emailTextField.textColor = .white
         emailTextField.layer.cornerRadius = 10
         emailTextField.tintColor = .black
@@ -84,7 +84,7 @@ class ChangeView: UIView {
         passDescLabel.textColor = .white
         enterDetailsView.addSubview(passDescLabel)
         
-        passTextField.backgroundColor = .white.withAlphaComponent(0.2)
+        passTextField.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         passTextField.textColor = .white
         passTextField.layer.cornerRadius = 10
         passTextField.tintColor = .black

@@ -45,7 +45,7 @@ class AboutView: UIView {
         titleLabel.textAlignment = .center
         addSubview(titleLabel)
         
-        descriptionBackgroundView.backgroundColor = .white.withAlphaComponent(0.3)
+        descriptionBackgroundView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         descriptionBackgroundView.layer.cornerRadius = 25
         addSubview(descriptionBackgroundView)
         

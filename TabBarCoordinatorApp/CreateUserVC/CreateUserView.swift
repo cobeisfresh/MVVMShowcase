@@ -39,7 +39,7 @@ class CreateUserView: UIView {
         backgroundImage.image = UIImage(named: "background")
         addSubview(backgroundImage)
         
-        enterDetailsView.backgroundColor = .white.withAlphaComponent(0.3)
+        enterDetailsView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         enterDetailsView.layer.cornerRadius = 25
         addSubview(enterDetailsView)
         
@@ -50,7 +50,7 @@ class CreateUserView: UIView {
         titleLabel.textAlignment = .center
         addSubview(titleLabel)
         
-        nameTextField.backgroundColor = .white.withAlphaComponent(0.2)
+        nameTextField.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         nameTextField.textColor = .white
         nameTextField.layer.cornerRadius = 10
         nameTextField.tintColor = .black
@@ -58,7 +58,7 @@ class CreateUserView: UIView {
         nameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
         enterDetailsView.addSubview(nameTextField)
         
-        emailTextField.backgroundColor = .white.withAlphaComponent(0.2)
+        emailTextField.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         emailTextField.textColor = .white
         emailTextField.layer.cornerRadius = 10
         emailTextField.tintColor = .black
@@ -66,7 +66,7 @@ class CreateUserView: UIView {
         emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
         enterDetailsView.addSubview(emailTextField)
         
-        passwordTextField.backgroundColor = .white.withAlphaComponent(0.2)
+        passwordTextField.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         passwordTextField.textColor = .white
         passwordTextField.layer.cornerRadius = 10
         passwordTextField.tintColor = .black

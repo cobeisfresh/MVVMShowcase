@@ -39,6 +39,13 @@ private extension LoginCoordinator {
     
     func showCreateUser() -> UIViewController {
         let vc = CreateUserViewController()
+        let vm = CreateUserViewModel()
+        vc.viewModel = vm
+        
+        vm.onGoToLogin = { [weak self] in
+            self?.navigationController.popViewController(animated: true)
+        }
+        
         navigationController.showAsRoot()
         navigationController.pushViewController(vc, animated: true)
         return vc

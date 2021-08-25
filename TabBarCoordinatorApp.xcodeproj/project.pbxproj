@@ -45,6 +45,7 @@
 		C5C394E22590CFD4004782B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C394E12590CFD4004782B7 /* TabBarViewController.swift */; };
 		C5C394E62590D0EF004782B7 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C394E52590D0EF004782B7 /* LoginViewController.storyboard */; };
 		C5C394EA2590EA65004782B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C394E92590EA65004782B7 /* User.swift */; };
+		EBB735C026D6634B00185C1B /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB735BF26D6634B00185C1B /* TypeAliases.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		C5C394E52590D0EF004782B7 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		C5C394E92590EA65004782B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E6F62833C1AB050673AD1439 /* Pods-TabBarCoordinatorApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabBarCoordinatorApp.release.xcconfig"; path = "Target Support Files/Pods-TabBarCoordinatorApp/Pods-TabBarCoordinatorApp.release.xcconfig"; sourceTree = "<group>"; };
+		EBB735BF26D6634B00185C1B /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		F568596E2B1F7737CDB7ABDD /* Pods_TabBarCoordinatorApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabBarCoordinatorApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -182,6 +184,7 @@
 		C5BDBC682590A1B8003543B1 = {
 			isa = PBXGroup;
 			children = (
+				EBB735BF26D6634B00185C1B /* TypeAliases.swift */,
 				C5BDBC732590A1B8003543B1 /* TabBarCoordinatorApp */,
 				C5BDBC722590A1B8003543B1 /* Products */,
 				85944649BC0500653C05CBC5 /* Pods */,
@@ -402,6 +405,7 @@
 				C5B2501125934BC20060F942 /* LoginCoordinator.swift in Sources */,
 				C5BDBC752590A1B8003543B1 /* AppDelegate.swift in Sources */,
 				C5C394E22590CFD4004782B7 /* TabBarViewController.swift in Sources */,
+				EBB735C026D6634B00185C1B /* TypeAliases.swift in Sources */,
 				C5BDBCA02590A5D2003543B1 /* AboutViewController.swift in Sources */,
 				C5BDBC772590A1B8003543B1 /* SceneDelegate.swift in Sources */,
 			);

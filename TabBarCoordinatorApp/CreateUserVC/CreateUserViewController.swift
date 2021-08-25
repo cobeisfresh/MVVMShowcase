@@ -9,7 +9,7 @@ import UIKit
 
 class CreateUserViewController: UIViewController {
     private lazy var createUserView = CreateUserView()
-    var createUserViewModel = CreateUserViewModel()
+    var viewModel = CreateUserViewModel()
     
     //MARK: - LifeCycle
     override func loadView() {
@@ -24,8 +24,8 @@ class CreateUserViewController: UIViewController {
     //MARK: - Actions
     private func addCallbacks() {
         createUserView.onCreateUser = { [weak self] user in
-            self?.createUserViewModel.saveUser(user)
-            self?.navigationController?.popViewController(animated: true)
+            self?.viewModel.saveUser(user)
+            self?.viewModel.goToLogin()
         }
     }
 }
