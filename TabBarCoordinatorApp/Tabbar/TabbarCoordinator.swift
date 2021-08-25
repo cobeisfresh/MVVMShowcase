@@ -11,7 +11,7 @@ import UIKit
 class TabbarCoordinator: Coordinator {
     let navigationController = UINavigationController()
     
-    var childCoordinators: [Coordinator] = [HomeCoordinator(), AboutCoordinator()]
+    //var childCoordinators: [Coordinator] = [HomeCoordinator(), AboutCoordinator()]
     
     func start() -> UIViewController {
         let vc = TabBarViewController.instance()
