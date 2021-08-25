@@ -14,7 +14,6 @@ final class HomeCoordinator: Coordinator {
     func start() -> UIViewController {
         let vc = HomeViewController()
         vc.viewModel = HomeViewModel()
-        vc.viewModel.onSetupUserDetails?()
         return vc
     }
 }

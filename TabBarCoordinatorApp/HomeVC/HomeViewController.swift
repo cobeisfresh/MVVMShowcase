@@ -27,12 +27,7 @@ class HomeViewController: UIViewController {
     
     private func addCallBacks() {
         homeView.onChangeTapped = { [weak self] user in
-            self?.viewModel.changeUserDetails(user: user)
             self?.goToChangeUserDetails(user: user)
-        }
-        
-        viewModel.onSetupUserDetails = { [weak self] in
-            
         }
     }
     

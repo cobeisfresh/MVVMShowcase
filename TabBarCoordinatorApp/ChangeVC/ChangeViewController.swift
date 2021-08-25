@@ -9,7 +9,7 @@ import UIKit
 
 class ChangeViewController: UIViewController {
     lazy var changeView = ChangeView()
-    var changeViewModel = ChangeViewModel()
+    var viewModel = ChangeViewModel()
     
     override func loadView() {
         view = changeView
@@ -44,7 +44,7 @@ class ChangeViewController: UIViewController {
    //MARK: - Outlets
     private func addCallbacks() {
         changeView.onSaveDetailsTapped = { [weak self] user in
-            self?.changeViewModel.saveChangedUserDetails(with: user)
+            self?.viewModel.saveChangedUserDetails(with: user)
             self?.gotoHomeVC(user: user)
         }
     }

@@ -56,7 +56,6 @@ class MainCoordintor: Coordinator {
         aboutVC.viewModel = AboutViewModel()
         aboutVC.aboutView.setupUserDetails(with: user)
     }
-    
 }
 
 extension Coordinator {
