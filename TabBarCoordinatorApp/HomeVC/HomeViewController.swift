@@ -13,7 +13,6 @@ class HomeViewController: UIViewController {
     
     override func loadView() {
         view = homeView
-        
     }
     
     override func viewDidLoad() {
@@ -26,10 +25,15 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-    
     private func addCallBacks() {
         homeView.onChangeTapped = { [weak self] user in
-                self?.homeViewModel.changeUserDetails(user: user)
+            self?.homeViewModel.changeUserDetails(user: user)
+            self?.goToChangeUserDetails(user: user)
         }
+    }
+    
+    private func goToChangeUserDetails(user: User) {
+        let homeCoordinator = HomeCoordinator()
+        _ = homeCoordinator.changeUserDetailsVC(with: user)
     }
 }

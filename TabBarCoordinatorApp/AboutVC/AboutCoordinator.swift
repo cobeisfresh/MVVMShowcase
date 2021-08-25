@@ -8,26 +8,25 @@
 import Foundation
 import UIKit
 
-class AboutCoordinator: Coordinator {
+final class AboutCoordinator: Coordinator {
     let navigationController = UINavigationController()
     
     func start() -> UIViewController {
-        let vc = logOut()
+        let vc = logout()
+        return vc
+    }
+}
 
-        return vc
-    }
-    
-    func logOut() -> UIViewController {
+extension AboutCoordinator {
+    func logout() -> UIViewController {
         let vc = LoginViewController.instance()
-        
         vc.showAsRoot()
-        navigationController.showAsRoot()
-        navigationController.viewControllers.removeAll()
-            let loginCoordinator = LoginCoordinator()
-        _ = loginCoordinator.start()
         
+        self.navigationController.showAsRoot()
+        self.navigationController.viewControllers.removeAll()
+            let loginCoordinator = LoginCoordinator()
+        
+        _ = loginCoordinator.start()
         return vc
     }
-    
-    
 }

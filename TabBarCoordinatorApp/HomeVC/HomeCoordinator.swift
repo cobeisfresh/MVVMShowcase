@@ -8,17 +8,18 @@
 import Foundation
 import UIKit
 
-class HomeCoordinator: Coordinator {
+final class HomeCoordinator: Coordinator {
     let navigationController = UINavigationController()
     
     func start() -> UIViewController {
         let vc = HomeViewController()
-        
         return vc
     }
-    
+}
+
+extension HomeCoordinator {
     func homeVC(with user: User) -> UIViewController {
-        let vc = TabBarViewController.instance()
+        let vc = TabBarViewController()
         let homeVC = vc.viewControllers?[0] as! HomeViewController
         homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
         

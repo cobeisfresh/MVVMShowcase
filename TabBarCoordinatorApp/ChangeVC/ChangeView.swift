@@ -19,11 +19,11 @@ class ChangeView: UIView {
     private lazy var emailTextField = UITextField()
     private lazy var passDescLabel = UILabel()
     private lazy var passTextField = UITextField()
-    private lazy var changeDetailsButton = UIButton()
+    private lazy var saveDetailsButton = UIButton()
 
     var viewModel: HomeViewModel!
     
-    var onChangeDetailsTapped: ((User) -> Void)?
+    var onSaveDetailsTapped: ((User) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -92,15 +92,15 @@ class ChangeView: UIView {
         passTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
         addSubview(passTextField)
         
-        changeDetailsButton.backgroundColor = .white
-        changeDetailsButton.layer.borderWidth = 1
-        changeDetailsButton.layer.borderColor = UIColor.black.cgColor
-        changeDetailsButton.layer.masksToBounds = true
-        changeDetailsButton.layer.cornerRadius = 25
-        changeDetailsButton.setTitle("Save changes", for: .normal)
-        changeDetailsButton.setTitleColor(UIColor.black, for: .normal)
-        changeDetailsButton.addTarget(self, action: #selector(changeDetailsButtonTapped), for: .touchUpInside)
-        addSubview(changeDetailsButton)
+        saveDetailsButton.backgroundColor = .white
+        saveDetailsButton.layer.borderWidth = 1
+        saveDetailsButton.layer.borderColor = UIColor.black.cgColor
+        saveDetailsButton.layer.masksToBounds = true
+        saveDetailsButton.layer.cornerRadius = 25
+        saveDetailsButton.setTitle("Save changes", for: .normal)
+        saveDetailsButton.setTitleColor(UIColor.black, for: .normal)
+        saveDetailsButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        addSubview(saveDetailsButton)
     }
     
     private func setupConstraints() {
@@ -118,7 +118,7 @@ class ChangeView: UIView {
             enterDetailsView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
             enterDetailsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
             enterDetailsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
-            enterDetailsView.bottomAnchor.constraint(equalTo: changeDetailsButton.topAnchor, constant: -150),
+            enterDetailsView.bottomAnchor.constraint(equalTo: saveDetailsButton.topAnchor, constant: -150),
             
             nameDescLabel.heightAnchor.constraint(equalToConstant: 35),
             nameDescLabel.topAnchor.constraint(equalTo: enterDetailsView.topAnchor, constant: 30),
@@ -157,10 +157,10 @@ class ChangeView: UIView {
             passTextField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             
             
-            changeDetailsButton.heightAnchor.constraint(equalToConstant: 50),
-            changeDetailsButton.widthAnchor.constraint(equalToConstant: 200),
-            changeDetailsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
-            changeDetailsButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
+            saveDetailsButton.heightAnchor.constraint(equalToConstant: 50),
+            saveDetailsButton.widthAnchor.constraint(equalToConstant: 200),
+            saveDetailsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
+            saveDetailsButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             
         ])
     }
@@ -171,10 +171,10 @@ class ChangeView: UIView {
         passTextField.text = user.password
     }
     
-    @objc func changeDetailsButtonTapped() {
+    @objc func saveButtonTapped() {
         if let name = nameTextField.text, let email = emailTextField.text, let pass = passTextField.text {
             let user = User(name: name, email: email, password: pass)
-            onChangeDetailsTapped?(user)
+            onSaveDetailsTapped?(user)
         }
     }
 }

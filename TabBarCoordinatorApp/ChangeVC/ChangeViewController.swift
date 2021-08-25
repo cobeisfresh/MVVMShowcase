@@ -28,10 +28,15 @@ class ChangeViewController: UIViewController {
     
    //MARK: - Outlets
     private func addCallbacks() {
-        changeView.onChangeDetailsTapped = { [weak self] user in
+        changeView.onSaveDetailsTapped = { [weak self] user in
             self?.changeViewModel.saveChangedUserDetails(with: user)
-            self?.changeViewModel.goToHomeVC(with: user)
+            self?.gotoHomeVC(user: user)
         }
+    }
+    
+    private func gotoHomeVC(user: User) {
+        let homeCoordinator = HomeCoordinator()
+        _ = homeCoordinator.homeVC(with: user)
     }
 
 }

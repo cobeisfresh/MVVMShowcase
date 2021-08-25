@@ -22,7 +22,13 @@ class AboutViewController: UIViewController {
     
     private func addCallbacks() {
         aboutView.onLogoutTapped = { [weak self] in
-            self?.aboutViewModel.logoutAndGoToLoginVC()
+            self?.aboutViewModel.logout()
+            self?.goToLoginVC()
         }
+    }
+    
+    private func goToLoginVC() {
+        let aboutCcoordinator = AboutCoordinator()
+        _ = aboutCcoordinator.logout()
     }
 }
