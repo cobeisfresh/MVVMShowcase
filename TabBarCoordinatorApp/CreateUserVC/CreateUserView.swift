@@ -130,8 +130,7 @@ class CreateUserView: UIView {
     
     @objc func createButtonTapped() {
         if let name = nameTextField.text, let email = emailTextField.text, let pass = passwordTextField.text {
-            let user = User(name: name, email: email, password: pass)
-            
+            let user = User(name: name, email: email, password: pass)            
             onCreateUser?(user)
         }
     }

@@ -27,9 +27,9 @@ private extension LoginCoordinator {
             _ = self.showCreateUser()
         }
         
-        vc.viewModel.onLoginTapped = { userDetails in
-            let tabbBarCoordinator = TabbarCoordinator()
-            _ = tabbBarCoordinator.showTabbarVC(user: User(name: userDetails[0], email: userDetails[1], password: userDetails[2]))
+        vc.viewModel.onLoginTapped = { user in
+            let tabbBarCoordinator = TabbarCoordinator(user: user)
+            _ = tabbBarCoordinator.start()
         }
         
         navigationController.showAsRoot()
@@ -46,7 +46,6 @@ private extension LoginCoordinator {
             self?.navigationController.popViewController(animated: true)
         }
         
-        navigationController.showAsRoot()
         navigationController.pushViewController(vc, animated: true)
         return vc
     }

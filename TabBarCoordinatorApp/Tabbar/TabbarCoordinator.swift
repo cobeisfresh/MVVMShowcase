@@ -8,15 +8,22 @@
 import Foundation
 import UIKit
 
-class TabbarCoordinator: Coordinator {
+final class TabbarCoordinator: Coordinator {
+    let user: User
     let navigationController = UINavigationController()
     
-    func start() -> UIViewController {
-        let vc = TabBarViewController()
-        
-        return vc
+    // MARK: - Init
+    init(user: User) {
+        self.user = user
     }
     
+    func start() -> UIViewController {
+        return showTabbarVC(user: user)
+    }
+}
+
+// MARK: - Private methods
+private extension TabbarCoordinator {
     func showTabbarVC(user: User) -> UIViewController {
         let vc = TabBarViewController()
         
@@ -40,5 +47,4 @@ class TabbarCoordinator: Coordinator {
         let aboutVC = navController1 as! AboutViewController
         aboutVC.aboutView.setupUserDetails(with: user)
     }
-    
 }
