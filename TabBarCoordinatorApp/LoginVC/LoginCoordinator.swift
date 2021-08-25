@@ -8,39 +8,39 @@
 import Foundation
 import UIKit
 
-class LoginCoordinator: Coordinator {
+final class LoginCoordinator: Coordinator {
     let navigationController = UINavigationController()
     
     func start() -> UIViewController {
         let vc = createLoginVC()
-        
         return vc
     }
-    
-    private func createLoginVC() -> UIViewController {
-        let vc = LoginViewController.instance()
+}
+
+// MARK: - Private Methods
+private extension LoginCoordinator {
+    func createLoginVC() -> UIViewController {
+        let vc = LoginViewController()
         vc.viewModel = LoginViewModel()
         
-    //user create
-        vc.viewModel.onCreateTapped = { [self] in
+        vc.viewModel.onCreateTapped = {
             _ = self.showCreateUser()
         }
         
-    //user logged in
         vc.viewModel.onLoginTapped = { userDetails in
             let tabbBarCoordinator = TabbarCoordinator()
             _ = tabbBarCoordinator.showTabbarVC(user: User(name: userDetails[0], email: userDetails[1], password: userDetails[2]))
         }
+        
         navigationController.showAsRoot()
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.pushViewController(vc, animated: true)
         return vc
     }
     
-    
-    private func showCreateUser() -> UIViewController {
-        let vc = CreateUserViewController.instance()
+    func showCreateUser() -> UIViewController {
+        let vc = CreateUserViewController()
         navigationController.showAsRoot()
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.pushViewController(vc, animated: true)
         return vc
     }
 }

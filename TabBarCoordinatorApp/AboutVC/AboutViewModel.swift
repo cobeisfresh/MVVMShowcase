@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 class AboutViewModel {
-    func logoutAndGoToLoginVC() {
-        let aboutCcoordinator = AboutCoordinator()
-        _ = aboutCcoordinator.logOut()
+    var onLogoutTapped: (()->Void)?
+    
+    func logout() {
+        onLogoutTapped?()
     }
 }

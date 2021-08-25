@@ -56,7 +56,7 @@ class CreateUserView: UIView {
         nameTextField.tintColor = .black
         nameTextField.placeholder = "Enter name"
         nameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
-        addSubview(nameTextField)
+        enterDetailsView.addSubview(nameTextField)
         
         emailTextField.backgroundColor = .white.withAlphaComponent(0.2)
         emailTextField.textColor = .white
@@ -64,7 +64,7 @@ class CreateUserView: UIView {
         emailTextField.tintColor = .black
         emailTextField.placeholder = "Enter email"
         emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
-        addSubview(emailTextField)
+        enterDetailsView.addSubview(emailTextField)
         
         passwordTextField.backgroundColor = .white.withAlphaComponent(0.2)
         passwordTextField.textColor = .white
@@ -72,7 +72,7 @@ class CreateUserView: UIView {
         passwordTextField.tintColor = .black
         passwordTextField.placeholder = "Enter password"
         passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
-        addSubview(passwordTextField)
+        enterDetailsView.addSubview(passwordTextField)
         
         createButton.backgroundColor = .white
         createButton.layer.borderWidth = 1
@@ -101,10 +101,10 @@ class CreateUserView: UIView {
             enterDetailsView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
             enterDetailsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
             enterDetailsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
-            enterDetailsView.bottomAnchor.constraint(equalTo: createButton.topAnchor, constant: -150),
+            enterDetailsView.heightAnchor.constraint(equalToConstant: 300),
             
             nameTextField.heightAnchor.constraint(equalToConstant: 35),
-            nameTextField.topAnchor.constraint(equalTo: enterDetailsView.topAnchor, constant: 75),
+            nameTextField.topAnchor.constraint(equalTo: enterDetailsView.topAnchor, constant: 40),
             nameTextField.leadingAnchor.constraint(equalTo: enterDetailsView.leadingAnchor, constant: 30),
             nameTextField.trailingAnchor.constraint(equalTo: enterDetailsView.trailingAnchor, constant: -30),
             nameTextField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
@@ -121,10 +121,9 @@ class CreateUserView: UIView {
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 50),
             passwordTextField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
 
-            
             createButton.heightAnchor.constraint(equalToConstant: 50),
             createButton.widthAnchor.constraint(equalToConstant: 200),
-            createButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
+            createButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
             createButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
         ])
     }

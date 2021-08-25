@@ -60,7 +60,7 @@ class LoginView: UIView {
         nameTextField.tintColor = .black
         nameTextField.placeholder = "Enter name"
         nameTextField.textColor = .white
-        addSubview(nameTextField)
+        enterDetailsView.addSubview(nameTextField)
         
         passTextField.backgroundColor = .white.withAlphaComponent(0.2)
         passTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
@@ -69,7 +69,7 @@ class LoginView: UIView {
         passTextField.placeholder = "Enter password"
         passTextField.textColor = .white
         passTextField.isSecureTextEntry = true
-        addSubview(passTextField)
+        enterDetailsView.addSubview(passTextField)
         
         loginButton.backgroundColor = .white
         loginButton.layer.masksToBounds = true
@@ -78,7 +78,7 @@ class LoginView: UIView {
         loginButton.setTitle("Login", for: .normal)
         loginButton.setTitleColor(UIColor.black, for: .normal)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        addSubview(loginButton)
+        enterDetailsView.addSubview(loginButton)
         
         createButton.setTitle("Create User", for: .normal)
         createButton.setTitleColor(.white, for: .normal)
@@ -98,8 +98,8 @@ class LoginView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             
-            enterDetailsView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 125),
-            enterDetailsView.bottomAnchor.constraint(equalTo: createButton.topAnchor, constant: -200),
+            enterDetailsView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 70),
+            enterDetailsView.heightAnchor.constraint(equalToConstant: 300),
             enterDetailsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60),
             enterDetailsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60),
             
@@ -116,10 +116,10 @@ class LoginView: UIView {
             loginButton.heightAnchor.constraint(equalToConstant: 50),
             loginButton.widthAnchor.constraint(equalToConstant: 200),
             loginButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loginButton.bottomAnchor.constraint(equalTo: enterDetailsView.bottomAnchor, constant: -50),
+            loginButton.bottomAnchor.constraint(equalTo: enterDetailsView.bottomAnchor, constant: -25),
             
             createButton.heightAnchor.constraint(equalToConstant: 50),
-            createButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -70),
+            createButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
             createButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 70),
             createButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -70),
         ])

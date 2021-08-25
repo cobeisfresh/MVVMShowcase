@@ -8,27 +8,22 @@
 import Foundation
 import UIKit
 
-class RootCoordinator: Coordinator {
-    let navigationController = UINavigationController()
-    var childCoordinators: [Coordinator] = [LoginCoordinator(), TabbarCoordinator()]
-    
+final class RootCoordinator: Coordinator {
     func start() -> UIViewController {
         let vc = showLoginFlow()
-        
         return vc
     }
-    
+}
+
+// MARK: - Private Methods
+private extension RootCoordinator {
     func showLoginFlow() -> UIViewController {
-        let loginCoordinator = childCoordinators[0]
-        _ = loginCoordinator.start()
-        
-        return UIViewController()
+        let loginCoordinator = LoginCoordinator()
+        return loginCoordinator.start()
     }
     
     func showMainFlow() {
-        let tabbarCoordinator = childCoordinators[1]
+        let tabbarCoordinator = TabbarCoordinator()
         _ = tabbarCoordinator.start()
     }    
 }
-
-

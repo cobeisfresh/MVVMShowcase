@@ -9,9 +9,10 @@ import Foundation
 import UIKit
 
 class HomeViewModel {
+    var onUserDetailsChange: ((User)->Void)?
+    
     func changeUserDetails(user: User) {
-        let homeCoordinator = HomeCoordinator()
-        _ = homeCoordinator.changeUserDetailsVC(with: user)
+        onUserDetailsChange?(user)
     }
 }
 

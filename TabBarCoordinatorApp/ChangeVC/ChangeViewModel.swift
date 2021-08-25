@@ -13,9 +13,4 @@ class ChangeViewModel {
         UserDefaults.standard.set(user.email, forKey: "userEmail")
         UserDefaults.standard.set(user.password, forKey: "userPass")
     }
-    
-    func goToHomeVC(with user: User) {
-        let homeCoordinator = HomeCoordinator()
-        _ = homeCoordinator.homeVC(with: user)
-    }
 }
