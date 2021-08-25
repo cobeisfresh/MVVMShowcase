@@ -13,29 +13,8 @@ final class HomeCoordinator: Coordinator {
     
     func start() -> UIViewController {
         let vc = HomeViewController()
-        return vc
-    }
-}
-
-extension HomeCoordinator {
-    func homeVC(with user: User) -> UIViewController {
-        let vc = TabBarViewController()
-        let homeVC = vc.viewControllers?[0] as! HomeViewController
-        homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
-        
-        self.navigationController.showAsRoot()
-        self.navigationController.pushViewController(vc, animated: true)
-        
-        return vc
-    }
-    
-    func changeUserDetailsVC(with user: User) -> UIViewController {
-        let vc = ChangeViewController()
-        vc.changeView.setupUserDetails(with: user)
-        
-        self.navigationController.showAsRoot()
-        self.navigationController.pushViewController(vc, animated: true)
-
+        vc.viewModel = HomeViewModel()
+        vc.viewModel.onSetupUserDetails?()
         return vc
     }
 }

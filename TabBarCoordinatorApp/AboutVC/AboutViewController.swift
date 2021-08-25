@@ -9,7 +9,7 @@ import UIKit
 
 class AboutViewController: UIViewController {
     lazy var aboutView = AboutView()
-    var aboutViewModel = AboutViewModel()
+    var viewModel = AboutViewModel()
     
     override func loadView() {
         view = aboutView
@@ -27,13 +27,13 @@ class AboutViewController: UIViewController {
     
     private func addCallbacks() {
         aboutView.onLogoutTapped = { [weak self] in
-            self?.aboutViewModel.logout()
+            self?.viewModel.logout()
             self?.goToLoginVC()
         }
     }
     
     private func goToLoginVC() {
-        let aboutCcoordinator = AboutCoordinator()
-        _ = aboutCcoordinator.logout()
+//        let aboutCcoordinator = AboutCoordinator()
+//        _ = aboutCcoordinator.logout()
     }
 }

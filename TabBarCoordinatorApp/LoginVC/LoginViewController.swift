@@ -43,5 +43,15 @@ class LoginViewController: UIViewController {
                 self?.loginView.clearTextFields()
             }
         }
+        
+        viewModel.onShowMessage = { [weak self] in
+            self?.showMessage(title: "Auth failed", messagae: "Wrong name or password")
+        }
+    }
+    
+    private func showMessage(title: String, messagae: String) {
+        let alert = UIAlertController(title: title, message: messagae, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

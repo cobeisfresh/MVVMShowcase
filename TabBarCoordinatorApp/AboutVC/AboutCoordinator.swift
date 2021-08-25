@@ -12,21 +12,21 @@ final class AboutCoordinator: Coordinator {
     let navigationController = UINavigationController()
     
     func start() -> UIViewController {
-        let vc = logout()
+        let vc = AboutViewController()
         return vc
     }
 }
 
-extension AboutCoordinator {
-    func logout() -> UIViewController {
-        let vc = LoginViewController()
-        vc.showAsRoot()
-        
-        self.navigationController.showAsRoot()
-        self.navigationController.viewControllers.removeAll()
-            let loginCoordinator = LoginCoordinator()
-        
-        _ = loginCoordinator.start()
-        return vc
-    }
-}
+//extension AboutCoordinator {
+//    func logout() -> UIViewController {
+//        let vc = LoginViewController()
+//        //vc.showAsRoot()
+//
+//        //self.navigationController.showAsRoot()
+//        self.navigationController.viewControllers.removeAll()
+//            let loginCoordinator = LoginCoordinator()
+//
+//        _ = loginCoordinator.start()
+//        return vc
+//    }
+//}

@@ -22,12 +22,12 @@
 		C540CEC4259216E700D67A3B /* CreateUserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C540CEC3259216E700D67A3B /* CreateUserViewController.storyboard */; };
 		C540CECE25921E6F00D67A3B /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540CECD25921E6F00D67A3B /* ChangeViewController.swift */; };
 		C540CED125921ED500D67A3B /* ChangeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C540CED025921ED500D67A3B /* ChangeViewController.storyboard */; };
-		C5B2501125934BC20060F942 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2501025934BC20060F942 /* LoginCoordinator.swift */; };
-		C5B2501525934E280060F942 /* TabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2501425934E280060F942 /* TabbarCoordinator.swift */; };
+		C5B2501525934E280060F942 /* MainCoordintor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2501425934E280060F942 /* MainCoordintor.swift */; };
 		C5B25018259351C80060F942 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B25017259351C80060F942 /* HomeCoordinator.swift */; };
 		C5B25026259397E80060F942 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B25025259397E80060F942 /* HomeViewModel.swift */; };
 		C5B2502A25939DB90060F942 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2502925939DB90060F942 /* AboutViewModel.swift */; };
 		C5B41D8B2594A68B001E6767 /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B41D8A2594A68B001E6767 /* AboutCoordinator.swift */; };
+		C5B88DDB26D6867D00BCBA9E /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B88DDA26D6867D00BCBA9E /* AuthCoordinator.swift */; };
 		C5BDBC752590A1B8003543B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC742590A1B8003543B1 /* AppDelegate.swift */; };
 		C5BDBC772590A1B8003543B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC762590A1B8003543B1 /* SceneDelegate.swift */; };
 		C5BDBC792590A1B8003543B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC782590A1B8003543B1 /* ViewController.swift */; };
@@ -37,12 +37,10 @@
 		C5BDBC8A2590A1E4003543B1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC892590A1E4003543B1 /* Coordinator.swift */; };
 		C5BDBC992590A532003543B1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC982590A532003543B1 /* HomeViewController.swift */; };
 		C5BDBCA02590A5D2003543B1 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC9F2590A5D2003543B1 /* AboutViewController.swift */; };
-		C5BDBCA52590A63E003543B1 /* TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5BDBCA42590A63E003543B1 /* TabBarController.storyboard */; };
 		C5BDBCB12590AEF2003543B1 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBCB02590AEF2003543B1 /* UIViewControllerExtension.swift */; };
 		C5BDBCB52590BDCD003543B1 /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5BDBCB42590BDCD003543B1 /* HomeViewController.storyboard */; };
 		C5BDBCB82590BDF2003543B1 /* AboutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5BDBCB72590BDF2003543B1 /* AboutViewController.storyboard */; };
 		C5C394D92590C911004782B7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C394D82590C911004782B7 /* LoginViewController.swift */; };
-		C5C394E22590CFD4004782B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C394E12590CFD4004782B7 /* TabBarViewController.swift */; };
 		C5C394E62590D0EF004782B7 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C394E52590D0EF004782B7 /* LoginViewController.storyboard */; };
 		C5C394EA2590EA65004782B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C394E92590EA65004782B7 /* User.swift */; };
 		EBB735C026D6634B00185C1B /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB735BF26D6634B00185C1B /* TypeAliases.swift */; };
@@ -64,12 +62,12 @@
 		C540CEC3259216E700D67A3B /* CreateUserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateUserViewController.storyboard; sourceTree = "<group>"; };
 		C540CECD25921E6F00D67A3B /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
 		C540CED025921ED500D67A3B /* ChangeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangeViewController.storyboard; sourceTree = "<group>"; };
-		C5B2501025934BC20060F942 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
-		C5B2501425934E280060F942 /* TabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinator.swift; sourceTree = "<group>"; };
+		C5B2501425934E280060F942 /* MainCoordintor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordintor.swift; sourceTree = "<group>"; };
 		C5B25017259351C80060F942 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		C5B25025259397E80060F942 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C5B2502925939DB90060F942 /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		C5B41D8A2594A68B001E6767 /* AboutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoordinator.swift; sourceTree = "<group>"; };
+		C5B88DDA26D6867D00BCBA9E /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		C5BDBC712590A1B8003543B1 /* TabBarCoordinatorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabBarCoordinatorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5BDBC742590A1B8003543B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5BDBC762590A1B8003543B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,12 +79,10 @@
 		C5BDBC892590A1E4003543B1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C5BDBC982590A532003543B1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C5BDBC9F2590A5D2003543B1 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		C5BDBCA42590A63E003543B1 /* TabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBarController.storyboard; sourceTree = "<group>"; };
 		C5BDBCB02590AEF2003543B1 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C5BDBCB42590BDCD003543B1 /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
 		C5BDBCB72590BDF2003543B1 /* AboutViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutViewController.storyboard; sourceTree = "<group>"; };
 		C5C394D82590C911004782B7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C5C394E12590CFD4004782B7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C5C394E52590D0EF004782B7 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		C5C394E92590EA65004782B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E6F62833C1AB050673AD1439 /* Pods-TabBarCoordinatorApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabBarCoordinatorApp.release.xcconfig"; path = "Target Support Files/Pods-TabBarCoordinatorApp/Pods-TabBarCoordinatorApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,14 +145,12 @@
 			path = RootCoordinator;
 			sourceTree = "<group>";
 		};
-		C540CEC1259216A600D67A3B /* Tabbar */ = {
+		C540CEC1259216A600D67A3B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				C5B2501425934E280060F942 /* TabbarCoordinator.swift */,
-				C5C394E12590CFD4004782B7 /* TabBarViewController.swift */,
-				C5BDBCA42590A63E003543B1 /* TabBarController.storyboard */,
+				C5B2501425934E280060F942 /* MainCoordintor.swift */,
 			);
-			path = Tabbar;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		C540CEC2259216C000D67A3B /* CreateUserVC */ = {
@@ -179,6 +173,14 @@
 				C540CED025921ED500D67A3B /* ChangeViewController.storyboard */,
 			);
 			path = ChangeVC;
+			sourceTree = "<group>";
+		};
+		C5B88DD926D6863800BCBA9E /* AuthCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C5B88DDA26D6867D00BCBA9E /* AuthCoordinator.swift */,
+			);
+			path = AuthCoordinator;
 			sourceTree = "<group>";
 		};
 		C5BDBC682590A1B8003543B1 = {
@@ -207,7 +209,8 @@
 				C5BDBC762590A1B8003543B1 /* SceneDelegate.swift */,
 				C531232126D4D04D0051F61F /* Model */,
 				C531232226D4D06D0051F61F /* RootCoordinator */,
-				C540CEC1259216A600D67A3B /* Tabbar */,
+				C5B88DD926D6863800BCBA9E /* AuthCoordinator */,
+				C540CEC1259216A600D67A3B /* Main */,
 				C540CEC2259216C000D67A3B /* CreateUserVC */,
 				C5C394DB2590C925004782B7 /* LoginVC */,
 				C5BDBCA22590A5FF003543B1 /* HomeVC */,
@@ -250,7 +253,6 @@
 		C5C394DB2590C925004782B7 /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
-				C5B2501025934BC20060F942 /* LoginCoordinator.swift */,
 				C540CEBC2591FBB900D67A3B /* LoginViewModel.swift */,
 				C531231926D3D4E10051F61F /* LoginView.swift */,
 				C5C394D82590C911004782B7 /* LoginViewController.swift */,
@@ -319,7 +321,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5BDBCB52590BDCD003543B1 /* HomeViewController.storyboard in Resources */,
-				C5BDBCA52590A63E003543B1 /* TabBarController.storyboard in Resources */,
 				C5BDBC812590A1B9003543B1 /* LaunchScreen.storyboard in Resources */,
 				C5BDBCB82590BDF2003543B1 /* AboutViewController.storyboard in Resources */,
 				C540CED125921ED500D67A3B /* ChangeViewController.storyboard in Resources */,
@@ -388,7 +389,8 @@
 				C531231526D3D0A20051F61F /* ConstraintsExtension.swift in Sources */,
 				C540CEA72591D4E500D67A3B /* RootCoordinator.swift in Sources */,
 				C531231A26D3D4E10051F61F /* LoginView.swift in Sources */,
-				C5B2501525934E280060F942 /* TabbarCoordinator.swift in Sources */,
+				C5B2501525934E280060F942 /* MainCoordintor.swift in Sources */,
+				C5B88DDB26D6867D00BCBA9E /* AuthCoordinator.swift in Sources */,
 				C5B25018259351C80060F942 /* HomeCoordinator.swift in Sources */,
 				C531232026D4CDC80051F61F /* CreateUserViewModel.swift in Sources */,
 				C5BDBC8A2590A1E4003543B1 /* Coordinator.swift in Sources */,
@@ -402,9 +404,7 @@
 				C531232626D4D8470051F61F /* ChangeViewModel.swift in Sources */,
 				C540CEBA2591F78E00D67A3B /* CreateUserViewController.swift in Sources */,
 				C5BDBC992590A532003543B1 /* HomeViewController.swift in Sources */,
-				C5B2501125934BC20060F942 /* LoginCoordinator.swift in Sources */,
 				C5BDBC752590A1B8003543B1 /* AppDelegate.swift in Sources */,
-				C5C394E22590CFD4004782B7 /* TabBarViewController.swift in Sources */,
 				EBB735C026D6634B00185C1B /* TypeAliases.swift in Sources */,
 				C5BDBCA02590A5D2003543B1 /* AboutViewController.swift in Sources */,
 				C5BDBC772590A1B8003543B1 /* SceneDelegate.swift in Sources */,

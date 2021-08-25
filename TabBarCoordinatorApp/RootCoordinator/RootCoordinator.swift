@@ -9,16 +9,17 @@ import Foundation
 import UIKit
 
 final class RootCoordinator: Coordinator {
+    var childCoordinator: Coordinator?
+    
     func start() -> UIViewController {
-        let vc = showLoginFlow()
+        let authCoordinator = AuthCoordinator()
+        let vc = createAuthVC()
+        childCoordinator = authCoordinator
         return vc
     }
-}
-
-// MARK: - Private Methods
-private extension RootCoordinator {
-    func showLoginFlow() -> UIViewController {
-        let loginCoordinator = LoginCoordinator()
-        return loginCoordinator.start()
+    
+    private func createAuthVC() -> UIViewController {
+        let authCoordinator = AuthCoordinator()
+        return authCoordinator.start()
     }
 }

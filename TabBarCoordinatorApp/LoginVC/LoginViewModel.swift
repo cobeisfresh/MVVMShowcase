@@ -11,7 +11,9 @@ import UIKit
 class LoginViewModel {
     var user: User?    
     var onCreateTapped: (() -> Void)?
-    var onLoginTapped: ((User) -> Void)?
+    var onAuthSuccess: ((User) -> Void)?
+    var onAuthFailure: (() -> Void)?
+    var onShowMessage: (() -> Void)?
     
     func getDataAndCheckLogin(_ name: String, _ email: String, _ pass: String) -> Bool {
         let userName = UserDefaults.standard.string(forKey: "userName") ?? ""
@@ -21,12 +23,12 @@ class LoginViewModel {
         var match = Bool()
         
         if name == user.name && user.password == userPass {
-            self.onLoginTapped?(user)
             match = true
+            self.onAuthSuccess?(user)
         }
         else {
-            print("Wrong name or pass")
             match = false
+            self.onAuthFailure?()
         }
         return match
     }

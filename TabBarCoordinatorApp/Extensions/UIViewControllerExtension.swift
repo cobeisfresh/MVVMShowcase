@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public protocol RootShowable: class {
+public protocol RootShowable: AnyObject {
     func showAsRoot()
 }
 

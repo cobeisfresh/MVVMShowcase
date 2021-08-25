@@ -9,11 +9,14 @@ import Foundation
 import UIKit
 
 class HomeViewModel {
-    var onUserDetailsChange: ((User)->Void)?
+    var onUserDetailsChange: ((User) -> Void)?
+    var onSetupUserDetails: (() -> Void)?
     
     func changeUserDetails(user: User) {
         onUserDetailsChange?(user)
     }
+    
+    
 }
 
 

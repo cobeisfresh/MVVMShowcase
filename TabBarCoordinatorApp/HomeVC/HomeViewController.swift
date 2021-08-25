@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     lazy var homeView = HomeView()
-    var homeViewModel = HomeViewModel()
+    var viewModel = HomeViewModel()
     
     override func loadView() {
         view = homeView
@@ -27,13 +27,17 @@ class HomeViewController: UIViewController {
     
     private func addCallBacks() {
         homeView.onChangeTapped = { [weak self] user in
-            self?.homeViewModel.changeUserDetails(user: user)
+            self?.viewModel.changeUserDetails(user: user)
             self?.goToChangeUserDetails(user: user)
+        }
+        
+        viewModel.onSetupUserDetails = { [weak self] in
+            
         }
     }
     
     private func goToChangeUserDetails(user: User) {
         let homeCoordinator = HomeCoordinator()
-        _ = homeCoordinator.changeUserDetailsVC(with: user)
+    
     }
 }
