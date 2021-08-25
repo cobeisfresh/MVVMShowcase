@@ -56,7 +56,7 @@ class ChangeView: UIView {
         nameDescLabel.backgroundColor = .clear
         nameDescLabel.text = "NAME:"
         nameDescLabel.textColor = .white
-        addSubview(nameDescLabel)
+        enterDetailsView.addSubview(nameDescLabel)
         
         nameTextField.backgroundColor = .white.withAlphaComponent(0.2)
         nameTextField.textColor = .white
@@ -64,12 +64,12 @@ class ChangeView: UIView {
         nameTextField.tintColor = .black
         nameTextField.placeholder = "Enter name"
         nameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
-        addSubview(nameTextField)
+        enterDetailsView.addSubview(nameTextField)
         
         emailDescLabel.backgroundColor = .clear
         emailDescLabel.text = "EMAIL:"
         emailDescLabel.textColor = .white
-        addSubview(emailDescLabel)
+        enterDetailsView.addSubview(emailDescLabel)
         
         emailTextField.backgroundColor = .white.withAlphaComponent(0.2)
         emailTextField.textColor = .white
@@ -77,12 +77,12 @@ class ChangeView: UIView {
         emailTextField.tintColor = .black
         emailTextField.placeholder = "Enter email"
         emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
-        addSubview(emailTextField)
+        enterDetailsView.addSubview(emailTextField)
         
         passDescLabel.backgroundColor = .clear
         passDescLabel.text = "PASSWORD:"
         passDescLabel.textColor = .white
-        addSubview(passDescLabel)
+        enterDetailsView.addSubview(passDescLabel)
         
         passTextField.backgroundColor = .white.withAlphaComponent(0.2)
         passTextField.textColor = .white
@@ -90,7 +90,7 @@ class ChangeView: UIView {
         passTextField.tintColor = .black
         passTextField.placeholder = "Enter password"
         passTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
-        addSubview(passTextField)
+        enterDetailsView.addSubview(passTextField)
         
         saveDetailsButton.backgroundColor = .white
         saveDetailsButton.layer.borderWidth = 1
@@ -111,14 +111,14 @@ class ChangeView: UIView {
             backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             
             titleLabel.heightAnchor.constraint(equalToConstant: 50),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 100),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 50),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
             
-            enterDetailsView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
+            enterDetailsView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             enterDetailsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
             enterDetailsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
-            enterDetailsView.bottomAnchor.constraint(equalTo: saveDetailsButton.topAnchor, constant: -150),
+            enterDetailsView.heightAnchor.constraint(equalToConstant: 375),
             
             nameDescLabel.heightAnchor.constraint(equalToConstant: 35),
             nameDescLabel.topAnchor.constraint(equalTo: enterDetailsView.topAnchor, constant: 30),
@@ -156,10 +156,9 @@ class ChangeView: UIView {
             passTextField.topAnchor.constraint(equalTo: passDescLabel.bottomAnchor, constant: 0),
             passTextField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             
-            
             saveDetailsButton.heightAnchor.constraint(equalToConstant: 50),
             saveDetailsButton.widthAnchor.constraint(equalToConstant: 200),
-            saveDetailsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
+            saveDetailsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -65),
             saveDetailsButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             
         ])

@@ -122,7 +122,7 @@ class HomeView: UIView {
             userImage.widthAnchor.constraint(equalToConstant: 125),
             userImage.centerXAnchor.constraint(equalTo: backgroundImage.centerXAnchor),
             
-            detailsView.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 25),
+            detailsView.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 0),
             detailsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             detailsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             detailsView.heightAnchor.constraint(equalToConstant: 200),
@@ -157,7 +157,7 @@ class HomeView: UIView {
             passLabel.leadingAnchor.constraint(equalTo: passDescLabel.trailingAnchor, constant: 20),
             passLabel.trailingAnchor.constraint(equalTo: detailsView.trailingAnchor, constant: -20),
             
-            changeButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -150),
+            changeButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
             changeButton.heightAnchor.constraint(equalToConstant: 50),
             changeButton.widthAnchor.constraint(equalToConstant: 200),
             changeButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
