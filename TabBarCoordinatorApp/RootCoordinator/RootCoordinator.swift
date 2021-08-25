@@ -21,9 +21,4 @@ private extension RootCoordinator {
         let loginCoordinator = LoginCoordinator()
         return loginCoordinator.start()
     }
-    
-    func showMainFlow() {
-        let tabbarCoordinator = TabbarCoordinator()
-        _ = tabbarCoordinator.start()
-    }    
 }

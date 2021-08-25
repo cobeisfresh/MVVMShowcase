@@ -20,6 +20,11 @@ class AboutViewController: UIViewController {
         addCallbacks()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     private func addCallbacks() {
         aboutView.onLogoutTapped = { [weak self] in
             self?.aboutViewModel.logout()

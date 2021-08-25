@@ -30,7 +30,7 @@ extension HomeCoordinator {
     }
     
     func changeUserDetailsVC(with user: User) -> UIViewController {
-        let vc = ChangeViewController.instance()
+        let vc = ChangeViewController()
         vc.changeView.setupUserDetails(with: user)
         
         self.navigationController.showAsRoot()

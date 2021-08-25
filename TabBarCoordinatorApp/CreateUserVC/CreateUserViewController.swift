@@ -21,6 +21,11 @@ class CreateUserViewController: UIViewController {
         addCallbacks()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     //MARK: - Actions
     private func addCallbacks() {
         createUserView.onCreateUser = { [weak self] user in
