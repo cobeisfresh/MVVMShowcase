@@ -19,7 +19,7 @@ final class AboutCoordinator: Coordinator {
 
 extension AboutCoordinator {
     func logout() -> UIViewController {
-        let vc = LoginViewController.instance()
+        let vc = LoginViewController()
         vc.showAsRoot()
         
         self.navigationController.showAsRoot()

@@ -12,13 +12,13 @@ class TabbarCoordinator: Coordinator {
     let navigationController = UINavigationController()
     
     func start() -> UIViewController {
-        let vc = TabBarViewController.instance()
+        let vc = TabBarViewController()
         
         return vc
     }
     
     func showTabbarVC(user: User) -> UIViewController {
-        let vc = TabBarViewController.instance()
+        let vc = TabBarViewController()
         
         let navController = vc.viewControllers![0]
         let homeVC = navController as! HomeViewController
@@ -35,7 +35,7 @@ class TabbarCoordinator: Coordinator {
     }
     
     func refreshAboutVC(user: User) {
-        let vc = TabBarViewController.instance()
+        let vc = TabBarViewController()
         let navController1 = vc.viewControllers![1]
         let aboutVC = navController1 as! AboutViewController
         aboutVC.aboutView.setupUserDetails(with: user)
