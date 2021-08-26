@@ -37,5 +37,4 @@ class ChangeViewController: UIViewController {
     private func gotoHomeVC(user: User) {
         let homeCoordinator = HomeCoordinator()
     }
-
 }

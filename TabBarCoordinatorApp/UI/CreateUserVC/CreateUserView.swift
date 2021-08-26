@@ -90,13 +90,13 @@ class CreateUserView: UIView {
     
     private func setupConstraints() {
         NSLayoutConstraint.useAndActivateConstraints(constraints: [
-            backgroundImage.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            backgroundImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
             backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             
             titleLabel.heightAnchor.constraint(equalToConstant: 50),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 100),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
             

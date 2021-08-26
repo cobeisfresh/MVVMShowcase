@@ -37,7 +37,7 @@ class ChangeView: UIView {
     
     //MARK: - Actions
     private func setupView() {
-       backgroundColor = .green
+       backgroundColor = .white
         
         backgroundImage.image = UIImage(named: "background")
         addSubview(backgroundImage)
@@ -105,13 +105,13 @@ class ChangeView: UIView {
     
     private func setupConstraints() {
         NSLayoutConstraint.useAndActivateConstraints(constraints: [
-            backgroundImage.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            backgroundImage.topAnchor.constraint(equalTo: topAnchor, constant: -30),
             backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             
             titleLabel.heightAnchor.constraint(equalToConstant: 50),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 50),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
             
