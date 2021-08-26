@@ -21,6 +21,8 @@ class CreateUserView: UIView {
        
     var viewModel: LoginViewModel!
     var onCreateUser: ((User) -> Void)?
+    var onEmptyField: (() -> Void)?
+    var onPasswordError: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -130,8 +132,14 @@ class CreateUserView: UIView {
     
     @objc func createButtonTapped() {
         if let name = nameTextField.text, let email = emailTextField.text, let pass = passwordTextField.text {
+            guard pass.count >= 6 else {
+                onPasswordError?()
+                return
+            }
             let user = User(name: name, email: email, password: pass)            
             onCreateUser?(user)
+        } else {
+            onEmptyField?()
         }
     }
 }

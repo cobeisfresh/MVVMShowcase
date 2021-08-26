@@ -7,5 +7,7 @@ target 'TabBarCoordinatorApp' do
 
   # Pods for TabBarCoordinatorApp
 	pod 'TinyConstraints'
-
+	pod 'Firebase/Analytics'
+	pod 'Firebase/Auth'
+	pod 'Alamofire'
 end

@@ -19,7 +19,7 @@ final class AboutCoordinator: Coordinator {
         let authCoordinator = AuthCoordinator()
         authCoordinator.navigationController.showAsRoot()
         let loginVC = LoginViewController()
-        loginVC.viewModel = LoginViewModel()
+        loginVC.viewModel = LoginViewModel(authenticationService: ServiceFactory.authenticationService)
         _ = authCoordinator.start()
     }
 }

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5303A8A456A9C2B877475F70 /* Pods_TabBarCoordinatorApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F568596E2B1F7737CDB7ABDD /* Pods_TabBarCoordinatorApp.framework */; };
+		A0668B1A26D6D62800832A6C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0668B1926D6D62800832A6C /* AuthenticationService.swift */; };
+		A0668B1D26D6D65D00832A6C /* ConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0668B1C26D6D65D00832A6C /* ConnectivityService.swift */; };
+		A0668B4026D6DAB700832A6C /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0668B3F26D6DAB700832A6C /* ServiceFactory.swift */; };
+		A0E26D5B26D6D34200E38385 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0E26D5A26D6D34200E38385 /* GoogleService-Info.plist */; };
 		C531231526D3D0A20051F61F /* ConstraintsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531231426D3D0A20051F61F /* ConstraintsExtension.swift */; };
 		C531231826D3D10F0051F61F /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531231726D3D10F0051F61F /* CreateUserView.swift */; };
 		C531231A26D3D4E10051F61F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531231926D3D4E10051F61F /* LoginView.swift */; };
@@ -47,6 +51,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0668B1926D6D62800832A6C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		A0668B1C26D6D65D00832A6C /* ConnectivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityService.swift; sourceTree = "<group>"; };
+		A0668B3F26D6DAB700832A6C /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
+		A0E26D5A26D6D34200E38385 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADDAC08A9640B3AC4A176B31 /* Pods-TabBarCoordinatorApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabBarCoordinatorApp.debug.xcconfig"; path = "Target Support Files/Pods-TabBarCoordinatorApp/Pods-TabBarCoordinatorApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C531231426D3D0A20051F61F /* ConstraintsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsExtension.swift; sourceTree = "<group>"; };
 		C531231726D3D10F0051F61F /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
@@ -117,6 +125,16 @@
 				E6F62833C1AB050673AD1439 /* Pods-TabBarCoordinatorApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A0668B1826D6D60D00832A6C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A0668B1C26D6D65D00832A6C /* ConnectivityService.swift */,
+				A0668B1926D6D62800832A6C /* AuthenticationService.swift */,
+				A0668B3F26D6DAB700832A6C /* ServiceFactory.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		C531231626D3D0D60051F61F /* Extensions */ = {
@@ -205,6 +223,7 @@
 		C5BDBC732590A1B8003543B1 /* TabBarCoordinatorApp */ = {
 			isa = PBXGroup;
 			children = (
+				A0668B1826D6D60D00832A6C /* Services */,
 				C5BDBC742590A1B8003543B1 /* AppDelegate.swift */,
 				C5BDBC762590A1B8003543B1 /* SceneDelegate.swift */,
 				C531232126D4D04D0051F61F /* Model */,
@@ -222,6 +241,7 @@
 				C5BDBC7D2590A1B9003543B1 /* Assets.xcassets */,
 				C5BDBC7F2590A1B9003543B1 /* LaunchScreen.storyboard */,
 				C5BDBC822590A1B9003543B1 /* Info.plist */,
+				A0E26D5A26D6D34200E38385 /* GoogleService-Info.plist */,
 			);
 			path = TabBarCoordinatorApp;
 			sourceTree = "<group>";
@@ -322,6 +342,7 @@
 			files = (
 				C5BDBCB52590BDCD003543B1 /* HomeViewController.storyboard in Resources */,
 				C5BDBC812590A1B9003543B1 /* LaunchScreen.storyboard in Resources */,
+				A0E26D5B26D6D34200E38385 /* GoogleService-Info.plist in Resources */,
 				C5BDBCB82590BDF2003543B1 /* AboutViewController.storyboard in Resources */,
 				C540CED125921ED500D67A3B /* ChangeViewController.storyboard in Resources */,
 				C540CEC4259216E700D67A3B /* CreateUserViewController.storyboard in Resources */,
@@ -391,12 +412,15 @@
 				C531231A26D3D4E10051F61F /* LoginView.swift in Sources */,
 				C5B2501525934E280060F942 /* MainCoordintor.swift in Sources */,
 				C5B88DDB26D6867D00BCBA9E /* AuthCoordinator.swift in Sources */,
+				A0668B4026D6DAB700832A6C /* ServiceFactory.swift in Sources */,
 				C5B25018259351C80060F942 /* HomeCoordinator.swift in Sources */,
 				C531232026D4CDC80051F61F /* CreateUserViewModel.swift in Sources */,
 				C5BDBC8A2590A1E4003543B1 /* Coordinator.swift in Sources */,
 				C5C394D92590C911004782B7 /* LoginViewController.swift in Sources */,
 				C5BDBC792590A1B8003543B1 /* ViewController.swift in Sources */,
+				A0668B1A26D6D62800832A6C /* AuthenticationService.swift in Sources */,
 				C5BDBCB12590AEF2003543B1 /* UIViewControllerExtension.swift in Sources */,
+				A0668B1D26D6D65D00832A6C /* ConnectivityService.swift in Sources */,
 				C531231826D3D10F0051F61F /* CreateUserView.swift in Sources */,
 				C540CEBD2591FBB900D67A3B /* LoginViewModel.swift in Sources */,
 				C5C394EA2590EA65004782B7 /* User.swift in Sources */,

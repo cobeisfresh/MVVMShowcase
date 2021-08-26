@@ -9,7 +9,23 @@ import UIKit
 
 class CreateUserViewController: UIViewController {
     private lazy var createUserView = CreateUserView()
-    var viewModel = CreateUserViewModel()
+    var viewModel: CreateUserViewModel!
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.hidesWhenStopped = true
+        self.view.addSubview(indicator)
+        indicator.center = view.center
+        return indicator
+    }()
+    
+    func startLoader() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopLoader() {
+        activityIndicator.stopAnimating()
+    }
     
     //MARK: - LifeCycle
     override func loadView() {
@@ -29,8 +45,27 @@ class CreateUserViewController: UIViewController {
     //MARK: - Actions
     private func addCallbacks() {
         createUserView.onCreateUser = { [weak self] user in
-            self?.viewModel.saveUser(user)
-            self?.viewModel.goToLogin()
+            self?.viewModel.register(user)
+        }
+        
+        createUserView.onEmptyField = { [weak self] in
+            self?.showMessage(title: "Error", messagae: "Please fill all fields.")
+        }
+        
+        createUserView.onPasswordError = { [weak self] in
+            self?.showMessage(title: "Error", messagae: "Password needs to be at least 6 characters")
+        }
+        
+        viewModel.onStartedActivity = { [weak self] in
+            self?.startLoader()
+        }
+        
+        viewModel.onEndedActivity = { [weak self] in
+            self?.stopLoader()
+        }
+        
+        viewModel.onError = { [weak self] in
+            self?.showMessage(title: "Error", messagae: "Error creating account, try again.")
         }
     }
 }

@@ -12,6 +12,22 @@ class LoginViewController: UIViewController {
     var viewModel: LoginViewModel!
     private lazy var loginView = LoginView()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.hidesWhenStopped = true
+        self.view.addSubview(indicator)
+        indicator.center = view.center
+        return indicator
+    }()
+    
+    func startLoader() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopLoader() {
+        activityIndicator.stopAnimating()
+    }
+    
     //MARK: - LifeCycle
     override func loadView() {
         view = loginView
@@ -34,24 +50,27 @@ class LoginViewController: UIViewController {
         }
         
         loginView.onLoginTapped = { [weak self] user in
-            let match = self?.viewModel.getDataAndCheckLogin(user.name, "\(user.email)", user.password)
-            guard let unwrappedMatch = match else { return }
-            if unwrappedMatch {
-                print("Name and pass match.")
-            }
-            else {
-                self?.loginView.clearTextFields()
-            }
+//            let match = self?.viewModel.getDataAndCheckLogin(user.name, "\(user.email)", user.password)
+//            guard let unwrappedMatch = match else { return }
+//            if unwrappedMatch {
+//                print("Name and pass match.")
+//            }
+//            else {
+//                self?.loginView.clearTextFields()
+//            }
+            self?.viewModel.login(user.name, user.email, user.password)
         }
         
         viewModel.onShowMessage = { [weak self] in
             self?.showMessage(title: "Auth failed", messagae: "Wrong name or password")
         }
-    }
-    
-    private func showMessage(title: String, messagae: String) {
-        let alert = UIAlertController(title: title, message: messagae, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        
+        viewModel.onStartedActivity = { [weak self] in
+            self?.startLoader()
+        }
+        
+        viewModel.onEndedActivity = { [weak self] in
+            self?.stopLoader()
+        }
     }
 }

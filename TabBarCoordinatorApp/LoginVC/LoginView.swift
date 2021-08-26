@@ -58,7 +58,7 @@ class LoginView: UIView {
         nameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
         nameTextField.layer.cornerRadius = 10
         nameTextField.tintColor = .black
-        nameTextField.placeholder = "Enter name"
+        nameTextField.placeholder = "Enter email"
         nameTextField.textColor = .white
         enterDetailsView.addSubview(nameTextField)
         
