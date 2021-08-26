@@ -27,12 +27,13 @@ class HomeViewController: UIViewController {
     
     private func addCallBacks() {
         homeView.onChangeTapped = { [weak self] user in
-            self?.goToChangeUserDetails(user: user)
+            self?.reCallHomeCoordinator(user: user)
         }
     }
     
-    private func goToChangeUserDetails(user: User) {
-        let homeCoordinator = HomeCoordinator()
-    
+    private func reCallHomeCoordinator(user: User) {
+        let homeCoo = HomeCoordinator()
+        _ = homeCoo.start()
+        homeCoo.onChangeDetailsTapped?(user)
     }
 }

@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 class HomeViewModel {
-    var onChangeDetailsTapped: (() -> Void)?
-
+    //var onChangeDetailsTapped: (() -> Void)?
 }
 
 

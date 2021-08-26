@@ -20,7 +20,7 @@ class MainCoordintor: Coordinator {
         return startTabBar(user: user)
     }
     
-    var tabBarController: UITabBarController!
+    static var tabBarController: UITabBarController!
     enum TBCoordinator: Int {
         case home
         case about
@@ -32,8 +32,8 @@ class MainCoordintor: Coordinator {
     ]
     
     private func createTabBar() {
-        tabBarController = UITabBarController()
-        tabBarController.viewControllers = childCoordinators.map { coordinator in
+        MainCoordintor.tabBarController = UITabBarController()
+        MainCoordintor.tabBarController.viewControllers = childCoordinators.map { coordinator in
             let vc = coordinator.start()
             vc.tabBarItem = coordinator.TBCoordinator.tabBarItem
             return vc
@@ -42,17 +42,17 @@ class MainCoordintor: Coordinator {
     
     private func startTabBar(user: User) -> UITabBarController {
         createTabBar()
-        tabBarController.showAsRoot()
+        MainCoordintor.tabBarController.showAsRoot()
         setupTabBarViewsWithDetails(user: user)
-        return tabBarController
+        return MainCoordintor.tabBarController
     }
     
     private func setupTabBarViewsWithDetails(user: User) {
-        let homeVC = tabBarController.viewControllers![0] as! HomeViewController
+        let homeVC = MainCoordintor.tabBarController.viewControllers![0] as! HomeViewController
         homeVC.viewModel = HomeViewModel()
         homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
         
-        let aboutVC = tabBarController.viewControllers![1] as! AboutViewController
+        let aboutVC = MainCoordintor.tabBarController.viewControllers![1] as! AboutViewController
         aboutVC.viewModel = AboutViewModel()
         aboutVC.aboutView.setupUserDetails(with: user)
     }

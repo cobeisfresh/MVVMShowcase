@@ -23,21 +23,6 @@ class ChangeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(backAction))
-        
-        self.navigationItem.leftBarButtonItem = backButton
-    }
-    
-    @objc func backAction() {
-        let name = UserDefaults.standard.string(forKey: "userName")
-        let email = UserDefaults.standard.string(forKey: "userEmail")
-        let pass = UserDefaults.standard.string(forKey: "userPass")
-        if name != nil && email != nil && pass != nil {
-            let user = User(name: name!, email: email!, password: pass!)
-            gotoHomeVC(user: user)
-        }
-        
-        
     }
     
     
