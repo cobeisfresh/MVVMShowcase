@@ -11,6 +11,7 @@ import UIKit
 final class HomeCoordinator: Coordinator {
     let navigationController = UINavigationController()
     var onChangeDetailsTapped: ((User) -> Void)?
+    var onSaveTapped: ((User) -> Void)?
     
     func start() -> UIViewController {
         navigationController.showAsRoot()
@@ -32,9 +33,18 @@ final class HomeCoordinator: Coordinator {
     }
     
     private func createChangeDetailsVC(user: User) -> UIViewController {
-        let vc = ChangeViewController()
-        vc.viewModel = ChangeViewModel()
+        let vc = EditViewController()
+        vc.viewModel = EditViewModel()
         vc.changeView.setupUserDetails(with: user)
+        
+        onSaveTapped = { [weak self] user in
+            print("AAA")
+            vc.viewModel.saveChangedUserDetails(with: user)
+            
+            let homeVC = HomeViewController()
+            homeVC.viewModel = HomeViewModel()
+            homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
+        }
         
         navigationController.pushViewController(vc, animated: true)
         return vc

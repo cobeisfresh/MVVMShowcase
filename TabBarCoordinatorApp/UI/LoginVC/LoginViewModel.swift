@@ -25,7 +25,10 @@ class LoginViewModel {
     
     func login(_ name: String, _ email: String, _ password: String) {
         let userName = UserDefaults.standard.string(forKey: "userName") ?? ""
-        let user = User(name: userName, email: email, password: password)
+        let phone = UserDefaults.standard.string(forKey: "userPhone") ?? "000"
+        let address = UserDefaults.standard.string(forKey: "userAddress")
+        let country = UserDefaults.standard.string(forKey: "userCountry")
+        let user = User(name: userName, email: email, password: password, phone: Int(phone), address: address, country: country)
         onStartedActivity?()
         authenticationService.login(email: email, password: password) { [weak self] (result) in
             self?.onEndedActivity?()

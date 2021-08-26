@@ -46,7 +46,7 @@ class LoginView: UIView {
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.boldSystemFont(ofSize: 30)
         titleLabel.textAlignment = .center
-        titleLabel.text = "TabbarCoordinatorMVVM"
+        titleLabel.text = "Tabbar Coordinator MVVM"
         titleLabel.numberOfLines = 0
         addSubview(titleLabel)
         
@@ -94,7 +94,7 @@ class LoginView: UIView {
             backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 70),
-            titleLabel.heightAnchor.constraint(equalToConstant: 50),
+            titleLabel.heightAnchor.constraint(equalToConstant: 100),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             
@@ -132,7 +132,10 @@ class LoginView: UIView {
     
     @objc func loginButtonTapped() {
         if let name = nameTextField.text, let pass = passTextField.text, let email = nameTextField.text {
-            let user = User(name: name, email: email, password: pass)
+            let phone = UserDefaults.standard.string(forKey: "userPhone") ?? "000"
+            let address = UserDefaults.standard.string(forKey: "userAddress")
+            let country = UserDefaults.standard.string(forKey: "userCountry")
+            let user = User(name: name, email: email, password: pass, phone: Int(phone), address: address, country: country)
             onLoginTapped?(user)
         }
     }

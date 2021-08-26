@@ -136,7 +136,10 @@ class CreateUserView: UIView {
                 onPasswordError?()
                 return
             }
-            let user = User(name: name, email: email, password: pass)            
+            let phone = UserDefaults.standard.string(forKey: "userPhone") ?? "000"
+            let address = UserDefaults.standard.string(forKey: "userAddress")
+            let country = UserDefaults.standard.string(forKey: "userCountry")
+            let user = User(name: name, email: email, password: pass, phone: Int(phone), address: address, country: country)
             onCreateUser?(user)
         } else {
             onEmptyField?()

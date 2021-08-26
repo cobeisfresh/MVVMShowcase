@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ChangeViewController: UIViewController {
-    lazy var changeView = ChangeView()
-    var viewModel = ChangeViewModel()
+class EditViewController: UIViewController {
+    lazy var changeView = EditView()
+    var viewModel = EditViewModel()
     
     override func loadView() {
         view = changeView
@@ -29,12 +29,13 @@ class ChangeViewController: UIViewController {
    //MARK: - Outlets
     private func addCallbacks() {
         changeView.onSaveDetailsTapped = { [weak self] user in
-            self?.viewModel.saveChangedUserDetails(with: user)
-            self?.gotoHomeVC(user: user)
+            self?.reCallHomeCoordinator(user: user)
         }
     }
     
-    private func gotoHomeVC(user: User) {
-        let homeCoordinator = HomeCoordinator()
+    private func reCallHomeCoordinator(user: User) {
+        let homeCoo = HomeCoordinator()
+        _ = homeCoo.start()
+        viewModel.saveChangedUserDetails(with: user)
     }
 }

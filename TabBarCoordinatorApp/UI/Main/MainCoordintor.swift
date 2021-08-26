@@ -76,12 +76,10 @@ extension MainCoordintor.TBCoordinator {
         let tabBarItem: UITabBarItem
         switch  self {
         case .home:
-            
             tabBarItem = createItem(title: "HOME", selectedImageName: "", unselectedImageName: "")
             
         case .about:
             tabBarItem = createItem(title: "ABOUT", selectedImageName: "", unselectedImageName: "")
-            
         }
         tabBarItem.tag = self.rawValue
         return tabBarItem

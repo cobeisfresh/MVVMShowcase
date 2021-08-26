@@ -17,15 +17,15 @@
 		C531231A26D3D4E10051F61F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531231926D3D4E10051F61F /* LoginView.swift */; };
 		C531231C26D3E0030051F61F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531231B26D3E0030051F61F /* HomeView.swift */; };
 		C531232026D4CDC80051F61F /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531231F26D4CDC80051F61F /* CreateUserViewModel.swift */; };
-		C531232426D4D2660051F61F /* ChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531232326D4D2660051F61F /* ChangeView.swift */; };
-		C531232626D4D8470051F61F /* ChangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531232526D4D8470051F61F /* ChangeViewModel.swift */; };
+		C531232426D4D2660051F61F /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531232326D4D2660051F61F /* EditView.swift */; };
+		C531232626D4D8470051F61F /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531232526D4D8470051F61F /* EditViewModel.swift */; };
 		C531232826D4E3120051F61F /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531232726D4E3120051F61F /* AboutView.swift */; };
 		C540CEA72591D4E500D67A3B /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540CEA62591D4E500D67A3B /* RootCoordinator.swift */; };
 		C540CEBA2591F78E00D67A3B /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540CEB92591F78E00D67A3B /* CreateUserViewController.swift */; };
 		C540CEBD2591FBB900D67A3B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540CEBC2591FBB900D67A3B /* LoginViewModel.swift */; };
 		C540CEC4259216E700D67A3B /* CreateUserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C540CEC3259216E700D67A3B /* CreateUserViewController.storyboard */; };
-		C540CECE25921E6F00D67A3B /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540CECD25921E6F00D67A3B /* ChangeViewController.swift */; };
-		C540CED125921ED500D67A3B /* ChangeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C540CED025921ED500D67A3B /* ChangeViewController.storyboard */; };
+		C540CECE25921E6F00D67A3B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540CECD25921E6F00D67A3B /* EditViewController.swift */; };
+		C540CED125921ED500D67A3B /* EditViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C540CED025921ED500D67A3B /* EditViewController.storyboard */; };
 		C5B2501525934E280060F942 /* MainCoordintor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2501425934E280060F942 /* MainCoordintor.swift */; };
 		C5B25018259351C80060F942 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B25017259351C80060F942 /* HomeCoordinator.swift */; };
 		C5B25026259397E80060F942 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B25025259397E80060F942 /* HomeViewModel.swift */; };
@@ -61,15 +61,15 @@
 		C531231926D3D4E10051F61F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C531231B26D3E0030051F61F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C531231F26D4CDC80051F61F /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
-		C531232326D4D2660051F61F /* ChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeView.swift; sourceTree = "<group>"; };
-		C531232526D4D8470051F61F /* ChangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewModel.swift; sourceTree = "<group>"; };
+		C531232326D4D2660051F61F /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		C531232526D4D8470051F61F /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
 		C531232726D4E3120051F61F /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		C540CEA62591D4E500D67A3B /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		C540CEB92591F78E00D67A3B /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		C540CEBC2591FBB900D67A3B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C540CEC3259216E700D67A3B /* CreateUserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateUserViewController.storyboard; sourceTree = "<group>"; };
-		C540CECD25921E6F00D67A3B /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
-		C540CED025921ED500D67A3B /* ChangeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangeViewController.storyboard; sourceTree = "<group>"; };
+		C540CECD25921E6F00D67A3B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		C540CED025921ED500D67A3B /* EditViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditViewController.storyboard; sourceTree = "<group>"; };
 		C5B2501425934E280060F942 /* MainCoordintor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordintor.swift; sourceTree = "<group>"; };
 		C5B25017259351C80060F942 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		C5B25025259397E80060F942 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -182,15 +182,15 @@
 			path = CreateUserVC;
 			sourceTree = "<group>";
 		};
-		C540CEC625921D5E00D67A3B /* ChangeVC */ = {
+		C540CEC625921D5E00D67A3B /* EditDetailsVC */ = {
 			isa = PBXGroup;
 			children = (
-				C531232526D4D8470051F61F /* ChangeViewModel.swift */,
-				C531232326D4D2660051F61F /* ChangeView.swift */,
-				C540CECD25921E6F00D67A3B /* ChangeViewController.swift */,
-				C540CED025921ED500D67A3B /* ChangeViewController.storyboard */,
+				C531232526D4D8470051F61F /* EditViewModel.swift */,
+				C531232326D4D2660051F61F /* EditView.swift */,
+				C540CECD25921E6F00D67A3B /* EditViewController.swift */,
+				C540CED025921ED500D67A3B /* EditViewController.storyboard */,
 			);
-			path = ChangeVC;
+			path = EditDetailsVC;
 			sourceTree = "<group>";
 		};
 		C5B88DD926D6863800BCBA9E /* AuthCoordinator */ = {
@@ -210,7 +210,7 @@
 				C540CEC2259216C000D67A3B /* CreateUserVC */,
 				C5C394DB2590C925004782B7 /* LoginVC */,
 				C5BDBCA22590A5FF003543B1 /* HomeVC */,
-				C540CEC625921D5E00D67A3B /* ChangeVC */,
+				C540CEC625921D5E00D67A3B /* EditDetailsVC */,
 				C5BDBCA32590A605003543B1 /* AboutVC */,
 			);
 			path = UI;
@@ -360,7 +360,7 @@
 				C5BDBC812590A1B9003543B1 /* LaunchScreen.storyboard in Resources */,
 				A0E26D5B26D6D34200E38385 /* GoogleService-Info.plist in Resources */,
 				C5BDBCB82590BDF2003543B1 /* AboutViewController.storyboard in Resources */,
-				C540CED125921ED500D67A3B /* ChangeViewController.storyboard in Resources */,
+				C540CED125921ED500D67A3B /* EditViewController.storyboard in Resources */,
 				C540CEC4259216E700D67A3B /* CreateUserViewController.storyboard in Resources */,
 				C5BDBC7E2590A1B9003543B1 /* Assets.xcassets in Resources */,
 				C5C394E62590D0EF004782B7 /* LoginViewController.storyboard in Resources */,
@@ -418,7 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5B25026259397E80060F942 /* HomeViewModel.swift in Sources */,
-				C540CECE25921E6F00D67A3B /* ChangeViewController.swift in Sources */,
+				C540CECE25921E6F00D67A3B /* EditViewController.swift in Sources */,
 				C5B2502A25939DB90060F942 /* AboutViewModel.swift in Sources */,
 				C531231C26D3E0030051F61F /* HomeView.swift in Sources */,
 				C531232826D4E3120051F61F /* AboutView.swift in Sources */,
@@ -440,8 +440,8 @@
 				C531231826D3D10F0051F61F /* CreateUserView.swift in Sources */,
 				C540CEBD2591FBB900D67A3B /* LoginViewModel.swift in Sources */,
 				C5C394EA2590EA65004782B7 /* User.swift in Sources */,
-				C531232426D4D2660051F61F /* ChangeView.swift in Sources */,
-				C531232626D4D8470051F61F /* ChangeViewModel.swift in Sources */,
+				C531232426D4D2660051F61F /* EditView.swift in Sources */,
+				C531232626D4D8470051F61F /* EditViewModel.swift in Sources */,
 				C540CEBA2591F78E00D67A3B /* CreateUserViewController.swift in Sources */,
 				C5BDBC992590A532003543B1 /* HomeViewController.swift in Sources */,
 				C5BDBC752590A1B8003543B1 /* AppDelegate.swift in Sources */,

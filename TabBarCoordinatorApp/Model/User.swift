@@ -11,4 +11,7 @@ struct User {
     let name: String
     let email: String
     let password: String
+    let phone: Int?
+    let address: String?
+    let country: String?
 }

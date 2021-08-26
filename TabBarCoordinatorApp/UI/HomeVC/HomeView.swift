@@ -172,7 +172,7 @@ class HomeView: UIView {
     
     @objc func changeButtonTapped() {
         print("change tapped")
-        let user = User(name: nameLabel.text ?? "", email: emailLabel.text ?? "", password: passLabel.text ?? "")
+        let user = User(name: nameLabel.text ?? "", email: emailLabel.text ?? "", password: passLabel.text ?? "", phone: nil, address: nil, country: nil)
         onChangeTapped?(user)
     }
 }
