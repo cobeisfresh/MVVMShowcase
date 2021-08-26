@@ -201,6 +201,29 @@
 			path = AuthCoordinator;
 			sourceTree = "<group>";
 		};
+		C5B88DDC26D7ABF500BCBA9E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C531232226D4D06D0051F61F /* RootCoordinator */,
+				C5B88DD926D6863800BCBA9E /* AuthCoordinator */,
+				C540CEC1259216A600D67A3B /* Main */,
+				C540CEC2259216C000D67A3B /* CreateUserVC */,
+				C5C394DB2590C925004782B7 /* LoginVC */,
+				C5BDBCA22590A5FF003543B1 /* HomeVC */,
+				C540CEC625921D5E00D67A3B /* ChangeVC */,
+				C5BDBCA32590A605003543B1 /* AboutVC */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		C5B88DDD26D7AC3500BCBA9E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C531231626D3D0D60051F61F /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		C5BDBC682590A1B8003543B1 = {
 			isa = PBXGroup;
 			children = (
@@ -223,19 +246,12 @@
 		C5BDBC732590A1B8003543B1 /* TabBarCoordinatorApp */ = {
 			isa = PBXGroup;
 			children = (
-				A0668B1826D6D60D00832A6C /* Services */,
 				C5BDBC742590A1B8003543B1 /* AppDelegate.swift */,
 				C5BDBC762590A1B8003543B1 /* SceneDelegate.swift */,
 				C531232126D4D04D0051F61F /* Model */,
-				C531232226D4D06D0051F61F /* RootCoordinator */,
-				C5B88DD926D6863800BCBA9E /* AuthCoordinator */,
-				C540CEC1259216A600D67A3B /* Main */,
-				C540CEC2259216C000D67A3B /* CreateUserVC */,
-				C5C394DB2590C925004782B7 /* LoginVC */,
-				C5BDBCA22590A5FF003543B1 /* HomeVC */,
-				C540CEC625921D5E00D67A3B /* ChangeVC */,
-				C5BDBCA32590A605003543B1 /* AboutVC */,
-				C531231626D3D0D60051F61F /* Extensions */,
+				A0668B1826D6D60D00832A6C /* Services */,
+				C5B88DDC26D7ABF500BCBA9E /* UI */,
+				C5B88DDD26D7AC3500BCBA9E /* Common */,
 				C5BDBC782590A1B8003543B1 /* ViewController.swift */,
 				C5BDBC7A2590A1B8003543B1 /* Main.storyboard */,
 				C5BDBC7D2590A1B9003543B1 /* Assets.xcassets */,

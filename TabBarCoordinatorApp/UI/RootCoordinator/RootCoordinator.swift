@@ -20,6 +20,12 @@ final class RootCoordinator: Coordinator {
     
     private func createAuthVC() -> UIViewController {
         let authCoordinator = AuthCoordinator()
+        
+        authCoordinator.onStartMainCoordinator = { [weak self] user in
+            let mainCoordinator = MainCoordintor(user: user)
+            _ = mainCoordinator.start()
+        }
+        
         return authCoordinator.start()
     }
 }

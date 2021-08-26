@@ -11,11 +11,10 @@ import UIKit
 class AuthCoordinator: Coordinator {
     let navigationController = UINavigationController()
     
+    var onStartMainCoordinator: ((User) -> Void)?
+    
     func start() -> UIViewController {
-        let vc = LoginViewController()
-        vc.viewModel = LoginViewModel(authenticationService: ServiceFactory.authenticationService)
         navigationController.showAsRoot()
-        
         return createLoginVC()
     }
     
@@ -26,12 +25,10 @@ class AuthCoordinator: Coordinator {
         vc.viewModel.onCreateTapped = {
             _ = self.createUserCreateVC()
         }
-        vc.viewModel.onAuthSuccess = { user in
-            let mainCoordinator = MainCoordintor(user: user)
-            _ = mainCoordinator.start()
+        vc.viewModel.onAuthSuccess = { [weak self] user in
+            self?.onStartMainCoordinator?(user)
         }
         vc.viewModel.onAuthFailure = { [weak self] in
-            print("AUTH FAILED")
             vc.viewModel.onShowMessage?()
         }
         
