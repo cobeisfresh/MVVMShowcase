@@ -13,6 +13,11 @@ public enum AuthenticationResult<Value> {
     case failure(AuthenticationError)
 }
 
+public enum ResetPasswordResult {
+    case success
+    case failure
+}
+
 public enum AuthenticationError: String {
     case alreadyExists = "User with that e-mail already exists."
     case networkError = "There was a problem with the Firebase network, please try again later."
@@ -26,10 +31,14 @@ public enum AuthenticationError: String {
     }
 }
 
+public enum ResetPasError: String {
+    case wrongEmail = "Wrong email"
+}
+
 protocol AuthenticationServiceProtocol {
     func register(email: String, password: String, completion: @escaping (AuthenticationResult<String>) -> Void)
     func login(email: String, password: String, completion: @escaping (AuthenticationResult<String>) -> Void)
-    func resetPassword(email: String)
+    func resetPassword(email: String, completion: @escaping (ResetPasswordResult) -> Void)
 }
 
 class AuthenticationService: AuthenticationServiceProtocol {
@@ -71,13 +80,15 @@ class AuthenticationService: AuthenticationServiceProtocol {
         }
     }
     
-    func resetPassword(email: String) {
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
-            if error != nil {
-                print("PASSWORD RESET send to \(email)")
-                return
+    func resetPassword(email: String, completion: @escaping (ResetPasswordResult) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email, completion: { error in
+            if error == nil {
+                completion(.success)
             }
-        }
+            else {
+                completion(.failure)
+            }
+        })
     }
 }
 

@@ -46,7 +46,7 @@ extension UIViewController: RootShowable {
 extension UIViewController {
     func showMessage(title: String, messagae: String) {
         let alert = UIAlertController(title: title, message: messagae, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }

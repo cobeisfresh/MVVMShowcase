@@ -18,7 +18,14 @@ class EditViewModel {
     var onResetPasswordFailure: (() -> Void)?
     
     func resetPassword(_ email: String) {
-        authenticationService.resetPassword(email: email)
+        authenticationService.resetPassword(email: email, completion: { (result) in
+            switch result {
+            case .success:
+                self.onResetPasswordSuccess?(email)
+            case .failure:
+                self.onResetPasswordFailure?()
+            }
+        })
     }
     
     func saveChangedUserDetails(with user: User) {

@@ -40,13 +40,13 @@ class EditViewController: UIViewController {
             self?.reCallHomeCoordinator(user: user)
         }
         
-//        viewModel.onResetPasswordSuccess = { [weak self] email in
-//            self?.showMessage(title: "Success", messagae: "\(email) email received the link for reset password.")
-//        }
-//
-//        viewModel.onResetPasswordFailure = { [weak self] in
-//            self?.showMessage(title: "", messagae: "Something went wrong.")
-//        }
+        viewModel.onResetPasswordSuccess = { [weak self] email in
+            self?.showMessage(title: "Reset password", messagae: "\(email) email received the link for reset password.")
+        }
+
+        viewModel.onResetPasswordFailure = { [weak self] in
+            self?.showMessage(title: "Reset password", messagae: "Something went wrong.")
+        }
     }
     
     private func reCallHomeCoordinator(user: User) {
