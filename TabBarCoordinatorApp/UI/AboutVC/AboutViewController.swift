@@ -26,9 +26,8 @@ class AboutViewController: UIViewController {
     }
     
     private func addCallbacks() {
-        aboutView.onLogoutTapped = {
-            let aboutCoordinator = AboutCoordinator()
-            aboutCoordinator.goToLooginVC()
+        aboutView.onLogoutTapped = { [weak self] in
+            self?.viewModel.onLogoutButtonTapped?()
         }
     }
 }

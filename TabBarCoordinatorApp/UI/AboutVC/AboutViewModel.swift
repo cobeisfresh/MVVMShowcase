@@ -9,10 +9,5 @@ import Foundation
 import UIKit
 
 class AboutViewModel {
-    var onLogoutTapped: (()->Void)?
-    
-    func logout() {
-        UserDefaults.standard.setValue(nil, forKey: "userToken")
-        onLogoutTapped?()
-    }
+    var onLogoutButtonTapped: (() -> Void)?
 }

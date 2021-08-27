@@ -10,11 +10,11 @@ import UIKit
 
 final class RootCoordinator: Coordinator {
     var childCoordinator: Coordinator?
+    let navigationConttroller = UINavigationController()
     
     func start() -> UIViewController {
-        let authCoordinator = AuthCoordinator()
         let vc = createAuthVC()
-        childCoordinator = authCoordinator
+        
         return vc
     }
     
