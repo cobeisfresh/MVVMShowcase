@@ -53,7 +53,7 @@ class MainCoordintor: Coordinator {
         homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
         
         let aboutVC = MainCoordintor.tabBarController.viewControllers![1] as! AboutViewController
-        aboutVC.viewModel = AboutViewModel()
+        aboutVC.viewModel = AboutViewModel(testService: ServiceFactory.testService)
         aboutVC.aboutView.setupUserDetails(with: user)
     }
 }

@@ -32,7 +32,7 @@ protocol AuthenticationServiceProtocol {
     func resetPassword(email: String)
 }
 
-class AuthenticationService: AuthenticationServiceProtocol {
+final class AuthenticationService: AuthenticationServiceProtocol {
     
     private let connectivityService: ConnectivityServiceProtocol
     
