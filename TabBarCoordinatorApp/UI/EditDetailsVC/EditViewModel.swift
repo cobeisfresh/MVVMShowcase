@@ -16,7 +16,6 @@ class EditViewModel {
     
     var onResetPasswordSuccess: ((String) -> Void)?
     var onResetPasswordFailure: (() -> Void)?
-    var onAAA: ((User) -> Void)?
     var onShouldShowHome: ((User) -> Void)?
     
     func resetPassword(_ email: String) {

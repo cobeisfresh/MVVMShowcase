@@ -44,10 +44,6 @@ final class HomeCoordinator: Coordinator {
 //            homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
 //        }
 //
-//        vc.viewModel.onAAA = { [weak self] user in
-//            vc.viewModel.onShouldShowHome?(user)
-//        }
-//
 //        navigationController.pushViewController(vc, animated: true)
 //        return vc
 //    }
