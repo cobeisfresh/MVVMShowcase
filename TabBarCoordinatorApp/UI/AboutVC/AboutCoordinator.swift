@@ -30,10 +30,9 @@ final class AboutCoordinator: Coordinator {
     }
     
     private func goToLooginVC() {
-        let authCoordinator = AuthCoordinator()
-        authCoordinator.navigationController.showAsRoot()
+        let root = RootCoordinator()
         let loginVC = LoginViewController()
         loginVC.viewModel = LoginViewModel(authenticationService: ServiceFactory.authenticationService)
-        _ = authCoordinator.start()
+        _ = root.start()
     }
 }
