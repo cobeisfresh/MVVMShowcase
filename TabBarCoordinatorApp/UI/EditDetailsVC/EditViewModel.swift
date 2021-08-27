@@ -8,6 +8,18 @@
 import Foundation
 
 class EditViewModel {
+    let authenticationService: AuthenticationServiceProtocol
+    
+    init(authenticationService: AuthenticationServiceProtocol) {
+        self.authenticationService = authenticationService
+    }
+    
+    var onResetPasswordSuccess: ((String) -> Void)?
+    var onResetPasswordFailure: (() -> Void)?
+    
+    func resetPassword(_ email: String) {
+        authenticationService.resetPassword(email: email)
+    }
     
     func saveChangedUserDetails(with user: User) {
         UserDefaults.standard.set(user.phone, forKey: "userPhone")

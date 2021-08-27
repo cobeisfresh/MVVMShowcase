@@ -14,7 +14,7 @@ class HomeView: UIView {
     private lazy var coverImage = UIImageView()
     private lazy var userImage = UIImageView()
     private lazy var detailsView = UIView()
-    private lazy var changeButton = UIButton(type: .system)
+    private lazy var editButton = UIButton(type: .system)
     private lazy var nameDescLabel = UILabel()
     private lazy var nameLabel = UILabel()
     private lazy var emailDescLabel = UILabel()
@@ -57,16 +57,16 @@ class HomeView: UIView {
         detailsView.backgroundColor = .clear
         addSubview(detailsView)
         
-        changeButton.backgroundColor = .white
-        changeButton.layer.borderWidth = 1
-        changeButton.layer.borderColor = UIColor.black.cgColor
-        changeButton.layer.masksToBounds = true
-        changeButton.setTitle("Change details", for: .normal)
-        changeButton.setTitleColor(UIColor.black, for: .normal)
-        changeButton.addTarget(self, action: #selector(changeButtonTapped), for: .touchUpInside)
-        changeButton.layer.masksToBounds = true
-        changeButton.layer.cornerRadius = 25
-        addSubview(changeButton)
+        editButton.backgroundColor = .white
+        editButton.layer.borderWidth = 1
+        editButton.layer.borderColor = UIColor.black.cgColor
+        editButton.layer.masksToBounds = true
+        editButton.setTitle("Edit details", for: .normal)
+        editButton.setTitleColor(UIColor.black, for: .normal)
+        editButton.addTarget(self, action: #selector(changeButtonTapped), for: .touchUpInside)
+        editButton.layer.masksToBounds = true
+        editButton.layer.cornerRadius = 25
+        addSubview(editButton)
         
         nameDescLabel.backgroundColor = .clear
         nameDescLabel.text = "NAME:"
@@ -157,10 +157,10 @@ class HomeView: UIView {
             passLabel.leadingAnchor.constraint(equalTo: passDescLabel.trailingAnchor, constant: 20),
             passLabel.trailingAnchor.constraint(equalTo: detailsView.trailingAnchor, constant: -20),
             
-            changeButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
-            changeButton.heightAnchor.constraint(equalToConstant: 50),
-            changeButton.widthAnchor.constraint(equalToConstant: 200),
-            changeButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
+            editButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
+            editButton.heightAnchor.constraint(equalToConstant: 50),
+            editButton.widthAnchor.constraint(equalToConstant: 200),
+            editButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
         ])
     }
     

@@ -29,6 +29,7 @@ public enum AuthenticationError: String {
 protocol AuthenticationServiceProtocol {
     func register(email: String, password: String, completion: @escaping (AuthenticationResult<String>) -> Void)
     func login(email: String, password: String, completion: @escaping (AuthenticationResult<String>) -> Void)
+    func resetPassword(email: String)
 }
 
 class AuthenticationService: AuthenticationServiceProtocol {
@@ -67,6 +68,15 @@ class AuthenticationService: AuthenticationServiceProtocol {
             }
             
             completion(.success(user.uid))
+        }
+    }
+    
+    func resetPassword(email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if error != nil {
+                print("PASSWORD RESET send to \(email)")
+                return
+            }
         }
     }
 }

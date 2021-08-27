@@ -22,11 +22,13 @@ class EditView: UIView {
     private lazy var addressTextField = UITextField()
     private lazy var countryDescLabel = UILabel()
     private lazy var countryTextField = UITextField()
+    private lazy var resetPasswordButton = UIButton(type: .system)
     private lazy var saveDetailsButton = UIButton()
 
     var viewModel: HomeViewModel!
     
     var onSaveDetailsTapped: ((User) -> Void)?
+    var onResetPasswordTapped: ((User) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -115,6 +117,12 @@ class EditView: UIView {
         countryTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
         enterDetailsView.addSubview(countryTextField)
         
+        resetPasswordButton.setTitle("Reset password", for: .normal)
+        resetPasswordButton.setTitleColor(.white, for: .normal)
+        resetPasswordButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        resetPasswordButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+        addSubview(resetPasswordButton)
+        
         saveDetailsButton.backgroundColor = .white
         saveDetailsButton.layer.borderWidth = 1
         saveDetailsButton.layer.borderColor = UIColor.black.cgColor
@@ -133,24 +141,24 @@ class EditView: UIView {
             backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             
-            titleLabel.heightAnchor.constraint(equalToConstant: 50),
+            titleLabel.heightAnchor.constraint(equalToConstant: 25),
             titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
             
             nameLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-            nameLabel.heightAnchor.constraint(equalToConstant: 30),
+            nameLabel.heightAnchor.constraint(equalToConstant: 20),
             nameLabel.widthAnchor.constraint(equalToConstant: 250),
             
             emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
             emailLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-            emailLabel.heightAnchor.constraint(equalToConstant: 35),
+            emailLabel.heightAnchor.constraint(equalToConstant: 20),
             emailLabel.widthAnchor.constraint(equalToConstant: 250),
             
             passwordLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 5),
             passwordLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-            passwordLabel.heightAnchor.constraint(equalToConstant: 30),
+            passwordLabel.heightAnchor.constraint(equalToConstant: 20),
             passwordLabel.widthAnchor.constraint(equalToConstant: 250),
             
             enterDetailsView.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 20),
@@ -194,6 +202,11 @@ class EditView: UIView {
             countryTextField.topAnchor.constraint(equalTo: countryDescLabel.bottomAnchor, constant: 0),
             countryTextField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             
+            resetPasswordButton.heightAnchor.constraint(equalToConstant: 50),
+            resetPasswordButton.widthAnchor.constraint(equalToConstant: 150),
+            resetPasswordButton.topAnchor.constraint(equalTo: enterDetailsView.bottomAnchor, constant: 25),
+            resetPasswordButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
+            
             saveDetailsButton.heightAnchor.constraint(equalToConstant: 50),
             saveDetailsButton.widthAnchor.constraint(equalToConstant: 200),
             saveDetailsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -65),
@@ -210,6 +223,13 @@ class EditView: UIView {
         phoneTextField.text = UserDefaults.standard.string(forKey: "userPhone")
         addressTextField.text = UserDefaults.standard.string(forKey: "userAddress")
         countryTextField.text = UserDefaults.standard.string(forKey: "userCountry")
+    }
+    
+    @objc func resetButtonTapped() {
+        if let unwrappedName = nameLabel.text, let unwrappedEmail = emailLabel.text, let unwrappedPass = passwordLabel.text, let phone = phoneTextField.text, let address = addressTextField.text, let country = countryTextField.text {
+            let user = User(name: unwrappedName, email:unwrappedEmail, password: unwrappedPass, phone: Int(phone), address: address, country: country)
+            onResetPasswordTapped?(user)
+        }
     }
     
     @objc func saveButtonTapped() {
