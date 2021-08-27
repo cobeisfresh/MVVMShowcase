@@ -43,19 +43,19 @@ class MainCoordintor: Coordinator {
     private func startTabBar(user: User) -> UITabBarController {
         createTabBar()
         MainCoordintor.tabBarController.showAsRoot()
-        setupTabBarViewsWithDetails(user: user)
+//        setupTabBarViewsWithDetails(user: user)
         return MainCoordintor.tabBarController
     }
     
-    private func setupTabBarViewsWithDetails(user: User) {
-        let homeVC = MainCoordintor.tabBarController.viewControllers![0] as! HomeViewController
-        homeVC.viewModel = HomeViewModel()
-        homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
-        
-        let aboutVC = MainCoordintor.tabBarController.viewControllers![1] as! AboutViewController
-        aboutVC.viewModel = AboutViewModel()
-        aboutVC.aboutView.setupUserDetails(with: user)
-    }
+//    private func setupTabBarViewsWithDetails(user: User) {
+//        let homeVC = MainCoordintor.tabBarController.viewControllers![0] as? HomeViewController
+//        homeVC?.viewModel = HomeViewModel()
+//        homeVC?.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
+//
+//        let aboutVC = MainCoordintor.tabBarController.viewControllers![1] as! AboutViewController
+//        aboutVC.viewModel = AboutViewModel()
+//        aboutVC.aboutView.setupUserDetails(with: user)
+//    }
 }
 
 extension Coordinator {

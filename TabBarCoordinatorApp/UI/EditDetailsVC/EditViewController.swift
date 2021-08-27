@@ -8,11 +8,11 @@
 import UIKit
 
 class EditViewController: UIViewController {
-    lazy var changeView = EditView()
+    lazy var editView = EditView()
     var viewModel = EditViewModel(authenticationService: ServiceFactory.authenticationService)
     
     override func loadView() {
-        view = changeView
+        view = editView
     }
     
     override func viewDidLoad() {
@@ -23,21 +23,19 @@ class EditViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
     }
     
     
    //MARK: - Outlets
     private func addCallbacks() {
-        changeView.onSaveDetailsTapped = { [weak self] user in
-            self?.reCallHomeCoordinator(user: user)
+        editView.onSaveDetailsTapped = { [weak self] user in
+            self?.viewModel.saveChangedUserDetails(with: user)
+            self?.navigationController?.popViewController(animated: true)
         }
         
-        changeView.onResetPasswordTapped = { [weak self] user in
+        editView.onResetPasswordTapped = { [weak self] user in
             self?.viewModel.resetPassword(user.email)
-        }
-        
-        changeView.onSaveDetailsTapped = { [weak self] user in
-            self?.reCallHomeCoordinator(user: user)
         }
         
         viewModel.onResetPasswordSuccess = { [weak self] email in
@@ -47,11 +45,5 @@ class EditViewController: UIViewController {
         viewModel.onResetPasswordFailure = { [weak self] in
             self?.showMessage(title: "Reset password", messagae: "Something went wrong.")
         }
-    }
-    
-    private func reCallHomeCoordinator(user: User) {
-        let homeCoo = HomeCoordinator()
-        _ = homeCoo.start()
-        viewModel.saveChangedUserDetails(with: user)
     }
 }

@@ -14,35 +14,38 @@ final class HomeCoordinator: Coordinator {
     var onSaveTapped: ((User) -> Void)?
     
     func start() -> UIViewController {
-        navigationController.showAsRoot()
-        return createHomeVC()
+        let vc = createHomeVC()
+        
+        navigationController.pushViewController(vc, animated: true)
+        return navigationController
     }
     
     private func createHomeVC() -> UIViewController {
         let vc = HomeViewController()
         vc.viewModel = HomeViewModel()
         
-        onChangeDetailsTapped = { [weak self] user in
-            _ = self?.createChangeDetailsVC(user: user)
+        vc.viewModel.onChangeDetailsTapped = { [weak self] user in
+            vc.viewModel.onShouldShowEditVC?(user)
         }
-        
-        let tabbarController = MainCoordintor.tabBarController!
-        navigationController.pushViewController(tabbarController, animated: true)
-        
+
         return vc
     }
     
     private func createChangeDetailsVC(user: User) -> UIViewController {
         let vc = EditViewController()
         vc.viewModel = EditViewModel(authenticationService: ServiceFactory.authenticationService)
-        vc.changeView.setupUserDetails(with: user)
+        vc.editView.setupUserDetails(with: user)
         
-        onSaveTapped = { [weak self] user in
-            vc.viewModel.saveChangedUserDetails(with: user)
-            
-            let homeVC = HomeViewController()
-            homeVC.viewModel = HomeViewModel()
-            homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
+//        onSaveTapped = { [weak self] user in
+//            vc.viewModel.saveChangedUserDetails(with: user)
+//            
+//            let homeVC = HomeViewController()
+//            homeVC.viewModel = HomeViewModel()
+//            homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
+//        }
+        
+        vc.viewModel.onAAA = { [weak self] user in
+            vc.viewModel.onShouldShowHome?(user)
         }
         
         navigationController.pushViewController(vc, animated: true)

@@ -9,7 +9,15 @@ import Foundation
 import UIKit
 
 class HomeViewModel {
-    //var onChangeDetailsTapped: (() -> Void)?
+    var onChangeDetailsTapped: ((User) -> Void)?
+    var onShouldShowEditVC: ((User)->Void)?
+    
+    func aa() {
+        onChangeDetailsTapped = { user in
+            print(user.address as Any)
+        }
+    }
+    
 }
 
 
