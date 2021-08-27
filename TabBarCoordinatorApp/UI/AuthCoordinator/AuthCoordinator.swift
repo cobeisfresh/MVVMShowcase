@@ -14,8 +14,11 @@ class AuthCoordinator: Coordinator {
     var onStartMainCoordinator: ((User) -> Void)?
     
     func start() -> UIViewController {
+        let vc = createLoginVC()
         navigationController.showAsRoot()
-        return createLoginVC()
+        navigationController.pushViewController(vc, animated: true)
+        
+        return navigationController
     }
     
     private func createLoginVC() -> UIViewController {
@@ -32,7 +35,6 @@ class AuthCoordinator: Coordinator {
             vc.viewModel.onShowMessage?()
         }
         
-        navigationController.pushViewController(vc, animated: true)
         return vc
     }
     

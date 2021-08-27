@@ -50,14 +50,6 @@ class LoginViewController: UIViewController {
         }
         
         loginView.onLoginTapped = { [weak self] user in
-//            let match = self?.viewModel.getDataAndCheckLogin(user.name, "\(user.email)", user.password)
-//            guard let unwrappedMatch = match else { return }
-//            if unwrappedMatch {
-//                print("Name and pass match.")
-//            }
-//            else {
-//                self?.loginView.clearTextFields()
-//            }
             self?.viewModel.login(user.name, user.email, user.password)
         }
         
