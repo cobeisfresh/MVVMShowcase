@@ -11,6 +11,10 @@ class HomeViewController: UIViewController {
     lazy var homeView = HomeView()
     var viewModel: HomeViewModel!
     
+    var name = "a"
+    var email = "b"
+    var pass = "c"
+    
     override func loadView() {
         view = homeView
     }
@@ -24,6 +28,9 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
+        
+        let user =  User(name: name, email: email, password: pass, phone: nil, address: nil, country: nil)
+        homeView.setupUserDetails(user: user)
     }
     
     private func addCallBacks() {
@@ -37,5 +44,8 @@ class HomeViewController: UIViewController {
             editVC.editView.setupUserDetails(with: user)
             self.navigationController?.pushViewController(editVC, animated: true)
         }
+        
+        ///
+
     }
 }

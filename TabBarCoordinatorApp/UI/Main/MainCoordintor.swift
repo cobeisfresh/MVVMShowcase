@@ -20,7 +20,7 @@ class MainCoordintor: Coordinator {
         return startTabBar(user: user)
     }
     
-    static var tabBarController: UITabBarController!
+    var tabBarController = UITabBarController()
     enum TBCoordinator: Int {
         case home
         case about
@@ -32,8 +32,8 @@ class MainCoordintor: Coordinator {
     ]
     
     private func createTabBar() {
-        MainCoordintor.tabBarController = UITabBarController()
-        MainCoordintor.tabBarController.viewControllers = childCoordinators.map { coordinator in
+        tabBarController = UITabBarController()
+        tabBarController.viewControllers = childCoordinators.map { coordinator in
             let vc = coordinator.start()
             vc.tabBarItem = coordinator.TBCoordinator.tabBarItem
             return vc
@@ -42,20 +42,22 @@ class MainCoordintor: Coordinator {
     
     private func startTabBar(user: User) -> UITabBarController {
         createTabBar()
-        MainCoordintor.tabBarController.showAsRoot()
+        tabBarController.showAsRoot()
 //        setupTabBarViewsWithDetails(user: user)
-        return MainCoordintor.tabBarController
+        return tabBarController
     }
     
-//    private func setupTabBarViewsWithDetails(user: User) {
-//        let homeVC = MainCoordintor.tabBarController.viewControllers![0] as? HomeViewController
-//        homeVC?.viewModel = HomeViewModel()
-//        homeVC?.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
-//
-//        let aboutVC = MainCoordintor.tabBarController.viewControllers![1] as! AboutViewController
-//        aboutVC.viewModel = AboutViewModel()
-//        aboutVC.aboutView.setupUserDetails(with: user)
-//    }
+    private func setupTabBarViewsWithDetails(user: User) {
+        let navigationControllers = tabBarController.viewControllers
+       
+        let homeVC = tabBarController.viewControllers?[0].children[0].contentViewController as! HomeViewController
+        homeVC.viewModel = HomeViewModel()
+        homeVC.homeView.setupUserDetails(user: user)
+        
+        let aboutVC = tabBarController.viewControllers?[1].children[0].contentViewController as! AboutViewController
+        aboutVC.viewModel = AboutViewModel()
+        aboutVC.aboutView.setupUserDetails(with: user)
+    }
 }
 
 extension Coordinator {

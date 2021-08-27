@@ -9,7 +9,7 @@ import UIKit
 
 class AboutViewController: UIViewController {
     lazy var aboutView = AboutView()
-    var viewModel = AboutViewModel()
+    var viewModel: AboutViewModel!
     
     override func loadView() {
         view = aboutView
