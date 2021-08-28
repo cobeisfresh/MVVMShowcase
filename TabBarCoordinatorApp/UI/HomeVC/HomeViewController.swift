@@ -13,11 +13,6 @@ class HomeViewController: UIViewController {
     var viewModel: HomeViewModel!
     let authenticationService = ServiceFactory.authenticationService
     
-    
-    var name = "a"
-    var email = "b"
-    var pass = "c"
-    
     override func loadView() {
         view = homeView
     }
@@ -48,13 +43,11 @@ class HomeViewController: UIViewController {
     }
     
     private func refreshView() {
-        let userName = UserDefaults.standard.string(forKey: "userName")
-        let userEmail = Auth.auth().currentUser?.email
-        let userPassword = UserDefaults.standard.string(forKey: "userPassword")
-        if let name = userName, let email = userEmail, let password = userPassword {
-            let user = User(name: name, email: email, password: password, phone: Int(""), address: "", country: "")
-            homeView.setupUserDetails(user: user)
-            
-        }
+        guard let userEmail = Auth.auth().currentUser?.email else { return }
+        let userName = UserDefaults.standard.string(forKey: "userName_\(userEmail)") ?? ""
+        let userPassword = UserDefaults.standard.string(forKey: "userPassword_\(userEmail)") ?? ""
+        
+        let user = User(name: userName, email: userEmail, password: userPassword, phone: Int(""), address: "", country: "")
+        homeView.setupUserDetails(user: user)
     }
 }

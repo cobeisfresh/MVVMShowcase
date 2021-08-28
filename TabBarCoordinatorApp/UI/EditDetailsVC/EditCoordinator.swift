@@ -23,10 +23,6 @@ class EditCoordinator: Coordinator {
         let vc = EditViewController()
         vc.viewModel = EditViewModel(authenticationService: ServiceFactory.authenticationService)
         
-        let h = HomeViewController()
-        h.viewModel = HomeViewModel()
-        navigationController.pushViewController(h, animated: false)
-        
         vc.viewModel.onShouldShowHome = { [weak self] user in
             self?.navigationController.popViewController(animated: true)
         }

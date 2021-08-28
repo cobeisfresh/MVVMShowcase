@@ -59,13 +59,14 @@ class AboutViewController: UIViewController {
     }
     
     private func refreshView() {
-        let userName = UserDefaults.standard.string(forKey: "userName")
-        let userEmail = Auth.auth().currentUser?.email
-        let userPassword = UserDefaults.standard.string(forKey: "userPassword")
-        if let name = userName, let email = userEmail, let password = userPassword {
-            let user = User(name: name, email: email, password: password, phone: Int(""), address: "", country: "")
-            aboutView.setupUserDetails(with: user)
-            
-        }
+        guard let userEmail = Auth.auth().currentUser?.email else { return }
+        let userName = UserDefaults.standard.string(forKey: "userName_\(userEmail)") ?? ""
+        let userPassword = UserDefaults.standard.string(forKey: "userPassword_\(userEmail)") ?? ""
+        let phone = UserDefaults.standard.string(forKey: "userPhone_\(userEmail )") ?? "000"
+        let address = UserDefaults.standard.string(forKey: "userAddress_\(userEmail )")
+        let country = UserDefaults.standard.string(forKey: "userCountry_\(userEmail )")
+        
+        let user = User(name: userName, email: userEmail, password: userPassword, phone: Int(phone), address: address, country: country)
+        aboutView.setupUserDetails(with: user)
     }
 }
