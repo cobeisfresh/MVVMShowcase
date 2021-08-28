@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.hidesWhenStopped = true
+        indicator.color = .white
         self.view.addSubview(indicator)
         indicator.center = view.center
         return indicator

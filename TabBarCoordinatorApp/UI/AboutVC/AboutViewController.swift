@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AboutViewController: UIViewController {
     lazy var aboutView = AboutView()
@@ -13,6 +14,7 @@ class AboutViewController: UIViewController {
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = .white
         indicator.hidesWhenStopped = true
         self.view.addSubview(indicator)
         indicator.center = view.center
@@ -34,6 +36,7 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addCallbacks()
+        refreshView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +55,17 @@ class AboutViewController: UIViewController {
         
         viewModel.onEndActivity = { [weak self] in
             self?.activityIndicator.stopAnimating()
+        }
+    }
+    
+    private func refreshView() {
+        let userName = UserDefaults.standard.string(forKey: "userName")
+        let userEmail = Auth.auth().currentUser?.email
+        let userPassword = UserDefaults.standard.string(forKey: "userPassword")
+        if let name = userName, let email = userEmail, let password = userPassword {
+            let user = User(name: name, email: email, password: password, phone: Int(""), address: "", country: "")
+            aboutView.setupUserDetails(with: user)
+            
         }
     }
 }
