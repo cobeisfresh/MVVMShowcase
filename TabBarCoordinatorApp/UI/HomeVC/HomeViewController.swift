@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
     lazy var homeView = HomeView()
     var viewModel: HomeViewModel!
+    let authenticationService = ServiceFactory.authenticationService
+    
     
     var name = "a"
     var email = "b"
@@ -22,15 +25,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addCallBacks()
+        refreshView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
-        
-        let user =  User(name: name, email: email, password: pass, phone: nil, address: nil, country: nil)
-        homeView.setupUserDetails(user: user)
     }
     
     private func addCallBacks() {
@@ -44,8 +45,16 @@ class HomeViewController: UIViewController {
             editVC.editView.setupUserDetails(with: user)
             self.navigationController?.pushViewController(editVC, animated: true)
         }
-        
-        ///
-
+    }
+    
+    private func refreshView() {
+        let userName = UserDefaults.standard.string(forKey: "userName")
+        let userEmail = Auth.auth().currentUser?.email
+        let userPassword = UserDefaults.standard.string(forKey: "userPassword")
+        if let name = userName, let email = userEmail, let password = userPassword {
+            let user = User(name: name, email: email, password: password, phone: Int(""), address: "", country: "")
+            homeView.setupUserDetails(user: user)
+            
+        }
     }
 }

@@ -29,6 +29,8 @@ class AuthCoordinator: Coordinator {
             _ = self.createUserCreateVC()
         }
         vc.viewModel.onAuthSuccess = { [weak self] user in
+            UserDefaults.standard.set(true, forKey: "isLogged")
+            UserDefaults.standard.synchronize()
             self?.onStartMainCoordinator?(user)
         }
         vc.viewModel.onAuthFailure = { [weak self] in

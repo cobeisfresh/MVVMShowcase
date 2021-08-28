@@ -11,6 +11,22 @@ class AboutViewController: UIViewController {
     lazy var aboutView = AboutView()
     var viewModel: AboutViewModel!
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.hidesWhenStopped = true
+        self.view.addSubview(indicator)
+        indicator.center = view.center
+        return indicator
+    }()
+    
+    func startLoader() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopLoader() {
+        activityIndicator.stopAnimating()
+    }
+    
     override func loadView() {
         view = aboutView
     }
@@ -28,6 +44,14 @@ class AboutViewController: UIViewController {
     private func addCallbacks() {
         aboutView.onLogoutTapped = { [weak self] in
             self?.viewModel.onLogoutButtonTapped?()
+        }
+        
+        viewModel.onStartActivity = { [weak self] in
+            self?.activityIndicator.startAnimating()
+        }
+        
+        viewModel.onEndActivity = { [weak self] in
+            self?.activityIndicator.stopAnimating()
         }
     }
 }

@@ -10,4 +10,7 @@ import UIKit
 
 class AboutViewModel {
     var onLogoutButtonTapped: (() -> Void)?
+    
+    var onStartActivity: (()->Void)?
+    var onEndActivity: (()->Void)?
 }

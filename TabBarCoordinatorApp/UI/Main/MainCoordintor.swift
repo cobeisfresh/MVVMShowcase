@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 class MainCoordintor: Coordinator {
-    let user: User
+//    let user: User
     let navigationController = UINavigationController()
     
-    init(user: User) {
-        self.user = user
-    }
+//    init(user: User) {
+//        self.user = user
+//    }
     
     func start() -> UIViewController {
-        return startTabBar(user: user)
+        return startTabBar()
     }
     
     var tabBarController = UITabBarController()
@@ -40,7 +40,7 @@ class MainCoordintor: Coordinator {
         }
     }
     
-    private func startTabBar(user: User) -> UITabBarController {
+    private func startTabBar() -> UITabBarController {
         createTabBar()
         tabBarController.showAsRoot()
 //        setupTabBarViewsWithDetails(user: user)
@@ -48,15 +48,15 @@ class MainCoordintor: Coordinator {
     }
     
     private func setupTabBarViewsWithDetails(user: User) {
-        let navigationControllers = tabBarController.viewControllers
-       
-        let homeVC = tabBarController.viewControllers?[0].children[0].contentViewController as! HomeViewController
-        homeVC.viewModel = HomeViewModel()
-        homeVC.homeView.setupUserDetails(user: user)
-        
-        let aboutVC = tabBarController.viewControllers?[1].children[0].contentViewController as! AboutViewController
-        aboutVC.viewModel = AboutViewModel()
-        aboutVC.aboutView.setupUserDetails(with: user)
+//        let navigationControllers = tabBarController.viewControllers
+//
+//        let homeVC = tabBarController.viewControllers?[0].children[0].contentViewController as! HomeViewController
+//        homeVC.viewModel = HomeViewModel()
+//        homeVC.homeView.setupUserDetails(user: user)
+//
+//        let aboutVC = tabBarController.viewControllers?[1].children[0].contentViewController as! AboutViewController
+//        aboutVC.viewModel = AboutViewModel()
+//        aboutVC.aboutView.setupUserDetails(with: user)
     }
 }
 

@@ -13,8 +13,16 @@ final class RootCoordinator: Coordinator {
     let navigationConttroller = UINavigationController()
     
     func start() -> UIViewController {
-        let vc = createAuthVC()
+        var vc = UIViewController()
         
+        let userLoggedIn = UserDefaults.standard.bool(forKey: "isLogged")
+        UserDefaults.standard.synchronize()
+        if !userLoggedIn {
+            vc = createAuthVC()
+        }
+        else {
+            vc = createTabbarVC()
+        }
         return vc
     }
     
@@ -22,10 +30,17 @@ final class RootCoordinator: Coordinator {
         let authCoordinator = AuthCoordinator()
         
         authCoordinator.onStartMainCoordinator = { [weak self] user in
-            let mainCoordinator = MainCoordintor(user: user)
+            let mainCoordinator = MainCoordintor()
             _ = mainCoordinator.start()
         }
         
         return authCoordinator.start()
+    }
+    
+    private func createTabbarVC() -> UITabBarController {
+        let mainCoordinator = MainCoordintor()
+        _ = mainCoordinator.start()
+        
+        return UITabBarController()
     }
 }

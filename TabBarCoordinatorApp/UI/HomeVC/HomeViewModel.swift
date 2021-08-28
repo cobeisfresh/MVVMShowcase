@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class HomeViewModel {
     var onChangeDetailsTapped: ((User) -> Void)?
@@ -22,7 +23,6 @@ class HomeViewModel {
 //        aboutVC.viewModel = AboutViewModel()
 //        aboutVC.aboutView.setupUserDetails(with: user)
 //    }
-    
 }
 
 

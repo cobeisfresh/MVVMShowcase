@@ -23,7 +23,14 @@ final class AboutCoordinator: Coordinator {
         vc.viewModel = AboutViewModel()
         
         vc.viewModel.onLogoutButtonTapped = {
-            self.goToLooginVC()
+            vc.viewModel.onStartActivity?()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                UserDefaults.standard.set(false, forKey: "isLogged")
+                UserDefaults.standard.synchronize()
+                vc.viewModel.onEndActivity?()
+                self.goToLooginVC()
+            }
         }
         
         return vc

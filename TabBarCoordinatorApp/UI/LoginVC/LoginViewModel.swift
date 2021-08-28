@@ -28,6 +28,7 @@ class LoginViewModel {
         let phone = UserDefaults.standard.string(forKey: "userPhone") ?? "000"
         let address = UserDefaults.standard.string(forKey: "userAddress")
         let country = UserDefaults.standard.string(forKey: "userCountry")
+        UserDefaults.standard.set(password, forKey: "userPassword")
         let user = User(name: userName, email: email, password: password, phone: Int(phone), address: address, country: country)
         onStartedActivity?()
         authenticationService.login(email: email, password: password) { [weak self] (result) in
