@@ -41,7 +41,7 @@ protocol AuthenticationServiceProtocol {
     func resetPassword(email: String, completion: @escaping (ResetPasswordResult) -> Void)
 }
 
-class AuthenticationService: AuthenticationServiceProtocol {
+final class AuthenticationService: AuthenticationServiceProtocol {
     
     private let connectivityService: ConnectivityServiceProtocol
     

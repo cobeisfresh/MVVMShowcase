@@ -11,7 +11,7 @@ import UIKit
 final class AboutCoordinator: Coordinator {
     func start() -> UIViewController {
         let vc = AboutViewController()
-        vc.viewModel = AboutViewModel()
+        vc.viewModel = AboutViewModel(testService: ServiceFactory.testService)
         return vc
     }
     

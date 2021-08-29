@@ -11,6 +11,8 @@
 		A0668B1A26D6D62800832A6C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0668B1926D6D62800832A6C /* AuthenticationService.swift */; };
 		A0668B1D26D6D65D00832A6C /* ConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0668B1C26D6D65D00832A6C /* ConnectivityService.swift */; };
 		A0668B4026D6DAB700832A6C /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0668B3F26D6DAB700832A6C /* ServiceFactory.swift */; };
+		A0668B7226D8EE1600832A6C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0668B7026D8EE1600832A6C /* DataService.swift */; };
+		A0668B7726D8EEAF00832A6C /* TestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0668B7626D8EEAE00832A6C /* TestService.swift */; };
 		A0E26D5B26D6D34200E38385 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0E26D5A26D6D34200E38385 /* GoogleService-Info.plist */; };
 		C531231526D3D0A20051F61F /* ConstraintsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531231426D3D0A20051F61F /* ConstraintsExtension.swift */; };
 		C531231826D3D10F0051F61F /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C531231726D3D10F0051F61F /* CreateUserView.swift */; };
@@ -54,6 +56,8 @@
 		A0668B1926D6D62800832A6C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		A0668B1C26D6D65D00832A6C /* ConnectivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityService.swift; sourceTree = "<group>"; };
 		A0668B3F26D6DAB700832A6C /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
+		A0668B7026D8EE1600832A6C /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		A0668B7626D8EEAE00832A6C /* TestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestService.swift; sourceTree = "<group>"; };
 		A0E26D5A26D6D34200E38385 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADDAC08A9640B3AC4A176B31 /* Pods-TabBarCoordinatorApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabBarCoordinatorApp.debug.xcconfig"; path = "Target Support Files/Pods-TabBarCoordinatorApp/Pods-TabBarCoordinatorApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C531231426D3D0A20051F61F /* ConstraintsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsExtension.swift; sourceTree = "<group>"; };
@@ -131,8 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				A0668B1C26D6D65D00832A6C /* ConnectivityService.swift */,
+				A0668B7026D8EE1600832A6C /* DataService.swift */,
 				A0668B1926D6D62800832A6C /* AuthenticationService.swift */,
 				A0668B3F26D6DAB700832A6C /* ServiceFactory.swift */,
+				A0668B7626D8EEAE00832A6C /* TestService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -438,8 +444,10 @@
 				C5BDBCB12590AEF2003543B1 /* UIViewControllerExtension.swift in Sources */,
 				A0668B1D26D6D65D00832A6C /* ConnectivityService.swift in Sources */,
 				C531231826D3D10F0051F61F /* CreateUserView.swift in Sources */,
+				A0668B7726D8EEAF00832A6C /* TestService.swift in Sources */,
 				C540CEBD2591FBB900D67A3B /* LoginViewModel.swift in Sources */,
 				C5C394EA2590EA65004782B7 /* User.swift in Sources */,
+				A0668B7226D8EE1600832A6C /* DataService.swift in Sources */,
 				C531232426D4D2660051F61F /* EditView.swift in Sources */,
 				C531232626D4D8470051F61F /* EditViewModel.swift in Sources */,
 				C540CEBA2591F78E00D67A3B /* CreateUserViewController.swift in Sources */,
