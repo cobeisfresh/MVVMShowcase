@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 final class AboutCoordinator: Coordinator {
     var onLogout: (() -> Void)?
@@ -23,6 +24,16 @@ final class AboutCoordinator: Coordinator {
         let vc = AboutViewController()
         vc.viewModel = AboutViewModel()
         
+        if let userEmail = Auth.auth().currentUser?.email {
+            let userName = UserDefaults.standard.string(forKey: "userName_\(userEmail)") ?? ""
+            let userPassword = UserDefaults.standard.string(forKey: "userPassword_\(userEmail)") ?? ""
+            
+            let user = User(name: userName, email: userEmail, password: userPassword, phone: Int(""), address: "", country: "")
+            vc.aboutView.setupUserDetails(with: user)
+        }
+        
+        vc.viewModel.onLogoutButtonTapped = {
+            vc.viewModel.onStartActivity?()
         vc.viewModel.onLogoutButtonTapped = { [weak vc] in
             vc?.viewModel.onStartActivity?()
             

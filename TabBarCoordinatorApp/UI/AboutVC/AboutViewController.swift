@@ -36,7 +36,6 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addCallbacks()
-        refreshView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,17 +55,5 @@ class AboutViewController: UIViewController {
         viewModel.onEndActivity = { [weak self] in
             self?.activityIndicator.stopAnimating()
         }
-    }
-    
-    private func refreshView() {
-        guard let userEmail = Auth.auth().currentUser?.email else { return }
-        let userName = UserDefaults.standard.string(forKey: "userName_\(userEmail)") ?? ""
-        let userPassword = UserDefaults.standard.string(forKey: "userPassword_\(userEmail)") ?? ""
-        let phone = UserDefaults.standard.string(forKey: "userPhone_\(userEmail )") ?? "000"
-        let address = UserDefaults.standard.string(forKey: "userAddress_\(userEmail )")
-        let country = UserDefaults.standard.string(forKey: "userCountry_\(userEmail )")
-        
-        let user = User(name: userName, email: userEmail, password: userPassword, phone: Int(phone), address: address, country: country)
-        aboutView.setupUserDetails(with: user)
     }
 }

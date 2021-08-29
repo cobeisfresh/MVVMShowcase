@@ -20,7 +20,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addCallBacks()
-        refreshView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,14 +39,5 @@ class HomeViewController: UIViewController {
             editVC.editView.setupUserDetails(with: user)
             self.navigationController?.pushViewController(editVC, animated: true)
         }
-    }
-    
-    private func refreshView() {
-        guard let userEmail = Auth.auth().currentUser?.email else { return }
-        let userName = UserDefaults.standard.string(forKey: "userName_\(userEmail)") ?? ""
-        let userPassword = UserDefaults.standard.string(forKey: "userPassword_\(userEmail)") ?? ""
-        
-        let user = User(name: userName, email: userEmail, password: userPassword, phone: Int(""), address: "", country: "")
-        homeView.setupUserDetails(user: user)
     }
 }

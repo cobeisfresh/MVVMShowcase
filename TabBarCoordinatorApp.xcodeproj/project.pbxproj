@@ -32,7 +32,6 @@
 		C5B2502A25939DB90060F942 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2502925939DB90060F942 /* AboutViewModel.swift */; };
 		C5B41D8B2594A68B001E6767 /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B41D8A2594A68B001E6767 /* AboutCoordinator.swift */; };
 		C5B88DDB26D6867D00BCBA9E /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B88DDA26D6867D00BCBA9E /* AuthCoordinator.swift */; };
-		C5B88DDF26D907B300BCBA9E /* EditCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B88DDE26D907B300BCBA9E /* EditCoordinator.swift */; };
 		C5BDBC752590A1B8003543B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC742590A1B8003543B1 /* AppDelegate.swift */; };
 		C5BDBC772590A1B8003543B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC762590A1B8003543B1 /* SceneDelegate.swift */; };
 		C5BDBC792590A1B8003543B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC782590A1B8003543B1 /* ViewController.swift */; };
@@ -77,7 +76,6 @@
 		C5B2502925939DB90060F942 /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		C5B41D8A2594A68B001E6767 /* AboutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoordinator.swift; sourceTree = "<group>"; };
 		C5B88DDA26D6867D00BCBA9E /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
-		C5B88DDE26D907B300BCBA9E /* EditCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCoordinator.swift; sourceTree = "<group>"; };
 		C5BDBC712590A1B8003543B1 /* TabBarCoordinatorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabBarCoordinatorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5BDBC742590A1B8003543B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5BDBC762590A1B8003543B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 		C540CEC625921D5E00D67A3B /* EditDetailsVC */ = {
 			isa = PBXGroup;
 			children = (
-				C5B88DDE26D907B300BCBA9E /* EditCoordinator.swift */,
 				C531232526D4D8470051F61F /* EditViewModel.swift */,
 				C531232326D4D2660051F61F /* EditView.swift */,
 				C540CECD25921E6F00D67A3B /* EditViewController.swift */,
@@ -446,7 +443,6 @@
 				C531232426D4D2660051F61F /* EditView.swift in Sources */,
 				C531232626D4D8470051F61F /* EditViewModel.swift in Sources */,
 				C540CEBA2591F78E00D67A3B /* CreateUserViewController.swift in Sources */,
-				C5B88DDF26D907B300BCBA9E /* EditCoordinator.swift in Sources */,
 				C5BDBC992590A532003543B1 /* HomeViewController.swift in Sources */,
 				C5BDBC752590A1B8003543B1 /* AppDelegate.swift in Sources */,
 				EBB735C026D6634B00185C1B /* TypeAliases.swift in Sources */,
