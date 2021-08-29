@@ -25,16 +25,16 @@ class AuthCoordinator: Coordinator {
         let vc = LoginViewController()
         vc.viewModel = LoginViewModel(authenticationService: ServiceFactory.authenticationService)
 
-        vc.viewModel.onCreateTapped = {
-            _ = self.createUserCreateVC()
+        vc.viewModel.onCreateTapped = { [weak self] in
+            _ = self?.createUserCreateVC()
         }
         vc.viewModel.onAuthSuccess = { [weak self] user in
             UserDefaults.standard.set(true, forKey: "isLogged")
             UserDefaults.standard.synchronize()
             self?.onStartMainCoordinator?(user)
         }
-        vc.viewModel.onAuthFailure = { [weak self] in
-            vc.viewModel.onShowMessage?()
+        vc.viewModel.onAuthFailure = { [weak vc] in
+            vc?.viewModel.onShowMessage?()
         }
         
         return vc

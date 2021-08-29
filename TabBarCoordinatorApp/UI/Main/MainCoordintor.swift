@@ -8,13 +8,14 @@
 import Foundation
 import UIKit
 
-class MainCoordintor: Coordinator {
-//    let user: User
+class MainCoordinator: Coordinator {
+    var onLogout: (() -> Void)?
+    let user: User? // TODO change user to non optional
     let navigationController = UINavigationController()
     
-//    init(user: User) {
-//        self.user = user
-//    }
+    init(user: User?) {
+        self.user = user
+    }
     
     func start() -> UIViewController {
         return startTabBar()
@@ -34,6 +35,11 @@ class MainCoordintor: Coordinator {
     private func createTabBar() {
         tabBarController = UITabBarController()
         tabBarController.viewControllers = childCoordinators.map { coordinator in
+            if let about = coordinator as? AboutCoordinator {
+                about.onLogout = { [weak self] in
+                    self?.onLogout?()
+                }
+            }
             let vc = coordinator.start()
             vc.tabBarItem = coordinator.TBCoordinator.tabBarItem
             return vc
@@ -61,7 +67,7 @@ class MainCoordintor: Coordinator {
 }
 
 extension Coordinator {
-    var TBCoordinator: MainCoordintor.TBCoordinator {
+    var TBCoordinator: MainCoordinator.TBCoordinator {
         switch self {
         case is HomeCoordinator:
             return .home
@@ -73,7 +79,7 @@ extension Coordinator {
     }
 }
 
-extension MainCoordintor.TBCoordinator {
+extension MainCoordinator.TBCoordinator {
     var tabBarItem: UITabBarItem {
         let tabBarItem: UITabBarItem
         switch  self {

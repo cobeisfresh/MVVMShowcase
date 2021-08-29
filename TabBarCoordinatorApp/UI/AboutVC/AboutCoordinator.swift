@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 final class AboutCoordinator: Coordinator {
+    var onLogout: (() -> Void)?
     let navigationController = UINavigationController()
     
     func start() -> UIViewController {
@@ -22,24 +23,25 @@ final class AboutCoordinator: Coordinator {
         let vc = AboutViewController()
         vc.viewModel = AboutViewModel()
         
-        vc.viewModel.onLogoutButtonTapped = {
-            vc.viewModel.onStartActivity?()
+        vc.viewModel.onLogoutButtonTapped = { [weak vc] in
+            vc?.viewModel.onStartActivity?()
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak vc] in
                 UserDefaults.standard.set(false, forKey: "isLogged")
                 UserDefaults.standard.synchronize()
-                vc.viewModel.onEndActivity?()
-                self.goToLooginVC()
+                vc?.viewModel.onEndActivity?()
+                //self.goToLooginVC()
+                self.onLogout?()
             }
         }
         
         return vc
     }
     
-    private func goToLooginVC() {
-        let root = RootCoordinator()
-        let loginVC = LoginViewController()
-        loginVC.viewModel = LoginViewModel(authenticationService: ServiceFactory.authenticationService)
-        _ = root.start()
-    }
+//    private func goToLooginVC() {
+//        let root = RootCoordinator()
+//        let loginVC = LoginViewController()
+//        loginVC.viewModel = LoginViewModel(authenticationService: ServiceFactory.authenticationService)
+//        _ = root.start()
+//    }
 }
