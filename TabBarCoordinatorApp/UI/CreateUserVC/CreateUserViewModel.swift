@@ -21,7 +21,7 @@ final class CreateUserViewModel {
     }
     
     func register(_ user: User) {
-        UserDefaults.standard.set(user.name, forKey: "userName")
+        UserDefaults.standard.set(user.name, forKey: "userName_\(user.email)")
         onStartedActivity?()
         authenticationService.register(email: user.email, password: user.password) { [weak self] (result) in
             switch result {
