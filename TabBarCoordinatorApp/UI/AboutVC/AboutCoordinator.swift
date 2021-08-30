@@ -32,8 +32,6 @@ final class AboutCoordinator: Coordinator {
             vc.aboutView.setupUserDetails(with: user)
         }
         
-        vc.viewModel.onLogoutButtonTapped = {
-            vc.viewModel.onStartActivity?()
         vc.viewModel.onLogoutButtonTapped = { [weak vc] in
             vc?.viewModel.onStartActivity?()
             
@@ -41,18 +39,10 @@ final class AboutCoordinator: Coordinator {
                 UserDefaults.standard.set(false, forKey: "isLogged")
                 UserDefaults.standard.synchronize()
                 vc?.viewModel.onEndActivity?()
-                //self.goToLooginVC()
                 self.onLogout?()
             }
         }
-        
         return vc
     }
     
-//    private func goToLooginVC() {
-//        let root = RootCoordinator()
-//        let loginVC = LoginViewController()
-//        loginVC.viewModel = LoginViewModel(authenticationService: ServiceFactory.authenticationService)
-//        _ = root.start()
-//    }
 }

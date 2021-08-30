@@ -18,7 +18,7 @@ class CreateUserView: UIView {
     private lazy var emailTextField = UITextField()
     private lazy var passwordTextField = UITextField()
     private lazy var createButton = UIButton(type: .system)
-       
+    
     var viewModel: LoginViewModel!
     var onCreateUser: ((User) -> Void)?
     var onEmptyField: (() -> Void)?
@@ -122,7 +122,7 @@ class CreateUserView: UIView {
             passwordTextField.trailingAnchor.constraint(equalTo: enterDetailsView.trailingAnchor, constant: -30),
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 50),
             passwordTextField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-
+            
             createButton.heightAnchor.constraint(equalToConstant: 50),
             createButton.widthAnchor.constraint(equalToConstant: 200),
             createButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),

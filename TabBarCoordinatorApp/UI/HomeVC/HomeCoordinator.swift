@@ -39,21 +39,4 @@ final class HomeCoordinator: Coordinator {
 
         return vc
     }
-    
-//    private func createChangeDetailsVC(user: User) -> UIViewController {
-//        let vc = EditViewController()
-//        vc.viewModel = EditViewModel(authenticationService: ServiceFactory.authenticationService)
-//        vc.editView.setupUserDetails(with: user)
-//
-//        onSaveTapped = { [weak self] user in
-//            vc.viewModel.saveChangedUserDetails(with: user)
-//
-//            let homeVC = HomeViewController()
-//            homeVC.viewModel = HomeViewModel()
-//            homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
-//        }
-//
-//        navigationController.pushViewController(vc, animated: true)
-//        return vc
-//    }
 }

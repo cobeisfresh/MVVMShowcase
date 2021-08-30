@@ -31,10 +31,6 @@ public enum AuthenticationError: String {
     }
 }
 
-public enum ResetPasError: String {
-    case wrongEmail = "Wrong email"
-}
-
 protocol AuthenticationServiceProtocol {
     func register(email: String, password: String, completion: @escaping (AuthenticationResult<String>) -> Void)
     func login(email: String, password: String, completion: @escaping (AuthenticationResult<String>) -> Void)
