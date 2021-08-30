@@ -46,31 +46,16 @@ class MainCoordinator: Coordinator {
         }
     }
     
-
     private func startTabBar() -> UITabBarController {
         createTabBar()
         tabBarController.showAsRoot()
-//        setupTabBarViewsWithDetails(user: user)
         return tabBarController
     }
 
     private func startTabBar(user: User) -> UINavigationController {
         createTabBar()
         navigationController.viewControllers = [tabBarController]
-        //MainCoordintor.tabBarController.showAsRoot()
-        navigationController.showAsRoot()
-        setupTabBarViewsWithDetails(user: user)
         return navigationController
-    }
-    
-    private func setupTabBarViewsWithDetails(user: User) {
-        let homeVC = tabBarController.viewControllers![0] as! HomeViewController
-        homeVC.viewModel = HomeViewModel()
-        homeVC.homeView.setupUserDetails(user: user)
-        
-        let aboutVC = tabBarController.viewControllers![1] as! AboutViewController
-        aboutVC.viewModel = AboutViewModel(testService: ServiceFactory.testService)
-        aboutVC.aboutView.setupUserDetails(with: user)
     }
 }
 
