@@ -36,6 +36,5 @@ class EditViewModel {
         UserDefaults.standard.set(address, forKey: "userAddress_\(email)")
         UserDefaults.standard.set(country, forKey: "userCountry_\(email)")
         UserDefaults.standard.synchronize()
-        
     }
 }

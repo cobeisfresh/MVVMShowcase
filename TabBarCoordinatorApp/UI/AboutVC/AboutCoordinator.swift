@@ -25,11 +25,16 @@ final class AboutCoordinator: Coordinator {
         vc.viewModel = AboutViewModel()
         
         if let userEmail = Auth.auth().currentUser?.email {
-            let userName = UserDefaults.standard.string(forKey: "userName_\(userEmail)") ?? ""
-            let userPassword = UserDefaults.standard.string(forKey: "userPassword_\(userEmail)") ?? ""
-            
-            let user = User(name: userName, email: userEmail, password: userPassword, phone: Int(""), address: "", country: "")
-            vc.aboutView.setupUserDetails(with: user)
+            if let data = UserDefaults.standard.data(forKey: "user_\(userEmail)") {
+                do {
+                    let decoder = JSONDecoder()
+                    let decodedUser = try decoder.decode(User.self, from: data)
+                    let user = User(name: decodedUser.name, email: decodedUser.email, password: decodedUser.password, phone: Int(""), address: "", country: "")
+                    vc.aboutView.setupUserDetails(with: user)
+                } catch {
+                    print("Unable to Decode Note (\(error))")
+                }
+            }
         }
         
         vc.viewModel.onLogoutButtonTapped = { [weak vc] in

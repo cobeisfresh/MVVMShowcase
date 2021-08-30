@@ -26,17 +26,22 @@ final class HomeCoordinator: Coordinator {
         vc.viewModel = HomeViewModel()
         
         if let userEmail = Auth.auth().currentUser?.email {
-            let userName = UserDefaults.standard.string(forKey: "userName_\(userEmail)") ?? ""
-            let userPassword = UserDefaults.standard.string(forKey: "userPassword_\(userEmail)") ?? ""
-            
-            let user = User(name: userName, email: userEmail, password: userPassword, phone: Int(""), address: "", country: "")
-            vc.homeView.setupUserDetails(user: user)
+            if let data = UserDefaults.standard.data(forKey: "user_\(userEmail)") {
+                do {
+                    let decoder = JSONDecoder()
+                    let decodedUser = try decoder.decode(User.self, from: data)
+                    let user = User(name: decodedUser.name, email: decodedUser.email, password: decodedUser.password, phone: Int(""), address: "", country: "")
+                    vc.homeView.setupUserDetails(user: user)
+                } catch {
+                    print("Unable to Decode Note (\(error))")
+                }
+            }
         }
         
         vc.viewModel.onChangeDetailsTapped = { [weak self] user in
             vc.viewModel.onShouldShowEditVC?(user)
         }
-
+        
         return vc
     }
 }
