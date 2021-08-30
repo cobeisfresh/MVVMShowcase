@@ -7,11 +7,21 @@ on:
 
 jobs:
     installPods:
-        name: Install Pods
+        name: Installing Dependencies
         runs-on: macos-latest
         steps:
-            - name: Installing Pods
-              run: pod install
+            - name: Cache Pods dependencies
+              uses: actions/cache@v2
+              with:
+                path: ios/Pods
+                key: ${{ runner.OS }}-pods-cache-${{ hashFiles('**/ios/Podfile.lock') }}
+                restore-keys: |
+                    ${{ runner.OS }}-pods-cache-
+            - name: Install pod dependencies
+              run: |
+                cd ios
+                pod install
+              shell: bash
 
     test:
         needs: installPods
