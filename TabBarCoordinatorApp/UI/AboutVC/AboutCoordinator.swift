@@ -22,7 +22,7 @@ final class AboutCoordinator: Coordinator {
     
     private func createAboutVC() -> UIViewController {
         let vc = AboutViewController()
-        vc.viewModel = AboutViewModel()
+        vc.viewModel = AboutViewModel(testService: ServiceFactory.testService)
         
         if let userEmail = Auth.auth().currentUser?.email {
             if let data = UserDefaults.standard.data(forKey: "user_\(userEmail)") {

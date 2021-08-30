@@ -53,21 +53,10 @@ class MainCoordinator: Coordinator {
 //        setupTabBarViewsWithDetails(user: user)
         return tabBarController
     }
-    
-    private func setupTabBarViewsWithDetails(user: User) {
-//        let navigationControllers = tabBarController.viewControllers
-//
-//        let homeVC = tabBarController.viewControllers?[0].children[0].contentViewController as! HomeViewController
-//        homeVC.viewModel = HomeViewModel()
-//        homeVC.homeView.setupUserDetails(user: user)
-//
-//        let aboutVC = tabBarController.viewControllers?[1].children[0].contentViewController as! AboutViewController
-//        aboutVC.viewModel = AboutViewModel()
-//        aboutVC.aboutView.setupUserDetails(with: user)
 
     private func startTabBar(user: User) -> UINavigationController {
         createTabBar()
-        navigationController.viewControllers = [MainCoordintor.tabBarController]
+        navigationController.viewControllers = [tabBarController]
         //MainCoordintor.tabBarController.showAsRoot()
         navigationController.showAsRoot()
         setupTabBarViewsWithDetails(user: user)
@@ -75,11 +64,11 @@ class MainCoordinator: Coordinator {
     }
     
     private func setupTabBarViewsWithDetails(user: User) {
-        let homeVC = MainCoordintor.tabBarController.viewControllers![0] as! HomeViewController
+        let homeVC = tabBarController.viewControllers![0] as! HomeViewController
         homeVC.viewModel = HomeViewModel()
-        homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
+        homeVC.homeView.setupUserDetails(user: user)
         
-        let aboutVC = MainCoordintor.tabBarController.viewControllers![1] as! AboutViewController
+        let aboutVC = tabBarController.viewControllers![1] as! AboutViewController
         aboutVC.viewModel = AboutViewModel(testService: ServiceFactory.testService)
         aboutVC.aboutView.setupUserDetails(with: user)
     }

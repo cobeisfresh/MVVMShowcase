@@ -55,6 +55,6 @@ class AboutViewModel {
     
     func logout() {
         UserDefaults.standard.setValue(nil, forKey: "userToken")
-        onLogoutTapped?()
+        onLogoutButtonTapped?()
     }
 }
