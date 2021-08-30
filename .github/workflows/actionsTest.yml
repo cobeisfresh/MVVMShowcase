@@ -6,7 +6,15 @@ on:
         - dataService
 
 jobs:
+    installPods:
+        name: Install Pods
+        runs-on: macos-latest
+        steps:
+            - name: Installing Pods
+              run: pod install
+
     test:
+        needs: installPods
         name: Test
         runs-on: macos-latest
         strategy:
