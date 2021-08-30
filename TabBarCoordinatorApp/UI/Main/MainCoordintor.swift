@@ -46,6 +46,7 @@ class MainCoordinator: Coordinator {
         }
     }
     
+
     private func startTabBar() -> UITabBarController {
         createTabBar()
         tabBarController.showAsRoot()
@@ -63,6 +64,24 @@ class MainCoordinator: Coordinator {
 //        let aboutVC = tabBarController.viewControllers?[1].children[0].contentViewController as! AboutViewController
 //        aboutVC.viewModel = AboutViewModel()
 //        aboutVC.aboutView.setupUserDetails(with: user)
+
+    private func startTabBar(user: User) -> UINavigationController {
+        createTabBar()
+        navigationController.viewControllers = [MainCoordintor.tabBarController]
+        //MainCoordintor.tabBarController.showAsRoot()
+        navigationController.showAsRoot()
+        setupTabBarViewsWithDetails(user: user)
+        return navigationController
+    }
+    
+    private func setupTabBarViewsWithDetails(user: User) {
+        let homeVC = MainCoordintor.tabBarController.viewControllers![0] as! HomeViewController
+        homeVC.viewModel = HomeViewModel()
+        homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
+        
+        let aboutVC = MainCoordintor.tabBarController.viewControllers![1] as! AboutViewController
+        aboutVC.viewModel = AboutViewModel(testService: ServiceFactory.testService)
+        aboutVC.aboutView.setupUserDetails(with: user)
     }
 }
 

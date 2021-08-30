@@ -47,6 +47,7 @@ final class AboutCoordinator: Coordinator {
                 self.onLogout?()
             }
         }
+
         return vc
     }
     

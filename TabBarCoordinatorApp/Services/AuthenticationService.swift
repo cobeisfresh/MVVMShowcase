@@ -8,17 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-public enum AuthenticationResult<Value> {
-    case success(Value)
-    case failure(AuthenticationError)
-}
-
-public enum ResetPasswordResult {
-    case success
-    case failure
-}
-
-public enum AuthenticationError: String {
+public enum AuthenticationError: String, Error {
     case alreadyExists = "User with that e-mail already exists."
     case networkError = "There was a problem with the Firebase network, please try again later."
     case emptyResult = "There was an error while creating the account, please try again."
@@ -31,13 +21,17 @@ public enum AuthenticationError: String {
     }
 }
 
-protocol AuthenticationServiceProtocol {
-    func register(email: String, password: String, completion: @escaping (AuthenticationResult<String>) -> Void)
-    func login(email: String, password: String, completion: @escaping (AuthenticationResult<String>) -> Void)
-    func resetPassword(email: String, completion: @escaping (ResetPasswordResult) -> Void)
+public enum ResetPasError: String, Error {
+    case wrongEmail = "Wrong email"
 }
 
-class AuthenticationService: AuthenticationServiceProtocol {
+protocol AuthenticationServiceProtocol {
+    func register(email: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void)
+    func login(email: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void)
+    func resetPassword(email: String, completion: @escaping (Result<String, ResetPasError>) -> Void)
+}
+
+final class AuthenticationService: AuthenticationServiceProtocol {
     
     private let connectivityService: ConnectivityServiceProtocol
     
@@ -45,7 +39,7 @@ class AuthenticationService: AuthenticationServiceProtocol {
         self.connectivityService = connectivityService
     }
     
-    func register(email: String, password: String, completion: @escaping (AuthenticationResult<String>) -> Void) {
+    func register(email: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (result, error) in
             if error != nil {
                 self?.handleError(error: error, completion: completion)
@@ -60,7 +54,7 @@ class AuthenticationService: AuthenticationServiceProtocol {
         }
     }
     
-    func login(email: String, password: String, completion: @escaping (AuthenticationResult<String>) -> Void) {
+    func login(email: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
             if error != nil {
                 self?.handleError(error: error, completion: completion)
@@ -76,20 +70,20 @@ class AuthenticationService: AuthenticationServiceProtocol {
         }
     }
     
-    func resetPassword(email: String, completion: @escaping (ResetPasswordResult) -> Void) {
+    func resetPassword(email: String, completion: @escaping (Result<String, ResetPasError>) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: { error in
             if error == nil {
-                completion(.success)
+                completion(.success("Successfully reset password!"))
             }
             else {
-                completion(.failure)
+                completion(.failure(.wrongEmail))
             }
         })
     }
 }
 
 extension AuthenticationService {
-    private func handleError(error: Error?, completion: @escaping (AuthenticationResult<String>) -> Void) {
+    private func handleError(error: Error?, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
         guard connectivityService.isConnected else {
             completion(.failure(.noInternet))
             return

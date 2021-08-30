@@ -11,7 +11,7 @@ import Firebase
 class AboutViewController: UIViewController {
     lazy var aboutView = AboutView()
     var viewModel: AboutViewModel!
-    
+
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.color = .white
@@ -28,7 +28,7 @@ class AboutViewController: UIViewController {
     func stopLoader() {
         activityIndicator.stopAnimating()
     }
-    
+
     override func loadView() {
         view = aboutView
     }
@@ -36,11 +36,16 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addCallbacks()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(test)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    @objc func test() {
+        viewModel.test()
     }
     
     private func addCallbacks() {

@@ -26,9 +26,6 @@ class HomeView: UIView {
     
     var onChangeTapped: ((User)->Void)?
     
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
