@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
     lazy var homeView = HomeView()
-    var viewModel = HomeViewModel()
+    var viewModel: HomeViewModel!
+    let authenticationService = ServiceFactory.authenticationService
     
     override func loadView() {
         view = homeView
@@ -23,17 +25,19 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
     }
     
     private func addCallBacks() {
         homeView.onChangeTapped = { [weak self] user in
-            self?.reCallHomeCoordinator(user: user)
+            self?.viewModel.onChangeDetailsTapped?(user)
         }
-    }
-    
-    private func reCallHomeCoordinator(user: User) {
-        let homeCoo = HomeCoordinator()
-        _ = homeCoo.start()
-        homeCoo.onChangeDetailsTapped?(user)
+        
+        viewModel.onShouldShowEditVC = { user in
+            let editVC = EditViewController()
+            editVC.viewModel = EditViewModel(authenticationService: ServiceFactory.authenticationService)
+            editVC.editView.setupUserDetails(with: user)
+            self.navigationController?.pushViewController(editVC, animated: true)
+        }
     }
 }

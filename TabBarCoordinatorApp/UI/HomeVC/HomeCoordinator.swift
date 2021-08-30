@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 final class HomeCoordinator: Coordinator {
     let navigationController = UINavigationController()
@@ -14,38 +15,33 @@ final class HomeCoordinator: Coordinator {
     var onSaveTapped: ((User) -> Void)?
     
     func start() -> UIViewController {
-        navigationController.showAsRoot()
-        return createHomeVC()
+        let vc = createHomeVC()
+        
+        navigationController.pushViewController(vc, animated: true)
+        return navigationController
     }
     
     private func createHomeVC() -> UIViewController {
         let vc = HomeViewController()
         vc.viewModel = HomeViewModel()
         
-        onChangeDetailsTapped = { [weak self] user in
-            _ = self?.createChangeDetailsVC(user: user)
+        if let userEmail = Auth.auth().currentUser?.email {
+            if let data = UserDefaults.standard.data(forKey: "user_\(userEmail)") {
+                do {
+                    let decoder = JSONDecoder()
+                    let decodedUser = try decoder.decode(User.self, from: data)
+                    let user = User(name: decodedUser.name, email: decodedUser.email, password: decodedUser.password, phone: Int(""), address: "", country: "")
+                    vc.homeView.setupUserDetails(user: user)
+                } catch {
+                    print("Unable to Decode Note (\(error))")
+                }
+            }
         }
         
-        let tabbarController = MainCoordintor.tabBarController!
-        navigationController.pushViewController(tabbarController, animated: true)
-        
-        return vc
-    }
-    
-    private func createChangeDetailsVC(user: User) -> UIViewController {
-        let vc = EditViewController()
-        vc.viewModel = EditViewModel(authenticationService: ServiceFactory.authenticationService)
-        vc.changeView.setupUserDetails(with: user)
-        
-        onSaveTapped = { [weak self] user in
-            vc.viewModel.saveChangedUserDetails(with: user)
-            
-            let homeVC = HomeViewController()
-            homeVC.viewModel = HomeViewModel()
-            homeVC.homeView.setupUserDetails(name: user.name, email: user.email, pass: user.password)
+        vc.viewModel.onChangeDetailsTapped = { [weak self] user in
+            vc.viewModel.onShouldShowEditVC?(user)
         }
         
-        navigationController.pushViewController(vc, animated: true)
         return vc
     }
 }

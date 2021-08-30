@@ -8,19 +8,20 @@
 import Foundation
 import UIKit
 
-class MainCoordintor: Coordinator {
-    let user: User
+class MainCoordinator: Coordinator {
+    var onLogout: (() -> Void)?
+    let user: User? // TODO change user to non optional
     let navigationController = UINavigationController()
     
-    init(user: User) {
+    init(user: User?) {
         self.user = user
     }
     
     func start() -> UIViewController {
-        return startTabBar(user: user)
+        return startTabBar()
     }
     
-    static var tabBarController: UITabBarController!
+    var tabBarController = UITabBarController()
     enum TBCoordinator: Int {
         case home
         case about
@@ -32,14 +33,38 @@ class MainCoordintor: Coordinator {
     ]
     
     private func createTabBar() {
-        MainCoordintor.tabBarController = UITabBarController()
-        MainCoordintor.tabBarController.viewControllers = childCoordinators.map { coordinator in
+        tabBarController = UITabBarController()
+        tabBarController.viewControllers = childCoordinators.map { coordinator in
+            if let about = coordinator as? AboutCoordinator {
+                about.onLogout = { [weak self] in
+                    self?.onLogout?()
+                }
+            }
             let vc = coordinator.start()
             vc.tabBarItem = coordinator.TBCoordinator.tabBarItem
             return vc
         }
     }
     
+
+    private func startTabBar() -> UITabBarController {
+        createTabBar()
+        tabBarController.showAsRoot()
+//        setupTabBarViewsWithDetails(user: user)
+        return tabBarController
+    }
+    
+    private func setupTabBarViewsWithDetails(user: User) {
+//        let navigationControllers = tabBarController.viewControllers
+//
+//        let homeVC = tabBarController.viewControllers?[0].children[0].contentViewController as! HomeViewController
+//        homeVC.viewModel = HomeViewModel()
+//        homeVC.homeView.setupUserDetails(user: user)
+//
+//        let aboutVC = tabBarController.viewControllers?[1].children[0].contentViewController as! AboutViewController
+//        aboutVC.viewModel = AboutViewModel()
+//        aboutVC.aboutView.setupUserDetails(with: user)
+
     private func startTabBar(user: User) -> UINavigationController {
         createTabBar()
         navigationController.viewControllers = [MainCoordintor.tabBarController]
@@ -61,7 +86,7 @@ class MainCoordintor: Coordinator {
 }
 
 extension Coordinator {
-    var TBCoordinator: MainCoordintor.TBCoordinator {
+    var TBCoordinator: MainCoordinator.TBCoordinator {
         switch self {
         case is HomeCoordinator:
             return .home
@@ -73,7 +98,7 @@ extension Coordinator {
     }
 }
 
-extension MainCoordintor.TBCoordinator {
+extension MainCoordinator.TBCoordinator {
     var tabBarItem: UITabBarItem {
         let tabBarItem: UITabBarItem
         switch  self {

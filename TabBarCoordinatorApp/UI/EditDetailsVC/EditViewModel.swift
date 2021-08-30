@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 class EditViewModel {
     let authenticationService: AuthenticationServiceProtocol
@@ -16,6 +17,7 @@ class EditViewModel {
     
     var onResetPasswordSuccess: ((String) -> Void)?
     var onResetPasswordFailure: (() -> Void)?
+    var onShouldShowHome: ((User) -> Void)?
     
     func resetPassword(_ email: String) {
         authenticationService.resetPassword(email: email, completion: { (result) in
@@ -28,9 +30,11 @@ class EditViewModel {
         })
     }
     
-    func saveChangedUserDetails(with user: User) {
-        UserDefaults.standard.set(user.phone, forKey: "userPhone")
-        UserDefaults.standard.set(user.address, forKey: "userAddress")
-        UserDefaults.standard.set(user.country, forKey: "userCountry")
+    func saveChangedUserDetails(phone: Int, address: String, country: String) {
+        guard let email = Auth.auth().currentUser?.email else { return }
+        UserDefaults.standard.set(phone, forKey: "userPhone_\(email)")
+        UserDefaults.standard.set(address, forKey: "userAddress_\(email)")
+        UserDefaults.standard.set(country, forKey: "userCountry_\(email)")
+        UserDefaults.standard.synchronize()
     }
 }

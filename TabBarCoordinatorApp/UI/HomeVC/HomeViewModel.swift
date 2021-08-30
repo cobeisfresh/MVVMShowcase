@@ -7,9 +7,12 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class HomeViewModel {
-    //var onChangeDetailsTapped: (() -> Void)?
+    var onChangeDetailsTapped: ((User) -> Void)?
+    var onShouldShowEditVC: ((User)->Void)?
+
 }
 
 

@@ -161,14 +161,14 @@ class HomeView: UIView {
         ])
     }
     
-    func setupUserDetails(name: String, email: String, pass: String) {
-        nameLabel.text = name
-        emailLabel.text = email
-        passLabel.text = pass
+    func setupUserDetails(user: User) {
+        nameLabel.text = user.name
+        emailLabel.text = user.email
+        passLabel.text = user.password
     }
     
     @objc func changeButtonTapped() {
-        print("change tapped")
+        print("change tapped: HomeView")
         let user = User(name: nameLabel.text ?? "", email: emailLabel.text ?? "", password: passLabel.text ?? "", phone: nil, address: nil, country: nil)
         onChangeTapped?(user)
     }

@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.hidesWhenStopped = true
+        indicator.color = .white
         self.view.addSubview(indicator)
         indicator.center = view.center
         return indicator
@@ -50,14 +51,6 @@ class LoginViewController: UIViewController {
         }
         
         loginView.onLoginTapped = { [weak self] user in
-//            let match = self?.viewModel.getDataAndCheckLogin(user.name, "\(user.email)", user.password)
-//            guard let unwrappedMatch = match else { return }
-//            if unwrappedMatch {
-//                print("Name and pass match.")
-//            }
-//            else {
-//                self?.loginView.clearTextFields()
-//            }
             self?.viewModel.login(user.name, user.email, user.password)
         }
         

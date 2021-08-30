@@ -9,8 +9,11 @@ import Foundation
 import UIKit
 
 class AboutViewModel {
-    var onLogoutTapped: (()->Void)?
+    var onLogoutButtonTapped: (() -> Void)?
     
+    var onStartActivity: (()->Void)?
+    var onEndActivity: (()->Void)?
+
     let testService: TestServiceProtocol
     
     init(testService: TestServiceProtocol) {

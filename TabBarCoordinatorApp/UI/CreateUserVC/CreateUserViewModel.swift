@@ -21,13 +21,14 @@ final class CreateUserViewModel {
     }
     
     func register(_ user: User) {
-        UserDefaults.standard.set(user.name, forKey: "userName")
+        UserDefaults.standard.set(user.name, forKey: "userName_\(user.email)")
         onStartedActivity?()
         authenticationService.register(email: user.email, password: user.password) { [weak self] (result) in
             switch result {
             case .success(let token):
                 self?.onEndedActivity?()
                 UserDefaults.standard.setValue(token, forKey: "userToken")
+                self?.saveUserToDefaults(user)
                 self?.goToLogin()
             case .failure(let error):
                 print(error)
@@ -37,11 +38,15 @@ final class CreateUserViewModel {
         }
     }
     
-    //    func saveUser(_ user: User) {
-    //        UserDefaults.standard.set(user.name, forKey: "userName")
-    //        UserDefaults.standard.set(user.email, forKey: "userEmail")
-    //        UserDefaults.standard.set(user.password, forKey: "userPass")
-    //    }
+    private func saveUserToDefaults(_ user: User) {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(user)
+            UserDefaults.standard.set(data, forKey: "user_\(user.email.lowercased())")
+        } catch {
+            print("Unable to Encode Note (\(error))")
+        }
+    }
 }
 
 // MARK: - Navigation

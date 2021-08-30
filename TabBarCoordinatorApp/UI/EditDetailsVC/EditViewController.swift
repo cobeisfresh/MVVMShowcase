@@ -6,38 +6,38 @@
 //
 
 import UIKit
+import Firebase
 
 class EditViewController: UIViewController {
-    lazy var changeView = EditView()
+    lazy var editView = EditView()
     var viewModel = EditViewModel(authenticationService: ServiceFactory.authenticationService)
     
     override func loadView() {
-        view = changeView
+        view = editView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addCallbacks()
+        refreshView()
     }
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
     }
     
     
    //MARK: - Outlets
     private func addCallbacks() {
-        changeView.onSaveDetailsTapped = { [weak self] user in
-            self?.reCallHomeCoordinator(user: user)
+        editView.onSaveDetailsTapped = { [weak self] user in
+            self?.viewModel.saveChangedUserDetails(phone: user.phone ?? 000 , address: user.address ?? "", country: user.country ?? "")
+            self?.navigationController?.popViewController(animated: true)
         }
         
-        changeView.onResetPasswordTapped = { [weak self] user in
+        editView.onResetPasswordTapped = { [weak self] user in
             self?.viewModel.resetPassword(user.email)
-        }
-        
-        changeView.onSaveDetailsTapped = { [weak self] user in
-            self?.reCallHomeCoordinator(user: user)
         }
         
         viewModel.onResetPasswordSuccess = { [weak self] email in
@@ -49,9 +49,15 @@ class EditViewController: UIViewController {
         }
     }
     
-    private func reCallHomeCoordinator(user: User) {
-        let homeCoo = HomeCoordinator()
-        _ = homeCoo.start()
-        viewModel.saveChangedUserDetails(with: user)
+    private func refreshView() {
+        guard let userEmail = Auth.auth().currentUser?.email else { return }
+        let userName = UserDefaults.standard.string(forKey: "userName_\(userEmail)") ?? ""
+        let userPassword = UserDefaults.standard.string(forKey: "userPassword_\(userEmail)") ?? ""
+        let phone = UserDefaults.standard.string(forKey: "userPhone_\(userEmail )") ?? "000"
+        let address = UserDefaults.standard.string(forKey: "userAddress_\(userEmail )")
+        let country = UserDefaults.standard.string(forKey: "userCountry_\(userEmail )")
+        
+        let user = User(name: userName, email: userEmail, password: userPassword, phone: Int(phone), address: address, country: country)
+        editView.setupUserDetails(with: user)
     }
 }

@@ -220,9 +220,10 @@ class EditView: UIView {
         emailLabel.text = user.email
         passwordLabel.text = user.password
         
-        phoneTextField.text = UserDefaults.standard.string(forKey: "userPhone")
-        addressTextField.text = UserDefaults.standard.string(forKey: "userAddress")
-        countryTextField.text = UserDefaults.standard.string(forKey: "userCountry")
+        guard let ph = user.phone else { return }
+        phoneTextField.text = "\(ph)"
+        addressTextField.text = user.address
+        countryTextField.text = user.country
     }
     
     @objc func resetButtonTapped() {

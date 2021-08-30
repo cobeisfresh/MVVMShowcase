@@ -60,6 +60,7 @@ class LoginView: UIView {
         nameTextField.tintColor = .black
         nameTextField.placeholder = "Enter email"
         nameTextField.textColor = .white
+        nameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         enterDetailsView.addSubview(nameTextField)
         
         passTextField.backgroundColor = UIColor.white.withAlphaComponent(0.2)
@@ -132,10 +133,7 @@ class LoginView: UIView {
     
     @objc func loginButtonTapped() {
         if let name = nameTextField.text, let pass = passTextField.text, let email = nameTextField.text {
-            let phone = UserDefaults.standard.string(forKey: "userPhone") ?? "000"
-            let address = UserDefaults.standard.string(forKey: "userAddress")
-            let country = UserDefaults.standard.string(forKey: "userCountry")
-            let user = User(name: name, email: email, password: pass, phone: Int(phone), address: address, country: country)
+            let user = User(name: name, email: email, password: pass, phone: Int(""), address: "", country: "")
             onLoginTapped?(user)
         }
     }
