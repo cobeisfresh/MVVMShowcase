@@ -36,25 +36,17 @@ final class CreateUserViewModel {
                 self?.onError?()
             }
         }
-        
     }
     
     private func saveUserToDefaults(_ user: User) {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(user)
-            UserDefaults.standard.set(data, forKey: "user_\(user.email)")
+            UserDefaults.standard.set(data, forKey: "user_\(user.email.lowercased())")
         } catch {
             print("Unable to Encode Note (\(error))")
         }
     }
-    
-    
-    //    func saveUser(_ user: User) {
-    //        UserDefaults.standard.set(user.name, forKey: "userName")
-    //        UserDefaults.standard.set(user.email, forKey: "userEmail")
-    //        UserDefaults.standard.set(user.password, forKey: "userPass")
-    //    }
 }
 
 // MARK: - Navigation

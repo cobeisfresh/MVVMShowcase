@@ -60,6 +60,7 @@ class LoginView: UIView {
         nameTextField.tintColor = .black
         nameTextField.placeholder = "Enter email"
         nameTextField.textColor = .white
+        nameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         enterDetailsView.addSubview(nameTextField)
         
         passTextField.backgroundColor = UIColor.white.withAlphaComponent(0.2)

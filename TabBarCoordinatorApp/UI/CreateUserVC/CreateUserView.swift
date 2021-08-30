@@ -66,6 +66,7 @@ class CreateUserView: UIView {
         emailTextField.tintColor = .black
         emailTextField.placeholder = "Enter email"
         emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        emailTextField.autocapitalizationType = UITextAutocapitalizationType.none
         enterDetailsView.addSubview(emailTextField)
         
         passwordTextField.backgroundColor = UIColor.white.withAlphaComponent(0.2)
@@ -74,6 +75,7 @@ class CreateUserView: UIView {
         passwordTextField.tintColor = .black
         passwordTextField.placeholder = "Enter password"
         passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         enterDetailsView.addSubview(passwordTextField)
         
         createButton.backgroundColor = .white
