@@ -40,11 +40,13 @@ class MainCoordintor: Coordinator {
         }
     }
     
-    private func startTabBar(user: User) -> UITabBarController {
+    private func startTabBar(user: User) -> UINavigationController {
         createTabBar()
-        MainCoordintor.tabBarController.showAsRoot()
+        navigationController.viewControllers = [MainCoordintor.tabBarController]
+        //MainCoordintor.tabBarController.showAsRoot()
+        navigationController.showAsRoot()
         setupTabBarViewsWithDetails(user: user)
-        return MainCoordintor.tabBarController
+        return navigationController
     }
     
     private func setupTabBarViewsWithDetails(user: User) {

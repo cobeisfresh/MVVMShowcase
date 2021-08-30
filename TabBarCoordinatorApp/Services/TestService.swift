@@ -8,8 +8,8 @@
 import Foundation
 
 protocol TestServiceProtocol {
-    func getTest(completion: @escaping (RequestResult<EmptyDecodable>) -> Void)
-    func postTest(completion: @escaping (RequestResult<TestModel>) -> Void)
+    func getTest(completion: @escaping (Result<EmptyDecodable, ValidationResult>) -> Void)
+    func postTest(completion: @escaping (Result<TestModel, ValidationResult>) -> Void)
 }
 
 final class TestService: TestServiceProtocol {
@@ -19,7 +19,7 @@ final class TestService: TestServiceProtocol {
         self.dataService = dataService
     }
     
-    func getTest(completion: @escaping (RequestResult<EmptyDecodable>) -> Void) {
+    func getTest(completion: @escaping (Result<EmptyDecodable, ValidationResult>) -> Void) {
         let resource = Resource(path: "posts/1",
                                 method: .get,
                                 type: .json,
@@ -29,7 +29,7 @@ final class TestService: TestServiceProtocol {
         dataService.fetch(resource: resource, completion: completion)
     }
     
-    func postTest(completion: @escaping (RequestResult<TestModel>) -> Void) {
+    func postTest(completion: @escaping (Result<TestModel, ValidationResult>) -> Void) {
         let resource = Resource(path: "posts",
                                 method: .post,
                                 type: .json,

@@ -38,14 +38,9 @@ public struct Resource {
 
 public struct EmptyDecodable: Decodable {}
 
-// MARK: - RequestResult, Validation result (response codes)
+// MARK: - Validation result (response codes)
 
-public enum RequestResult<Value> where Value: Decodable {
-    case success(Value)
-    case failure(ValidationResult)
-}
-
-public enum ValidationResult {
+public enum ValidationResult: Error {
     
     case notFound
     case badRequest
@@ -76,31 +71,33 @@ public enum ValidationResult {
 // MARK: - Data service
 
 protocol DataServiceProtocol {
-    func fetch<Value>(resource: Resource, completion: @escaping (RequestResult<Value>) -> ())
+    func fetch<Value>(resource: Resource, completion: @escaping (Result<Value, ValidationResult>) -> ()) where Value: Decodable
 }
 
 final class DataService: DataServiceProtocol {
     private var urlSession: URLSession
     private let sessionConfig: URLSessionConfiguration
     private let networkConfig: NetworkConfiguration
+    private let networkMonitor: NetworkMonitor
     
-    init(networkConfiguration: NetworkConfiguration, enableIncognito: Bool = false) {
+    init(networkConfiguration: NetworkConfiguration, networkMonitor: NetworkMonitor, enableIncognito: Bool = false) {
         self.sessionConfig = enableIncognito ? URLSessionConfiguration.ephemeral : URLSessionConfiguration.default
         self.urlSession = URLSession(configuration: self.sessionConfig)
         self.networkConfig = networkConfiguration
+        self.networkMonitor = networkMonitor
     }
     
-    func fetch<Value>(resource: Resource, completion: @escaping (RequestResult<Value>) -> ()) {
+    func fetch<Value>(resource: Resource, completion: @escaping (Result<Value, ValidationResult>) -> ()) where Value: Decodable {
         
         guard let urlRequest = configureRequest(resource) else {
             completion(.failure(.clientError))
             return
         }
         
-        urlSession.dataTask(with: urlRequest) { data, response, error in
+        urlSession.dataTask(with: urlRequest) { [weak self] data, response, error in
             if error != nil || data == nil {
                 // NOTE: - NSURLErrorCannotConnectToHost is not a valid connection test
-                if let error = error as? NSError, (error.code == NSURLErrorNotConnectedToInternet || error.code == NSURLErrorNetworkConnectionLost || error.code == NSURLErrorCannotConnectToHost) {
+                if let error = error as? NSError, (error.code == NSURLErrorNotConnectedToInternet || error.code == NSURLErrorNetworkConnectionLost || self?.networkMonitor.isConnected == false) {
                     completion(.failure(.noInternet))
                     return
                 }
@@ -125,7 +122,7 @@ final class DataService: DataServiceProtocol {
             
             do {
                 let json = try JSONDecoder().decode(Value.self, from: data!)
-                print(json)
+                print("#Successfully fetched data: (\(json))")
                 completion(.success(json))
             } catch {
                 print("JSON error: \(error.localizedDescription)")

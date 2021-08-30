@@ -21,10 +21,14 @@ final class ServiceFactory {
     }()
     
     static var dataService: DataServiceProtocol = {
-        return DataService(networkConfiguration: networkConfiguration, enableIncognito: false)
+        return DataService(networkConfiguration: networkConfiguration, networkMonitor: networkMonitor, enableIncognito: false)
     }()
     
     static var testService: TestServiceProtocol = {
         return TestService(dataService: dataService)
+    }()
+    
+    static var networkMonitor: NetworkMonitor = {
+        return NetworkMonitor()
     }()
 }
