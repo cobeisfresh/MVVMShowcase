@@ -46,7 +46,7 @@ class AddNoteView: UIView {
         titleTextField.textColor = .white
         titleTextField.layer.cornerRadius = 10
         titleTextField.tintColor = .black
-        titleTextField.placeholder = "Enter name"
+        titleTextField.placeholder = "Enter title"
         titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
         addSubview(titleTextField)
         
