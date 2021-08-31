@@ -45,7 +45,7 @@ class NotesTableViewCell: UITableViewCell {
         noteView.addSubview(authorLabel)
         
         timeStamp.textAlignment = .right
-        timeStamp.font = UIFont.systemFont(ofSize: 12)
+        timeStamp.font = UIFont.systemFont(ofSize: 10)
         noteView.addSubview(timeStamp)
         
     }
@@ -59,16 +59,16 @@ class NotesTableViewCell: UITableViewCell {
             
             titleLabel.heightAnchor.constraint(equalToConstant: 30),
             titleLabel.widthAnchor.constraint(equalToConstant: 150),
-            titleLabel.topAnchor.constraint(equalTo: noteView.topAnchor, constant: 5),
+            titleLabel.topAnchor.constraint(equalTo: noteView.topAnchor, constant: 15),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             
             timeStamp.heightAnchor.constraint(equalToConstant: 30),
-            timeStamp.widthAnchor.constraint(equalToConstant: 100),
-            timeStamp.topAnchor.constraint(equalTo: noteView.topAnchor, constant: 1),
+            timeStamp.widthAnchor.constraint(equalToConstant: 150),
+            timeStamp.topAnchor.constraint(equalTo: noteView.topAnchor, constant: 0),
             timeStamp.trailingAnchor.constraint(equalTo: noteView.trailingAnchor, constant: -15),
             
             
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 150),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 125),
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             descriptionLabel.leadingAnchor.constraint(equalTo: noteView.leadingAnchor, constant: 15),
             descriptionLabel.trailingAnchor.constraint(equalTo: noteView.trailingAnchor, constant: -15),

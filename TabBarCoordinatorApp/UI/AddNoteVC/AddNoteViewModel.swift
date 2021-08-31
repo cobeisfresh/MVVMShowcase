@@ -50,6 +50,13 @@ class AddNoteViewModel {
         return notes
     }
     
+    func createDate() -> String {
+        let date = Date()
+        let formatedDate = date.getFormattedDate(format: "yyyy-MM-dd, HH:mm:ss")
+        
+        return formatedDate
+    }
+    
 }
 
 extension AddNoteViewModel {

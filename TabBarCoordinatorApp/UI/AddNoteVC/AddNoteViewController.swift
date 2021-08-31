@@ -36,7 +36,8 @@ class AddNoteViewController: UIViewController{
         addNoteView.onConfirmButtonTapped = { [weak self] title, description in
             if let canProceed = self?.viewModel.checkForEmptyFields(title: title, description: description) {
                 if canProceed {
-                    let newNote = Note(title: title, description: description, author: "author", timeStamp: "time")
+                    let date = self?.viewModel.createDate()
+                    let newNote = Note(title: title, description: description, author: "author", timeStamp: date ?? "Unknown date")
                     
                     var currentNotes = self?.viewModel.getNotes()
                     currentNotes?.append(newNote)
