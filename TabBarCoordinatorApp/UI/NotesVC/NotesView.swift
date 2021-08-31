@@ -63,7 +63,7 @@ extension NotesView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell", for: indexPath) as! NotesTableViewCell
         
-        cell.setupView(title: "Title", description: "Some text Some text Some text Some text Some text Some text Some text  Some text Some text Some textSome text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text", author: "Name Surname")
+        cell.setupView(title: "Title", description: "Some text Some text Some text Some text Some text Some text Some text  Some text Some text Some textSome text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text", author: "Name Surname", time: "2021-09-01")
         
         return cell
     }

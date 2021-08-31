@@ -13,6 +13,7 @@ class NotesTableViewCell: UITableViewCell {
     private lazy var titleLabel = UILabel()
     private lazy var descriptionLabel = UILabel()
     private lazy var authorLabel = UILabel()
+    private lazy var timeStamp = UILabel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,6 +44,10 @@ class NotesTableViewCell: UITableViewCell {
         authorLabel.textAlignment = .right
         noteView.addSubview(authorLabel)
         
+        timeStamp.textAlignment = .right
+        timeStamp.font = UIFont.systemFont(ofSize: 12)
+        noteView.addSubview(timeStamp)
+        
     }
     
     private func setupConstraints() {
@@ -57,6 +62,12 @@ class NotesTableViewCell: UITableViewCell {
             titleLabel.topAnchor.constraint(equalTo: noteView.topAnchor, constant: 5),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             
+            timeStamp.heightAnchor.constraint(equalToConstant: 30),
+            timeStamp.widthAnchor.constraint(equalToConstant: 100),
+            timeStamp.topAnchor.constraint(equalTo: noteView.topAnchor, constant: 1),
+            timeStamp.trailingAnchor.constraint(equalTo: noteView.trailingAnchor, constant: -15),
+            
+            
             descriptionLabel.heightAnchor.constraint(equalToConstant: 150),
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             descriptionLabel.leadingAnchor.constraint(equalTo: noteView.leadingAnchor, constant: 15),
@@ -69,10 +80,11 @@ class NotesTableViewCell: UITableViewCell {
         ])
     }
     
-    func setupView(title: String, description: String, author: String) {
+    func setupView(title: String, description: String, author: String, time: String) {
         titleLabel.text = title
         descriptionLabel.text = description
         authorLabel.text = author
+        timeStamp.text = time
     }
     
 }
