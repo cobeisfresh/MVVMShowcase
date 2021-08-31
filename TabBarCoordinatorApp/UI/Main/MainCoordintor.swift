@@ -24,12 +24,14 @@ class MainCoordinator: Coordinator {
     var tabBarController = UITabBarController()
     enum TBCoordinator: Int {
         case home
+        case notes
         case about
     }
     
     private var childCoordinators: [Coordinator] = [
         HomeCoordinator(),
-        AboutCoordinator()
+        NotesCoordinator(),
+        AboutCoordinator(),
     ]
     
     private func createTabBar() {
@@ -46,31 +48,16 @@ class MainCoordinator: Coordinator {
         }
     }
     
-
     private func startTabBar() -> UITabBarController {
         createTabBar()
         tabBarController.showAsRoot()
-//        setupTabBarViewsWithDetails(user: user)
         return tabBarController
     }
 
     private func startTabBar(user: User) -> UINavigationController {
         createTabBar()
         navigationController.viewControllers = [tabBarController]
-        //MainCoordintor.tabBarController.showAsRoot()
-        navigationController.showAsRoot()
-        setupTabBarViewsWithDetails(user: user)
         return navigationController
-    }
-    
-    private func setupTabBarViewsWithDetails(user: User) {
-        let homeVC = tabBarController.viewControllers![0] as! HomeViewController
-        homeVC.viewModel = HomeViewModel()
-        homeVC.homeView.setupUserDetails(user: user)
-        
-        let aboutVC = tabBarController.viewControllers![1] as! AboutViewController
-        aboutVC.viewModel = AboutViewModel(testService: ServiceFactory.testService)
-        aboutVC.aboutView.setupUserDetails(with: user)
     }
 }
 
@@ -79,6 +66,8 @@ extension Coordinator {
         switch self {
         case is HomeCoordinator:
             return .home
+        case is NotesCoordinator:
+            return .notes
         case is AboutCoordinator:
             return .about
         default:
@@ -93,7 +82,8 @@ extension MainCoordinator.TBCoordinator {
         switch  self {
         case .home:
             tabBarItem = createItem(title: "HOME", selectedImageName: "", unselectedImageName: "")
-            
+        case .notes:
+            tabBarItem = createItem(title: "NOTES", selectedImageName: "", unselectedImageName: "")
         case .about:
             tabBarItem = createItem(title: "ABOUT", selectedImageName: "", unselectedImageName: "")
         }

@@ -33,7 +33,10 @@ final class RootCoordinator: Coordinator {
             _ = self?.createTabbarVC(user: user)
         }
         childCoordinator = authCoordinator
-        return authCoordinator.start()
+        let rootVC = authCoordinator.start()
+        rootVC.showAsRoot()
+        
+        return rootVC
     }
     
     private func createTabbarVC(user: User? ) -> UITabBarController {
@@ -42,7 +45,8 @@ final class RootCoordinator: Coordinator {
             _ = self?.createAuthVC()
         }
         childCoordinator = mainCoordinator
-        _ = mainCoordinator.start()
+        let rootVC = mainCoordinator.start()
+        rootVC.showAsRoot()
         
         return UITabBarController()
     }

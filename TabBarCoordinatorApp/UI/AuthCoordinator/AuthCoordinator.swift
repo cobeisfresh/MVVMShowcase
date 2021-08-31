@@ -15,7 +15,6 @@ class AuthCoordinator: Coordinator {
     
     func start() -> UIViewController {
         let vc = createLoginVC()
-        navigationController.showAsRoot()
         navigationController.pushViewController(vc, animated: true)
         
         return navigationController
