@@ -11,6 +11,7 @@ class NotesViewController: UIViewController {
     
     private lazy var notesView = NotesView()
     var viewModel: NotesViewModel!
+
     
     override func loadView() {
         view = notesView
@@ -20,8 +21,13 @@ class NotesViewController: UIViewController {
         super.viewDidLoad()
 
         createNavigationRightButton()
+        addCallbacks()
+    }
+    
+    private func addCallbacks() {
         
     }
+
     
     private func createNavigationRightButton() {
         let rightButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addNote))
@@ -30,6 +36,8 @@ class NotesViewController: UIViewController {
     
     @objc func addNote() {
         print("add")
+        viewModel.onNoteAdd?()
     }
-
+    
+    
 }

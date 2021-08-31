@@ -20,9 +20,14 @@ class NotesCoordinator: Coordinator {
     
     
     private func createNotesVC() -> UIViewController {
-    
         let vc = NotesViewController()
         vc.viewModel = NotesViewModel()
+        
+        vc.viewModel.onNoteAdd = { [weak self] in
+            let addNoteVC = AddNoteViewController(navControlller: self!.navigationController)
+            addNoteVC.viewModel = AddNoteViewModel()
+            self?.navigationController.present(addNoteVC, animated: true, completion: nil)
+        }
         
         return vc
     }
