@@ -24,12 +24,14 @@ class MainCoordinator: Coordinator {
     var tabBarController = UITabBarController()
     enum TBCoordinator: Int {
         case home
+        case notes
         case about
     }
     
     private var childCoordinators: [Coordinator] = [
         HomeCoordinator(),
-        AboutCoordinator()
+        NotesCoordinator(),
+        AboutCoordinator(),
     ]
     
     private func createTabBar() {
@@ -64,6 +66,8 @@ extension Coordinator {
         switch self {
         case is HomeCoordinator:
             return .home
+        case is NotesCoordinator:
+            return .notes
         case is AboutCoordinator:
             return .about
         default:
@@ -78,7 +82,8 @@ extension MainCoordinator.TBCoordinator {
         switch  self {
         case .home:
             tabBarItem = createItem(title: "HOME", selectedImageName: "", unselectedImageName: "")
-            
+        case .notes:
+            tabBarItem = createItem(title: "NOTES", selectedImageName: "", unselectedImageName: "")
         case .about:
             tabBarItem = createItem(title: "ABOUT", selectedImageName: "", unselectedImageName: "")
         }
