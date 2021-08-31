@@ -63,7 +63,7 @@ class AddNoteView: UIView {
         confirmButton.layer.masksToBounds = true
         confirmButton.layer.cornerRadius = 25
         confirmButton.clipsToBounds = true
-        confirmButton.setTitle("Create user", for: .normal)
+        confirmButton.setTitle("Create note", for: .normal)
         confirmButton.setTitleColor(UIColor.black, for: .normal)
         confirmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
         addSubview(confirmButton)
