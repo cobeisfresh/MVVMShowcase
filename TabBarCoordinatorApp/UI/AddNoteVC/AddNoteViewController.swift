@@ -28,19 +28,27 @@ class AddNoteViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         addCallbacks()
     }
     
     private func addCallbacks() {
         addNoteView.onConfirmButtonTapped = { [weak self] title, description in
-            print("title: \(title)")
-            print("desc: \(description)")
-            
-            self?.navController.dismiss(animated: true, completion:{
-                self?.viewModel.onNoteSave?()
-            })
-            
+            if let canProceed = self?.viewModel.checkForEmptyFields(title: title, description: description) {
+                if canProceed {
+                    let newNote = Note(title: title, description: description, author: "author", timeStamp: "time")
+                    
+                    var currentNotes = self?.viewModel.getNotes()
+                    currentNotes?.append(newNote)
+                    self?.viewModel.saveNotes(notes: currentNotes ?? [])
+        
+                    self?.navController.popViewController(animated: true)
+                }
+                else {
+                    self?.showMessage(title: "Error", messagae: "Fields can not be empty.")
+                }
+            }
         }
     }
-
+    
 }

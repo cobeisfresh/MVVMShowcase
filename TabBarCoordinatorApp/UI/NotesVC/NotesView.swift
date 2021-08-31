@@ -14,8 +14,7 @@ class NotesView: UIView {
     private lazy var titleLabel = UILabel()
     private lazy var notesTableview = UITableView()
     
-    var notes = [Note]()
-    
+    var notes: [Note]?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,17 +68,21 @@ class NotesView: UIView {
         ])
     }
     
+    func reloadTableView() {
+        notesTableview.reloadData()
+    }
+    
 }
 
 extension NotesView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes.count
+        return notes?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell", for: indexPath) as! NotesTableViewCell
         
-        cell.setupView(title: "Title", description: "Some text Some text Some text Some text Some text Some text Some text  Some text Some text Some textSome text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text", author: "Name Surname", time: "2021-09-01")
+        cell.setupView(title: (notes?[indexPath.row].title) ?? "unknown", description: notes?[indexPath.row].description ?? "unknown", author: notes?[indexPath.row].author ?? "unknown", time: notes?[indexPath.row].timeStamp ?? "unknown")
         
         return cell
     }

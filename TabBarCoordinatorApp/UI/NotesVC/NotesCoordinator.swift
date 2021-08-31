@@ -26,7 +26,7 @@ class NotesCoordinator: Coordinator {
         vc.viewModel.onNoteAdd = { [weak self] in
             let addNoteVC = AddNoteViewController(navControlller: self!.navigationController)
             addNoteVC.viewModel = AddNoteViewModel()
-            self?.navigationController.present(addNoteVC, animated: true, completion: nil)
+            self?.navigationController.pushViewController(addNoteVC, animated: true)
         }
         
         return vc
