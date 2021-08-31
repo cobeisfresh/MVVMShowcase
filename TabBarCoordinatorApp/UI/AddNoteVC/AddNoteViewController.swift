@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddNoteViewController: UIViewController{
     
@@ -36,8 +37,9 @@ class AddNoteViewController: UIViewController{
         addNoteView.onConfirmButtonTapped = { [weak self] title, description in
             if let canProceed = self?.viewModel.checkForEmptyFields(title: title, description: description) {
                 if canProceed {
-                    let date = self?.viewModel.createDate()
-                    let newNote = Note(title: title, description: description, author: "author", timeStamp: date ?? "Unknown date")
+                    let date = self?.viewModel.createDate() ?? "Unknown date"
+                    let author = Auth.auth().currentUser?.email ?? "Unknown author"
+                    let newNote = Note(title: title, description: description, author: author, timeStamp: date)
                     
                     var currentNotes = self?.viewModel.getNotes()
                     currentNotes?.append(newNote)
