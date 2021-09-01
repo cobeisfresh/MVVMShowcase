@@ -35,8 +35,8 @@ class AddNoteViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.onSaveNoteSuccess = {
-            self.navigationController?.popViewController(animated: true)
+        viewModel.onSaveNoteSuccess = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
         }
     }
     
