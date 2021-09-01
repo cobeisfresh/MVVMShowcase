@@ -68,11 +68,12 @@ class AddNoteViewModel {
                 currentNotes.insert(newNote, at: indexNote)
                 saveNotes(notes: currentNotes)
             }
+            onSaveNoteSuccess?()
         }
         else {
             onSaveNoteFailure?()
         }
-        onSaveNoteSuccess?()
+
     }
     
     func createDate() -> String {
@@ -84,8 +85,8 @@ class AddNoteViewModel {
     
 }
 
-extension AddNoteViewModel {
-    func save() {
-        onSaveNoteSuccess?()
-    }
-}
+//extension AddNoteViewModel {
+//    func save() {
+//        
+//    }
+//}

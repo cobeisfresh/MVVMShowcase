@@ -33,6 +33,13 @@ class AddNoteViewController: UIViewController{
         addCallbacks()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.onSaveNoteSuccess = {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     private func addCallbacks() {
         addNoteView.onConfirmButtonTapped = { [weak self] title, description in
             guard let createNote = self?.addNoteView.checkForCreate() else  { return }
@@ -41,10 +48,6 @@ class AddNoteViewController: UIViewController{
         
         viewModel.onSaveNoteFailure = { [weak self] in
             self?.showMessage(title: "Error", messagae: "Fields can not be empty.")
-        }
-        
-        viewModel.onSaveNoteSuccess = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
         }
     }
 }
