@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
         return indicator
     }()
     
+    var registeredUser = String()
+    
     func startLoader() {
         activityIndicator.startAnimating()
     }
@@ -42,6 +44,7 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        loginView.setupView(email: registeredUser)
     }
     
     //MARK: - Actions

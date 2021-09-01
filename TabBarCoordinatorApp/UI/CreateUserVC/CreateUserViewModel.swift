@@ -9,7 +9,7 @@ import Foundation
 
 final class CreateUserViewModel {
     // MARK: - Properties
-    var onGoToLogin: EmptyCallback?
+    var onGoToLogin: ((String) -> Void)?
     var onStartedActivity: EmptyCallback?
     var onEndedActivity: EmptyCallback?
     var onError: EmptyCallback?
@@ -29,7 +29,7 @@ final class CreateUserViewModel {
                 self?.onEndedActivity?()
                 UserDefaults.standard.setValue(token, forKey: "userToken")
                 self?.saveUserToDefaults(user)
-                self?.goToLogin()
+                self?.goToLogin(email: user.email)
             case .failure(let error):
                 print(error)
                 self?.onEndedActivity?()
@@ -51,7 +51,7 @@ final class CreateUserViewModel {
 
 // MARK: - Navigation
 extension CreateUserViewModel {
-    func goToLogin() {
-        onGoToLogin?()
+    func goToLogin(email: String) {
+        onGoToLogin?(email)
     }
 }
