@@ -39,11 +39,11 @@ class AddNoteViewController: UIViewController{
             self?.viewModel.handleNoteCreateAndEdit(title: title, description: description, createNote: createNote, indexNote: self?.indexNote ?? 0)
         }
         
-        viewModel.onSaveFailure = { [weak self] in
+        viewModel.onSaveNoteFailure = { [weak self] in
             self?.showMessage(title: "Error", messagae: "Fields can not be empty.")
         }
         
-        viewModel.onNoteSave = { [weak self] in
+        viewModel.onSaveNoteSuccess = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
     }

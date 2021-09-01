@@ -10,8 +10,8 @@ import Firebase
 
 class AddNoteViewModel {
     var onConfirmTapped: (() -> Void)?
-    var onNoteSave: (() -> Void)?
-    var onSaveFailure: (() -> Void)?
+    var onSaveNoteSuccess: (() -> Void)?
+    var onSaveNoteFailure: (() -> Void)?
     
     func checkForEmptyFields(title: String, description: String) -> Bool {
         if title != "" && description != "" {
@@ -70,9 +70,9 @@ class AddNoteViewModel {
             }
         }
         else {
-            onSaveFailure?()
+            onSaveNoteFailure?()
         }
-        onNoteSave?()
+        onSaveNoteSuccess?()
     }
     
     func createDate() -> String {
@@ -86,6 +86,6 @@ class AddNoteViewModel {
 
 extension AddNoteViewModel {
     func save() {
-        onNoteSave?()
+        onSaveNoteSuccess?()
     }
 }
