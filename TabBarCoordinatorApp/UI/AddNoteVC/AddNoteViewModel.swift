@@ -10,7 +10,7 @@ import Firebase
 
 class AddNoteViewModel {
     var onConfirmTapped: (() -> Void)?
-    var onSaveNoteSuccess: (() -> Void)?
+    var onSaveNoteSuccess: (() -> Void)?//
     var onSaveNoteFailure: (() -> Void)?
     
     func checkForEmptyFields(title: String, description: String) -> Bool {

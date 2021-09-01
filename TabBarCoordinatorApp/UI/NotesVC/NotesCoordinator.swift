@@ -23,25 +23,25 @@ class NotesCoordinator: Coordinator {
         vc.viewModel = NotesViewModel()
         
         vc.viewModel.onNoteAdd = { [weak self] in
-            let addNoteVC = AddNoteViewController(navControlller: self!.navigationController)
+            let addNoteVC = AddNoteViewController()
             addNoteVC.viewModel = AddNoteViewModel()
+            addNoteVC.viewModel.onSaveNoteSuccess = { [weak self] in
+                self?.navigationController.popViewController(animated: true)
+            }
             self?.navigationController.pushViewController(addNoteVC, animated: true)
         }
         
         vc.viewModel.onEditNote = { [weak self] note, index in
-            let addNoteVC = AddNoteViewController(navControlller: self!.navigationController)
+            let addNoteVC = AddNoteViewController()
             addNoteVC.viewModel = AddNoteViewModel()
             addNoteVC.addNoteView.setupView(note: note)
             addNoteVC.indexNote = index
+            addNoteVC.viewModel.onSaveNoteSuccess = { [weak self] in
+                self?.navigationController.popViewController(animated: true)
+            }
             self?.navigationController.pushViewController(addNoteVC, animated: true)
         }
-        
-//        let addNoteVC = AddNoteViewController(navControlller: navigationController)
-//        addNoteVC.viewModel = AddNoteViewModel()
-//        addNoteVC.viewModel.onNoteSave = { [weak self] in
-//            self?.navigationController.popViewController(animated: true)
-//        }
-        
         return vc
     }
+    
 }

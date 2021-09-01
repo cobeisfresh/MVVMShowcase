@@ -9,15 +9,6 @@ import UIKit
 import Firebase
 
 class AddNoteViewController: UIViewController{
-    var navController = UINavigationController()
-    init(navControlller: UINavigationController) {
-        self.navController = navControlller
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     lazy var addNoteView = AddNoteView()
     var viewModel: AddNoteViewModel!
@@ -31,13 +22,6 @@ class AddNoteViewController: UIViewController{
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
         addCallbacks()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewModel.onSaveNoteSuccess = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
     }
     
     private func addCallbacks() {
