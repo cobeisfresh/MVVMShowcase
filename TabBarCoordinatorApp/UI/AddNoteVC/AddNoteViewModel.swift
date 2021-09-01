@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Firebase
 
 class AddNoteViewModel {
     var onConfirmTapped: (() -> Void)?
     var onNoteSave: (() -> Void)?
+    var onSaveFailure: (() -> Void)?
     
     func checkForEmptyFields(title: String, description: String) -> Bool {
         if title != "" && description != "" {
@@ -39,7 +41,7 @@ class AddNoteViewModel {
                 let decodedNotes = try decoder.decode([Note].self, from: data)
                 for note in decodedNotes {
                     let mynote = Note(title: note.title, description: note.description, author: note.author, timeStamp: note.timeStamp)
-                
+                    
                     notes.append(mynote)
                 }
             } catch {
@@ -47,6 +49,30 @@ class AddNoteViewModel {
             }
         }
         return notes
+    }
+    
+    func handleNoteCreateAndEdit(title: String, description: String, createNote: Bool, indexNote: Int) {
+        let date = createDate()
+        let author = Auth.auth().currentUser?.email ?? "Unknown author"
+        let newNote = Note(title: title, description: description, author: author, timeStamp: date)
+        let canProceed = checkForEmptyFields(title: title, description: description)
+        if canProceed {
+            if createNote {
+                var currentNotes = getNotes()
+                currentNotes.append(newNote)
+                saveNotes(notes: currentNotes)
+            }
+            else {
+                var currentNotes = getNotes()
+                currentNotes.remove(at: indexNote)
+                currentNotes.insert(newNote, at: indexNote)
+                saveNotes(notes: currentNotes)
+            }
+        }
+        else {
+            onSaveFailure?()
+        }
+        onNoteSave?()
     }
     
     func createDate() -> String {

@@ -36,30 +36,15 @@ class AddNoteViewController: UIViewController{
     private func addCallbacks() {
         addNoteView.onConfirmButtonTapped = { [weak self] title, description in
             guard let createNote = self?.addNoteView.checkForCreate() else  { return }
-            if let canProceed = self?.viewModel.checkForEmptyFields(title: title, description: description) {
-                if canProceed {
-                    let date = self?.viewModel.createDate() ?? "Unknown date"
-                    let author = Auth.auth().currentUser?.email ?? "Unknown author"
-                    let newNote = Note(title: title, description: description, author: author, timeStamp: date)
-                    
-                    if createNote {
-                        var currentNotes = self?.viewModel.getNotes()
-                        currentNotes?.append(newNote)
-                        self?.viewModel.saveNotes(notes: currentNotes ?? [])
-                    }
-                    else {
-                        var currentNotes = self?.viewModel.getNotes()
-                        currentNotes?.remove(at: self?.indexNote ?? 0)
-                        currentNotes?.insert(newNote, at: self?.indexNote ?? 0)
-                        self?.viewModel.saveNotes(notes: currentNotes ?? [])
-                    }
-//                    self?.viewModel.onNoteSave?()
-                    self?.navController.popViewController(animated: true)
-                }
-                else {
-                    self?.showMessage(title: "Error", messagae: "Fields can not be empty.")
-                }
-            }
+            self?.viewModel.handleNoteCreateAndEdit(title: title, description: description, createNote: createNote, indexNote: self?.indexNote ?? 0)
+        }
+        
+        viewModel.onSaveFailure = { [weak self] in
+            self?.showMessage(title: "Error", messagae: "Fields can not be empty.")
+        }
+        
+        viewModel.onNoteSave = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
         }
     }
 }
