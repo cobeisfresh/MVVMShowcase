@@ -13,3 +13,9 @@ struct Note: Codable {
     let author: String
     let timeStamp: String
 }
+
+extension Note {
+    func canEdit(email: String) -> Bool {
+        return author.lowercased() == email.lowercased()
+    }
+}

@@ -11,7 +11,6 @@ class AddNoteViewModel {
     var onConfirmTapped: (() -> Void)?
     var onNoteSave: (() -> Void)?
     
-    
     func checkForEmptyFields(title: String, description: String) -> Bool {
         if title != "" && description != "" {
             return true

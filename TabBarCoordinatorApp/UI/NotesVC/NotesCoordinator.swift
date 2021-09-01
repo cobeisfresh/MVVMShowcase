@@ -18,7 +18,6 @@ class NotesCoordinator: Coordinator {
         return navigationController
     }
     
-    
     private func createNotesVC() -> UIViewController {
         let vc = NotesViewController()
         vc.viewModel = NotesViewModel()
@@ -28,6 +27,20 @@ class NotesCoordinator: Coordinator {
             addNoteVC.viewModel = AddNoteViewModel()
             self?.navigationController.pushViewController(addNoteVC, animated: true)
         }
+        
+        vc.viewModel.onEditNote = { [weak self] note, index in
+            let addNoteVC = AddNoteViewController(navControlller: self!.navigationController)
+            addNoteVC.viewModel = AddNoteViewModel()
+            addNoteVC.addNoteView.setupView(note: note)
+            addNoteVC.indexNote = index
+            self?.navigationController.pushViewController(addNoteVC, animated: true)
+        }
+        
+//        let addNoteVC = AddNoteViewController(navControlller: navigationController)
+//        addNoteVC.viewModel = AddNoteViewModel()
+//        addNoteVC.viewModel.onNoteSave = { [weak self] in
+//            self?.navigationController.popViewController(animated: true)
+//        }
         
         return vc
     }

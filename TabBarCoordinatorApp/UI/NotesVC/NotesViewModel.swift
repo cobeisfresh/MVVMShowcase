@@ -10,7 +10,7 @@ import Foundation
 
 class NotesViewModel {
     var onNoteAdd: (() -> Void)?
-    
+    var onEditNote: ((Note, Int) -> Void)?
     
     func getNotes() -> [Note] {
         var notes = [Note]()

@@ -31,7 +31,9 @@ class NotesViewController: UIViewController {
     }
     
     private func addCallbacks() {
-        
+        notesView.onCheckUserForEdit = { [weak self] note, index in
+            self?.viewModel.onEditNote?(note, index)
+        }
     }
 
     private func createNavigationRightButton() {
@@ -48,7 +50,5 @@ class NotesViewController: UIViewController {
     @objc func addNote() {
         viewModel.onNoteAdd?()
     }
-    
-    
     
 }

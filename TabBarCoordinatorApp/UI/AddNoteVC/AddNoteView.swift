@@ -98,9 +98,18 @@ class AddNoteView: UIView {
         ])
     }
     
+    func setupView(note: Note) {
+        titleLabel.text = "Edit note"
+        titleTextField.text = note.title
+        descriptionTextView.text = note.description
+        confirmButton.setTitle("Save note changes", for: .normal)
+    }
+    
+    func checkForCreate() -> Bool {
+        return confirmButton.titleLabel?.text == "Create note"
+    }
     
     @objc func confirmButtonTapped() {
-        print("CONFIRM TAPPED")
         if let title = titleTextField.text, let description = descriptionTextView.text {
             onConfirmButtonTapped?(title, description)
         }

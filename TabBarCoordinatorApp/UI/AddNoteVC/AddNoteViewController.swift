@@ -9,7 +9,6 @@ import UIKit
 import Firebase
 
 class AddNoteViewController: UIViewController{
-    
     var navController = UINavigationController()
     init(navControlller: UINavigationController) {
         self.navController = navControlller
@@ -20,8 +19,9 @@ class AddNoteViewController: UIViewController{
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var addNoteView = AddNoteView()
+    lazy var addNoteView = AddNoteView()
     var viewModel: AddNoteViewModel!
+    var indexNote: Int!
     
     override func loadView() {
         view = addNoteView
@@ -35,16 +35,25 @@ class AddNoteViewController: UIViewController{
     
     private func addCallbacks() {
         addNoteView.onConfirmButtonTapped = { [weak self] title, description in
+            guard let createNote = self?.addNoteView.checkForCreate() else  { return }
             if let canProceed = self?.viewModel.checkForEmptyFields(title: title, description: description) {
                 if canProceed {
                     let date = self?.viewModel.createDate() ?? "Unknown date"
                     let author = Auth.auth().currentUser?.email ?? "Unknown author"
                     let newNote = Note(title: title, description: description, author: author, timeStamp: date)
                     
-                    var currentNotes = self?.viewModel.getNotes()
-                    currentNotes?.append(newNote)
-                    self?.viewModel.saveNotes(notes: currentNotes ?? [])
-        
+                    if createNote {
+                        var currentNotes = self?.viewModel.getNotes()
+                        currentNotes?.append(newNote)
+                        self?.viewModel.saveNotes(notes: currentNotes ?? [])
+                    }
+                    else {
+                        var currentNotes = self?.viewModel.getNotes()
+                        currentNotes?.remove(at: self?.indexNote ?? 0)
+                        currentNotes?.insert(newNote, at: self?.indexNote ?? 0)
+                        self?.viewModel.saveNotes(notes: currentNotes ?? [])
+                    }
+//                    self?.viewModel.onNoteSave?()
                     self?.navController.popViewController(animated: true)
                 }
                 else {
@@ -53,5 +62,4 @@ class AddNoteViewController: UIViewController{
             }
         }
     }
-    
 }
