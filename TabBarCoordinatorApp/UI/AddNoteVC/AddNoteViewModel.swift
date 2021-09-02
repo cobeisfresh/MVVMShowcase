@@ -13,9 +13,11 @@ class AddNoteViewModel {
     var onSaveNoteFailure: (() -> Void)?
     
     let authenticationService: AuthenticationServiceProtocol
+    let notePersistanceService: NoteRepositoryProtocol
     
-    init(authenticationService: AuthenticationServiceProtocol) {
+    init(authenticationService: AuthenticationServiceProtocol, notePersistanceService: NotePersistanceService) {
         self.authenticationService = authenticationService
+        self.notePersistanceService = notePersistanceService
     }
     
     private func getCurrentUser() -> String {
@@ -32,32 +34,11 @@ class AddNoteViewModel {
     }
     
     func saveNotes(notes: [Note]) {
-        do {
-            let encoder = JSONEncoder()
-            let data = try encoder.encode(notes)
-            UserDefaults.standard.set(data, forKey: "notes")
-            UserDefaults.standard.synchronize()
-        } catch {
-            print("Unable to Encode Note (\(error))")
-        }
+        notePersistanceService.saveNotes(notes)
     }
     
     func getNotes() -> [Note] {
-        var notes = [Note]()
-        if let data = UserDefaults.standard.data(forKey: "notes") {
-            do {
-                let decoder = JSONDecoder()
-                let decodedNotes = try decoder.decode([Note].self, from: data)
-                for note in decodedNotes {
-                    let mynote = Note(title: note.title, description: note.description, author: note.author, timeStamp: note.timeStamp)
-                    
-                    notes.append(mynote)
-                }
-            } catch {
-                print("Unable to Decode Note (\(error))")
-            }
-        }
-        return notes
+        return notePersistanceService.getNotes()
     }
     
     func handleNoteCreateAndEdit(title: String, description: String, createNote: Bool, indexNote: Int) {
@@ -87,7 +68,6 @@ class AddNoteViewModel {
     func createDate() -> String {
         let date = Date()
         let formatedDate = date.getFormattedDate(format: "yyyy-MM-dd, HH:mm:ss")
-        
         return formatedDate
     }
     

@@ -20,11 +20,11 @@ class NotesCoordinator: Coordinator {
     
     private func createNotesVC() -> UIViewController {
         let vc = NotesViewController()
-        vc.viewModel = NotesViewModel(authenticationService: ServiceFactory.authenticationService)
+        vc.viewModel = NotesViewModel(authenticationService: ServiceFactory.authenticationService, notePersistanceService: ServiceFactory.notePersistanceService)
         
         vc.viewModel.onNoteAdd = { [weak self] in
             let addNoteVC = AddNoteViewController()
-            addNoteVC.viewModel = AddNoteViewModel(authenticationService: ServiceFactory.authenticationService)
+            addNoteVC.viewModel = AddNoteViewModel(authenticationService: ServiceFactory.authenticationService, notePersistanceService: ServiceFactory.notePersistanceService)
             addNoteVC.viewModel.onSaveNoteSuccess = { [weak self] in
                 self?.navigationController.popViewController(animated: true)
             }
@@ -33,7 +33,7 @@ class NotesCoordinator: Coordinator {
         
         vc.viewModel.onEditNote = { [weak self] note, index in
             let addNoteVC = AddNoteViewController()
-            addNoteVC.viewModel = AddNoteViewModel(authenticationService: ServiceFactory.authenticationService)
+            addNoteVC.viewModel = AddNoteViewModel(authenticationService: ServiceFactory.authenticationService, notePersistanceService: ServiceFactory.notePersistanceService)
             addNoteVC.addNoteView.setupView(note: note)
             addNoteVC.indexNote = index
             addNoteVC.viewModel.onSaveNoteSuccess = { [weak self] in

@@ -29,6 +29,7 @@
 		C540CEC4259216E700D67A3B /* CreateUserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C540CEC3259216E700D67A3B /* CreateUserViewController.storyboard */; };
 		C540CECE25921E6F00D67A3B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540CECD25921E6F00D67A3B /* EditViewController.swift */; };
 		C540CED125921ED500D67A3B /* EditViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C540CED025921ED500D67A3B /* EditViewController.storyboard */; };
+		C5B1BE1D26E0E26600579339 /* NotePersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1BE1C26E0E26600579339 /* NotePersistanceService.swift */; };
 		C5B2501525934E280060F942 /* MainCoordintor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2501425934E280060F942 /* MainCoordintor.swift */; };
 		C5B25018259351C80060F942 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B25017259351C80060F942 /* HomeCoordinator.swift */; };
 		C5B25026259397E80060F942 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B25025259397E80060F942 /* HomeViewModel.swift */; };
@@ -87,6 +88,7 @@
 		C540CEC3259216E700D67A3B /* CreateUserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateUserViewController.storyboard; sourceTree = "<group>"; };
 		C540CECD25921E6F00D67A3B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		C540CED025921ED500D67A3B /* EditViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditViewController.storyboard; sourceTree = "<group>"; };
+		C5B1BE1C26E0E26600579339 /* NotePersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePersistanceService.swift; sourceTree = "<group>"; };
 		C5B2501425934E280060F942 /* MainCoordintor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordintor.swift; sourceTree = "<group>"; };
 		C5B25017259351C80060F942 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		C5B25025259397E80060F942 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				A0668B3F26D6DAB700832A6C /* ServiceFactory.swift */,
 				A0668B7626D8EEAE00832A6C /* TestService.swift */,
 				A0BB5B1A26DBE7EF00D023C5 /* NetworkMonitor.swift */,
+				C5B1BE1C26E0E26600579339 /* NotePersistanceService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				C540CECE25921E6F00D67A3B /* EditViewController.swift in Sources */,
 				C5B2502A25939DB90060F942 /* AboutViewModel.swift in Sources */,
 				C531231C26D3E0030051F61F /* HomeView.swift in Sources */,
+				C5B1BE1D26E0E26600579339 /* NotePersistanceService.swift in Sources */,
 				C531232826D4E3120051F61F /* AboutView.swift in Sources */,
 				C5B41D8B2594A68B001E6767 /* AboutCoordinator.swift in Sources */,
 				C531231526D3D0A20051F61F /* ConstraintsExtension.swift in Sources */,
