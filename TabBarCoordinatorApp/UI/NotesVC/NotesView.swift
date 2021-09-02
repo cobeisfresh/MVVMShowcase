@@ -91,9 +91,7 @@ extension NotesView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let userEmail = viewModel.getCurrentUser()
-        print("AA: \(userEmail)")
-        
+        let userEmail = viewModel.getCurrentUser()        
         let note = notes[indexPath.row]
         let isAuthor = note.canEdit(email: userEmail)
         if isAuthor {
