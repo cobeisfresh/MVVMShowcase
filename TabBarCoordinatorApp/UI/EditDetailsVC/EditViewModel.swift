@@ -30,8 +30,16 @@ class EditViewModel {
         })
     }
     
+    func getCurrentUser() -> String {
+        var userEmail = String()
+        authenticationService.getCurrentUser { email in
+            userEmail = email
+        }
+        return userEmail
+    }
+    
     func saveChangedUserDetails(phone: Int, address: String, country: String) {
-        guard let email = Auth.auth().currentUser?.email else { return }
+        let email = getCurrentUser()
         UserDefaults.standard.set(phone, forKey: "userPhone_\(email)")
         UserDefaults.standard.set(address, forKey: "userAddress_\(email)")
         UserDefaults.standard.set(country, forKey: "userCountry_\(email)")

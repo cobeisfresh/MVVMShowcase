@@ -6,12 +6,25 @@
 //
 
 import Foundation
-import Firebase
 
 class AddNoteViewModel {
     var onConfirmTapped: (() -> Void)?
-    var onSaveNoteSuccess: (() -> Void)?//
+    var onSaveNoteSuccess: (() -> Void)?
     var onSaveNoteFailure: (() -> Void)?
+    
+    let authenticationService: AuthenticationServiceProtocol
+    
+    init(authenticationService: AuthenticationServiceProtocol) {
+        self.authenticationService = authenticationService
+    }
+    
+    private func getCurrentUser() -> String {
+        var userEmail = String()
+        authenticationService.getCurrentUser { email in
+            userEmail = email
+        }
+        return userEmail
+    }
     
     func checkForEmptyFields(title: String, description: String) -> Bool {
         if title != "" && description != "" {
@@ -53,7 +66,7 @@ class AddNoteViewModel {
     
     func handleNoteCreateAndEdit(title: String, description: String, createNote: Bool, indexNote: Int) {
         let date = createDate()
-        let author = Auth.auth().currentUser?.email ?? "Unknown author"
+        let author = getCurrentUser()
         let newNote = Note(title: title, description: description, author: author, timeStamp: date)
         let canProceed = checkForEmptyFields(title: title, description: description)
         if canProceed {
@@ -73,7 +86,6 @@ class AddNoteViewModel {
         else {
             onSaveNoteFailure?()
         }
-
     }
     
     func createDate() -> String {
@@ -84,9 +96,3 @@ class AddNoteViewModel {
     }
     
 }
-
-//extension AddNoteViewModel {
-//    func save() {
-//        
-//    }
-//}

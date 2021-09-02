@@ -9,6 +9,12 @@ import Foundation
 
 
 class NotesViewModel {
+    let authenticationService: AuthenticationServiceProtocol
+    
+    init(authenticationService: AuthenticationServiceProtocol) {
+        self.authenticationService = authenticationService
+    }
+    
     var onNoteAdd: (() -> Void)?
     var onEditNote: ((Note, Int) -> Void)?
     
@@ -29,4 +35,14 @@ class NotesViewModel {
         }
         return notes
     }
+    
+    func getCurrentUser() -> String {
+        var userEmail = String()
+        authenticationService.getCurrentUser { email in
+            userEmail = email
+        }
+        return userEmail
+    }
+    
+    
 }

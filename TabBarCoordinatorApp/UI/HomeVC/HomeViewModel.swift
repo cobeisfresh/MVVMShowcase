@@ -10,8 +10,22 @@ import UIKit
 import Firebase
 
 class HomeViewModel {
+    let authenticationService: AuthenticationServiceProtocol
+    
+    init(authenticationService: AuthenticationServiceProtocol) {
+        self.authenticationService = authenticationService
+    }
+    
     var onChangeDetailsTapped: ((User) -> Void)?
     var onShouldShowEditVC: ((User)->Void)?
+    
+    func getCurrentUser() -> String {
+        var userEmail = String()
+        authenticationService.getCurrentUser { email in
+            userEmail = email
+        }
+        return userEmail
+    }
 
 }
 
