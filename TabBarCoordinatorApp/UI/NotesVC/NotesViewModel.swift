@@ -37,7 +37,7 @@ class NotesViewModel {
     }
     
     func getCurrentUser() -> String {
-        return authenticationService.getCurrentUser()
+        return authenticationService.getCurrentEmail()
     }
     
     

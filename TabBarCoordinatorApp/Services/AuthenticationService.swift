@@ -29,7 +29,7 @@ protocol AuthenticationServiceProtocol {
     func register(email: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void)
     func login(email: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void)
     func resetPassword(email: String, completion: @escaping (Result<String, ResetPasError>) -> Void)
-    func getCurrentUser() -> String
+    func getCurrentEmail() -> String
 }
 
 final class AuthenticationService: AuthenticationServiceProtocol {
@@ -83,7 +83,7 @@ final class AuthenticationService: AuthenticationServiceProtocol {
         })
     }
     
-    func getCurrentUser() -> String {
+    func getCurrentEmail() -> String {
         let user = Auth.auth().currentUser?.email
         return user ?? "Unknown"
     }

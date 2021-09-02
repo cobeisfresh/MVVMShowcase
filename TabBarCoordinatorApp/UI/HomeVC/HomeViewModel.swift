@@ -20,7 +20,7 @@ class HomeViewModel {
     var onShouldShowEditVC: ((User)->Void)?
     
     func getCurrentUser() -> String {
-        return authenticationService.getCurrentUser()
+        return authenticationService.getCurrentEmail()
     }
 
 }

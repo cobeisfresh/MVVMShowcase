@@ -31,7 +31,7 @@ class EditViewModel {
     }
     
     func getCurrentUser() -> String {
-        return authenticationService.getCurrentUser()
+        return authenticationService.getCurrentEmail()
     }
     
     func saveChangedUserDetails(phone: Int, address: String, country: String) {

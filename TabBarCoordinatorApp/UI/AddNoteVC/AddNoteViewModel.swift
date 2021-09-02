@@ -19,7 +19,7 @@ class AddNoteViewModel {
     }
     
     private func getCurrentUser() -> String {
-        return authenticationService.getCurrentUser()
+        return authenticationService.getCurrentEmail()
     }
     
     func checkForEmptyFields(title: String, description: String) -> Bool {

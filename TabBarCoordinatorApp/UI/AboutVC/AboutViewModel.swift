@@ -23,7 +23,7 @@ class AboutViewModel {
     }
     
     func getCurrentUser() -> String {
-        return authenticationService.getCurrentUser()
+        return authenticationService.getCurrentEmail()
     }
     
     func testGET() {
