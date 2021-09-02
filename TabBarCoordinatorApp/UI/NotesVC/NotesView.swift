@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Firebase
 
 class NotesView: UIView {
     private lazy var backgroundImage = UIImageView()

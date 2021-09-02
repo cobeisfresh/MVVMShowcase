@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Firebase
 
 final class AboutCoordinator: Coordinator {
     var onLogout: (() -> Void)?

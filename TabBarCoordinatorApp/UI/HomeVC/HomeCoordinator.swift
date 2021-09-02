@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Firebase
 
 final class HomeCoordinator: Coordinator {
     let navigationController = UINavigationController()

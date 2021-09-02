@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 class HomeViewController: UIViewController {
     lazy var homeView = HomeView()
