@@ -6,12 +6,23 @@
 //
 
 import Foundation
-import Firebase
 
 class AddNoteViewModel {
     var onConfirmTapped: (() -> Void)?
-    var onSaveNoteSuccess: (() -> Void)?//
+    var onSaveNoteSuccess: (() -> Void)?
     var onSaveNoteFailure: (() -> Void)?
+    
+    let authenticationService: AuthenticationServiceProtocol
+    let notePersistanceService: NoteRepositoryProtocol
+    
+    init(authenticationService: AuthenticationServiceProtocol, notePersistanceService: NotePersistanceService) {
+        self.authenticationService = authenticationService
+        self.notePersistanceService = notePersistanceService
+    }
+    
+    private func getCurrentUser() -> String {
+        return authenticationService.getCurrentEmail()
+    }
     
     func checkForEmptyFields(title: String, description: String) -> Bool {
         if title != "" && description != "" {
@@ -23,37 +34,16 @@ class AddNoteViewModel {
     }
     
     func saveNotes(notes: [Note]) {
-        do {
-            let encoder = JSONEncoder()
-            let data = try encoder.encode(notes)
-            UserDefaults.standard.set(data, forKey: "notes")
-            UserDefaults.standard.synchronize()
-        } catch {
-            print("Unable to Encode Note (\(error))")
-        }
+        notePersistanceService.saveNotes(notes)
     }
     
     func getNotes() -> [Note] {
-        var notes = [Note]()
-        if let data = UserDefaults.standard.data(forKey: "notes") {
-            do {
-                let decoder = JSONDecoder()
-                let decodedNotes = try decoder.decode([Note].self, from: data)
-                for note in decodedNotes {
-                    let mynote = Note(title: note.title, description: note.description, author: note.author, timeStamp: note.timeStamp)
-                    
-                    notes.append(mynote)
-                }
-            } catch {
-                print("Unable to Decode Note (\(error))")
-            }
-        }
-        return notes
+        return notePersistanceService.getNotes()
     }
     
     func handleNoteCreateAndEdit(title: String, description: String, createNote: Bool, indexNote: Int) {
         let date = createDate()
-        let author = Auth.auth().currentUser?.email ?? "Unknown author"
+        let author = getCurrentUser()
         let newNote = Note(title: title, description: description, author: author, timeStamp: date)
         let canProceed = checkForEmptyFields(title: title, description: description)
         if canProceed {
@@ -73,20 +63,12 @@ class AddNoteViewModel {
         else {
             onSaveNoteFailure?()
         }
-
     }
     
     func createDate() -> String {
         let date = Date()
         let formatedDate = date.getFormattedDate(format: "yyyy-MM-dd, HH:mm:ss")
-        
         return formatedDate
     }
     
 }
-
-//extension AddNoteViewModel {
-//    func save() {
-//        
-//    }
-//}

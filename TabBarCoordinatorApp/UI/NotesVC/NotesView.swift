@@ -7,13 +7,13 @@
 
 import Foundation
 import UIKit
-import Firebase
 
 class NotesView: UIView {
-    
     private lazy var backgroundImage = UIImageView()
     private lazy var titleLabel = UILabel()
     private lazy var notesTableview = UITableView()
+    
+    var viewModel = NotesViewModel(authenticationService: ServiceFactory.authenticationService, notePersistanceService: ServiceFactory.notePersistanceService)
     
     var onCheckUserForEdit: ((Note, Int)-> Void)?
     
@@ -91,8 +91,7 @@ extension NotesView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let userEmail = Auth.auth().currentUser?.email else { return }
-        
+        let userEmail = viewModel.getCurrentUser()
         let note = notes[indexPath.row]
         let isAuthor = note.canEdit(email: userEmail)
         if isAuthor {

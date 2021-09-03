@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 class EditViewController: UIViewController {
     lazy var editView = EditView()
@@ -50,7 +49,7 @@ class EditViewController: UIViewController {
     }
     
     private func refreshView() {
-        guard let userEmail = Auth.auth().currentUser?.email else { return }
+        let userEmail = viewModel.getCurrentUser()
         let userName = UserDefaults.standard.string(forKey: "userName_\(userEmail)") ?? ""
         let userPassword = UserDefaults.standard.string(forKey: "userPassword_\(userEmail)") ?? ""
         let phone = UserDefaults.standard.string(forKey: "userPhone_\(userEmail )") ?? "000"

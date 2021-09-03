@@ -15,9 +15,15 @@ class AboutViewModel {
     var onEndActivity: (()->Void)?
 
     let testService: TestServiceProtocol
+    let authenticationService: AuthenticationServiceProtocol
     
-    init(testService: TestServiceProtocol) {
+    init(testService: TestServiceProtocol, authenticationService: AuthenticationServiceProtocol) {
         self.testService = testService
+        self.authenticationService = authenticationService
+    }
+    
+    func getCurrentUser() -> String {
+        return authenticationService.getCurrentEmail()
     }
     
     func testGET() {

@@ -31,4 +31,8 @@ final class ServiceFactory {
     static var networkMonitor: NetworkMonitor = {
         return NetworkMonitor()
     }()
+    
+    static var notePersistanceService: NotePersistanceService = {
+        return NotePersistanceService()
+    }()
 }

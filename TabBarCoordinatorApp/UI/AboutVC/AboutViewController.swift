@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 class AboutViewController: UIViewController {
     lazy var aboutView = AboutView()

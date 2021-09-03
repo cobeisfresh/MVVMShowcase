@@ -29,10 +29,10 @@ protocol AuthenticationServiceProtocol {
     func register(email: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void)
     func login(email: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void)
     func resetPassword(email: String, completion: @escaping (Result<String, ResetPasError>) -> Void)
+    func getCurrentEmail() -> String
 }
 
 final class AuthenticationService: AuthenticationServiceProtocol {
-    
     private let connectivityService: ConnectivityServiceProtocol
     
     init(connectivityService: ConnectivityServiceProtocol) {
@@ -74,11 +74,18 @@ final class AuthenticationService: AuthenticationServiceProtocol {
         Auth.auth().sendPasswordReset(withEmail: email, completion: { error in
             if error == nil {
                 completion(.success("Successfully reset password!"))
+                return
             }
             else {
                 completion(.failure(.wrongEmail))
+                return
             }
         })
+    }
+    
+    func getCurrentEmail() -> String {
+        let user = Auth.auth().currentUser?.email
+        return user ?? "Unknown"
     }
 }
 

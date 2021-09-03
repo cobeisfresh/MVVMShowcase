@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Firebase
 
 final class AboutCoordinator: Coordinator {
     var onLogout: (() -> Void)?
@@ -22,20 +21,19 @@ final class AboutCoordinator: Coordinator {
     
     private func createAboutVC() -> UIViewController {
         let vc = AboutViewController()
-        vc.viewModel = AboutViewModel(testService: ServiceFactory.testService)
-        
-        if let userEmail = Auth.auth().currentUser?.email {
-            if let data = UserDefaults.standard.data(forKey: "user_\(userEmail)") {
-                do {
-                    let decoder = JSONDecoder()
-                    let decodedUser = try decoder.decode(User.self, from: data)
-                    let user = User(name: decodedUser.name, email: decodedUser.email, password: decodedUser.password, phone: Int(""), address: "", country: "")
-                    vc.aboutView.setupUserDetails(with: user)
-                } catch {
-                    print("Unable to Decode Note (\(error))")
-                }
+        vc.viewModel = AboutViewModel(testService: ServiceFactory.testService, authenticationService: ServiceFactory.authenticationService)
+        let userEmail = vc.viewModel.getCurrentUser()
+        if let data = UserDefaults.standard.data(forKey: "user_\(userEmail)") {
+            do {
+                let decoder = JSONDecoder()
+                let decodedUser = try decoder.decode(User.self, from: data)
+                let user = User(name: decodedUser.name, email: decodedUser.email, password: decodedUser.password, phone: Int(""), address: "", country: "")
+                vc.aboutView.setupUserDetails(with: user)
+            } catch {
+                print("Unable to Decode Note (\(error))")
             }
         }
+        
         
         vc.viewModel.onLogoutButtonTapped = { [weak vc] in
             vc?.viewModel.onStartActivity?()

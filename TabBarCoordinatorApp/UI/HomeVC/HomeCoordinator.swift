@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Firebase
 
 final class HomeCoordinator: Coordinator {
     let navigationController = UINavigationController()
@@ -23,18 +22,17 @@ final class HomeCoordinator: Coordinator {
     
     private func createHomeVC() -> UIViewController {
         let vc = HomeViewController()
-        vc.viewModel = HomeViewModel()
+        vc.viewModel = HomeViewModel(authenticationService: ServiceFactory.authenticationService)
         
-        if let userEmail = Auth.auth().currentUser?.email {
-            if let data = UserDefaults.standard.data(forKey: "user_\(userEmail)") {
-                do {
-                    let decoder = JSONDecoder()
-                    let decodedUser = try decoder.decode(User.self, from: data)
-                    let user = User(name: decodedUser.name, email: decodedUser.email, password: decodedUser.password, phone: Int(""), address: "", country: "")
-                    vc.homeView.setupUserDetails(user: user)
-                } catch {
-                    print("Unable to Decode Note (\(error))")
-                }
+        let userEmail = vc.viewModel.getCurrentUser()
+        if let data = UserDefaults.standard.data(forKey: "user_\(userEmail)") {
+            do {
+                let decoder = JSONDecoder()
+                let decodedUser = try decoder.decode(User.self, from: data)
+                let user = User(name: decodedUser.name, email: decodedUser.email, password: decodedUser.password, phone: Int(""), address: "", country: "")
+                vc.homeView.setupUserDetails(user: user)
+            } catch {
+                print("Unable to Decode Note (\(error))")
             }
         }
         
