@@ -18,8 +18,6 @@ class LoginView: UIView {
     private lazy var loginButton = UIButton(type: .system)
     private lazy var createButton = UIButton(type: .system)
     
-    var viewModel: LoginViewModel!
-    
     var onCreateTapped: (()->Void)?
     var onLoginTapped: ((User)->Void)?
     

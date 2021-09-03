@@ -22,8 +22,6 @@ class HomeView: UIView {
     private lazy var passDescLabel =  UILabel()
     private lazy var passLabel = UILabel()
     
-    var viewModel: HomeViewModel!
-    
     var onChangeTapped: ((User)->Void)?
     
     override init(frame: CGRect) {

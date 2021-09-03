@@ -19,7 +19,6 @@ class CreateUserView: UIView {
     private lazy var passwordTextField = UITextField()
     private lazy var createButton = UIButton(type: .system)
     
-    var viewModel: LoginViewModel!
     var onCreateUser: ((User) -> Void)?
     var onEmptyField: (() -> Void)?
     var onPasswordError: (() -> Void)?
