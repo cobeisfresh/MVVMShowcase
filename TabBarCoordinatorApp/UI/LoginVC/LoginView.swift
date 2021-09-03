@@ -131,6 +131,10 @@ class LoginView: UIView {
         passTextField.text = ""
     }
     
+    func setupView(email: String) {
+        nameTextField.text = email
+    }
+    
     @objc func loginButtonTapped() {
         if let name = nameTextField.text, let pass = passTextField.text, let email = nameTextField.text {
             let user = User(name: name, email: email, password: pass, phone: Int(""), address: "", country: "")

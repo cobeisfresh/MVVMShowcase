@@ -43,11 +43,17 @@ class AuthCoordinator: Coordinator {
         let vc = CreateUserViewController()
         vc.viewModel = CreateUserViewModel(authenticationService: ServiceFactory.authenticationService)
         
-        vc.viewModel.onGoToLogin = { [weak self] in
-            self?.navigationController.popViewController(animated: true)
+        vc.viewModel.onGoToLogin = { [weak self] email in
+            self?.goToLoginVC(with: email)
         }
         
         navigationController.pushViewController(vc, animated: true)
         return vc
+    }
+    
+    private func goToLoginVC(with email: String) {
+        let loginVC = self.navigationController.viewControllers[0] as! LoginViewController
+        loginVC.registeredUser = email
+        self.navigationController.popViewController(animated: true)
     }
 }

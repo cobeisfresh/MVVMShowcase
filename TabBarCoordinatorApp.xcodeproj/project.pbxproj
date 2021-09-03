@@ -45,6 +45,7 @@
 		C5B88DF326DE5D8400BCBA9E /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B88DF226DE5D8400BCBA9E /* AddNoteView.swift */; };
 		C5B88DF526DE5DC000BCBA9E /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B88DF426DE5DC000BCBA9E /* AddNoteViewController.swift */; };
 		C5B88DF726DE5DCF00BCBA9E /* AddNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B88DF626DE5DCF00BCBA9E /* AddNoteViewModel.swift */; };
+		C5B88DFB26DE896E00BCBA9E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B88DFA26DE896E00BCBA9E /* DateExtension.swift */; };
 		C5BDBC752590A1B8003543B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC742590A1B8003543B1 /* AppDelegate.swift */; };
 		C5BDBC772590A1B8003543B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC762590A1B8003543B1 /* SceneDelegate.swift */; };
 		C5BDBC792590A1B8003543B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDBC782590A1B8003543B1 /* ViewController.swift */; };
@@ -102,6 +103,7 @@
 		C5B88DF226DE5D8400BCBA9E /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteView.swift; sourceTree = "<group>"; };
 		C5B88DF426DE5DC000BCBA9E /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 		C5B88DF626DE5DCF00BCBA9E /* AddNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewModel.swift; sourceTree = "<group>"; };
+		C5B88DFA26DE896E00BCBA9E /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		C5BDBC712590A1B8003543B1 /* TabBarCoordinatorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabBarCoordinatorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5BDBC742590A1B8003543B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5BDBC762590A1B8003543B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				C5BDBCB02590AEF2003543B1 /* UIViewControllerExtension.swift */,
 				C531231426D3D0A20051F61F /* ConstraintsExtension.swift */,
+				C5B88DFA26DE896E00BCBA9E /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				C5B88DF526DE5DC000BCBA9E /* AddNoteViewController.swift in Sources */,
 				C531232026D4CDC80051F61F /* CreateUserViewModel.swift in Sources */,
 				C5BDBC8A2590A1E4003543B1 /* Coordinator.swift in Sources */,
+				C5B88DFB26DE896E00BCBA9E /* DateExtension.swift in Sources */,
 				C5C394D92590C911004782B7 /* LoginViewController.swift in Sources */,
 				C5BDBC792590A1B8003543B1 /* ViewController.swift in Sources */,
 				C5B88DE726DE3D3900BCBA9E /* NotesView.swift in Sources */,

@@ -6,21 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class AddNoteViewController: UIViewController{
     
-    var navController = UINavigationController()
-    init(navControlller: UINavigationController) {
-        self.navController = navControlller
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private lazy var addNoteView = AddNoteView()
+    lazy var addNoteView = AddNoteView()
     var viewModel: AddNoteViewModel!
+    var indexNote: Int!
     
     override func loadView() {
         view = addNoteView
@@ -28,19 +20,18 @@ class AddNoteViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         addCallbacks()
     }
     
     private func addCallbacks() {
         addNoteView.onConfirmButtonTapped = { [weak self] title, description in
-            print("title: \(title)")
-            print("desc: \(description)")
-            
-            self?.navController.dismiss(animated: true, completion:{
-                self?.viewModel.onNoteSave?()
-            })
-            
+            guard let createNote = self?.addNoteView.checkForCreate() else  { return }
+            self?.viewModel.handleNoteCreateAndEdit(title: title, description: description, createNote: createNote, indexNote: self?.indexNote ?? 0)
+        }
+        
+        viewModel.onSaveNoteFailure = { [weak self] in
+            self?.showMessage(title: "Error", messagae: "Fields can not be empty.")
         }
     }
-
 }

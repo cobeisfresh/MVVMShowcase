@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class NotesView: UIView {
     
@@ -14,8 +15,9 @@ class NotesView: UIView {
     private lazy var titleLabel = UILabel()
     private lazy var notesTableview = UITableView()
     
-    var notes = [Note]()
+    var onCheckUserForEdit: ((Note, Int)-> Void)?
     
+    var notes = [Note]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,6 +71,10 @@ class NotesView: UIView {
         ])
     }
     
+    func reloadTableView() {
+        notesTableview.reloadData()
+    }
+    
 }
 
 extension NotesView: UITableViewDataSource, UITableViewDelegate {
@@ -79,20 +85,23 @@ extension NotesView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell", for: indexPath) as! NotesTableViewCell
         
-        cell.setupView(title: "Title", description: "Some text Some text Some text Some text Some text Some text Some text  Some text Some text Some textSome text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text", author: "Name Surname", time: "2021-09-01")
+        cell.setupView(title: (notes[indexPath.row].title), description: notes[indexPath.row].description, author: notes[indexPath.row].author, time: notes[indexPath.row].timeStamp)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NotesTableViewCell", for: indexPath) as! NotesTableViewCell
+        guard let userEmail = Auth.auth().currentUser?.email else { return }
         
-        print(indexPath.row)
+        let note = notes[indexPath.row]
+        let isAuthor = note.canEdit(email: userEmail)
+        if isAuthor {
+            onCheckUserForEdit?(note, indexPath.row)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250
     }
-    
     
 }
